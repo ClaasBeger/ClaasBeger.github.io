@@ -21,7 +21,7 @@ Syntax highlighted code block
 
 **Bold** and _Italic_ and `Code` text
 
-[![Alt text for broken image link](assets/linkedin.png)](https://www.linkedin.com/in/claas-beger-272b11187/)
+[![Alt text for broken image link]("assets/linkedin.png")](https://www.linkedin.com/in/claas-beger-272b11187/)
 ```
 
 For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
