@@ -11,7 +11,7 @@ I have done my Bachelor's degree in Information Systems at the Technical Univers
 ### My Thesis : SpikeDecoder
 
 I have written my project about a research topic that I have been interested in since before I started university. If you are a bit familiar with Artificial Intelligence and the structure that it operates on, you might have asked yourself, to what degree it reflects the way your brain operates. I have been wondering the same, ever since I learned about neural plasticity in high school. 
-One of the most popular and impressive techniques of Artificial Intelligence is undoubtedly ChatGPT. 
+One of the most popular and impressive techniques of Artificial Intelligence is undoubtedly ChatGPT. The GPT architecture has been around for some time and is a classic example of an Artificial Neural Network with high capabilities. In order to replicate this architecture with similarity to the brain. 
 ### Support or Contact
 
 Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
