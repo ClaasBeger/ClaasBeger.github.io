@@ -8,8 +8,6 @@ I have done my Bachelor's degree in Information Systems at the Technical Univers
 
 [![My linkedin](assets/LinkedIn_icon_circle.svg.png)](https://www.linkedin.com/in/claas-beger-272b11187/)
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
 ### My Thesis : SpikeDecoder
 
 I have written my project about a research topic that I have been interested in since before I started university. If you are a bit familiar with Artificial Intelligence and the structure that it operates on, you might have asked yourself, to what degree it reflects the way your brain operates. I have been wondering the same, ever since I learned about neural plasticity in high school. 
