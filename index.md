@@ -12,9 +12,6 @@ I have done my Bachelor's degree in Information Systems at the Technical Univers
 
 <a class="linkedin-link" href="https://www.linkedin.com/in/claas-beger-272b11187/">LinkedIn</a>
 
-<a href="https://www.linkedin.com/in/claas-beger-272b11187/">
-  <img alt="My LinkedIn" src="assets/LinkedIn_icon_circle.svg.png">
-</a>
 
 ### My Thesis : SpikeDecoder
 
