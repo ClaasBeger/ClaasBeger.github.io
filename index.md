@@ -16,6 +16,8 @@ One of the most popular and impressive techniques of Artificial Intelligence is 
 
 At the Technical University of Munich, I have participated in the applied course iPraktikum, where student teams work together with industry partners to tackle real-life programs. I joined the team of industry partner Siemens, during which we created an orchestration system for industral robots. This was especially challenging because the program featured a user-base of both autonomous but also non-autonomous agents.
 
+[<img src="assets/Practical_Sample.png" alt="Project Screenshot">]
+
 ### Contact Me
 
 [<img src="assets/LinkedIn_icon_circle.svg.png" alt="My LinkedIn" width="32" height="32">](https://www.linkedin.com/in/claas-beger-272b11187/)
