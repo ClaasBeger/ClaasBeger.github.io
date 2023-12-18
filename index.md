@@ -18,7 +18,7 @@ At the Technical University of Munich, I have participated in the applied course
 
 [<img src="assets/Practical_Sample.png" alt="Project Screenshot">]
 
-If you are interested in diving deeper into this project, check out our design review and client acceptance test on the site of the <span style="background-color:yellow">[applied software engineering group](https://ase.cit.tum.de/projects/ipraktikum/22w/siemens/))</span>.
+If you are interested in diving deeper into this project, check out our design review and client acceptance test on the site of the <span style="background-color:yellow">[applied software engineering group](https://ase.cit.tum.de/projects/ipraktikum/22w/siemens/)</span>.
 
 ### Contact Me
 
