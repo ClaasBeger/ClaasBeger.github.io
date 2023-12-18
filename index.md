@@ -13,7 +13,7 @@ I have done my Bachelor's degree in Information Systems at the Technical Univers
     display: block;
     height: 32px;
     width: 32px;
-    background-image: url("assets/LinkedIn_icon_circle.svg.png");
+    background-image: "assets/LinkedIn_icon_circle.svg.png";
     background-size: cover;
     text-indent: -9999px; /* Hide text content */
   }
