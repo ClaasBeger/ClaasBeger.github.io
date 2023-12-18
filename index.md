@@ -6,8 +6,6 @@ I like developing useful things and looking into fascinating new topics in Compu
 
 I have done my Bachelor's degree in Information Systems at the Technical University of Munich, complemented by an exchange Semester at the Hong Kong University of Science and Technology. Throughout my studies I have worked at the Institute of Computational Biology Munich, Deutsche Bank and PwC. I also worked as a teaching assistant at my university for courses on Computer Science in the context of Business and Applied Software Engineering. 
 
-<a href="https://www.linkedin.com/in/claas-beger-272b11187/" style="display: inline-block; width: 32px; height: 32px; background-image: url('assets/LinkedIn_icon_circle.svg.png'); background-size: cover;"></a>
-
 
 ### My Thesis : SpikeDecoder
 
