@@ -8,16 +8,7 @@ I have done my Bachelor's degree in Information Systems at the Technical Univers
 
 [![My linkedin](assets/LinkedIn_icon_circle.svg.png)](https://www.linkedin.com/in/claas-beger-272b11187/)
 
-<style>
-  a.linkedin-link {
-    display: block;
-    height: 32px;
-    width: 32px;
-    background-image: "assets/LinkedIn_icon_circle.svg.png";
-    background-size: cover;
-    text-indent: -9999px; /* Hide text content */
-  }
-</style>
+<a href="https://www.linkedin.com/in/claas-beger-272b11187/" style="display: inline-block; width: 32px; height: 32px; background-image: url('assets/LinkedIn_icon_circle.svg.png'); background-size: cover;"></a>
 
 <a class="linkedin-link" href="https://www.linkedin.com/in/claas-beger-272b11187/">LinkedIn</a>
 
