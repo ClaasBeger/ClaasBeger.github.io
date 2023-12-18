@@ -9,14 +9,17 @@ I have done my Bachelor's degree in Information Systems at the Technical Univers
 [![My linkedin](assets/LinkedIn_icon_circle.svg.png)](https://www.linkedin.com/in/claas-beger-272b11187/)
 
 <style>
-  a {
-    background-image: url("assets/LinkedIn_icon_circle.svg.png");
+  a.linkedin-link {
     display: block;
-    height:32px;
-    width:32px;
+    height: 32px;
+    width: 32px;
+    background-image: url("assets/LinkedIn_icon_circle.svg.png");
+    background-size: cover;
+    text-indent: -9999px; /* Hide text content */
   }
 </style>
-<a href="https://www.linkedin.com/in/claas-beger-272b11187/"></a>
+
+<a class="linkedin-link" href="https://www.linkedin.com/in/claas-beger-272b11187/">LinkedIn</a>
 
 <a href="https://www.linkedin.com/in/claas-beger-272b11187/">
   <img alt="My LinkedIn" src="assets/LinkedIn_icon_circle.svg.png">
