@@ -22,6 +22,10 @@ At the Technical University of Munich, I have participated in the applied course
 
 If you are interested in diving deeper into this project, check out our design review and client acceptance test on the site of the <span style="background-color:yellow">[applied software engineering group](https://ase.cit.tum.de/projects/ipraktikum/22w/siemens/)</span>.
 
+### My Semester abroad
+
+Through my university exchange program, I spent a half year in Asia, at The Hong Kong University of Science and Technology (HKUST). My courses there focussed mostly on Machine Learning, Data Mining, Artificial Intelligence and Financial Technology. I enjoyed all of the courses very much, and can wholeheartedly recommend this university, if you are thinking about doing an exchange. If you would like to read more about my exchange experience, have a look at <span style="background-color:yellow">[my experience report](https://tum.moveon4.de/services/download-study-report-file/publisher_id/1/stay_id/85626/file_id/664440)</span>.
+
 ### Contact Me
 
 [<img src="assets/LinkedIn_icon_circle.svg.png" alt="My LinkedIn" width="32" height="32">](https://www.linkedin.com/in/claas-beger-272b11187/)
