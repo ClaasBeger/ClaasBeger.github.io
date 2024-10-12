@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: site.title }}</title>
+  <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+</head>
+<body>
+  <header>
+    <h1>{{ site.title }}</h1>
+    <nav>
+      <ul>
+        <li><a href="{{ '/' | relative_url }}">Home</a></li>
+        <li><a href="{{ '/projects' | relative_url }}">Projects</a></li>
+        <li><a href="{{ '/education' | relative_url }}">Education</a></li>
+        <li><a href="{{ '/professional' | relative_url }}">Professional</a></li>
+        <li><a href="{{ '/certificates' | relative_url }}">Certificates</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    {{ content }}
+  </main>
+
+  <footer>
+    <ul>
+      <li><a href="https://github.com/{{ site.social_links.github }}">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/{{ site.social_links.linkedin }}">LinkedIn</a></li>
+      <li><a href="https://www.youtube.com/channel/{{ site.social_links.youtube_channel }}">YouTube</a></li>
+    </ul>
+    <p>&copy; {{ site.title }} {{ "now" | date: "%Y" }}</p>
+  </footer>
+</body>
+</html>
