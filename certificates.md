@@ -46,7 +46,7 @@ title: Certificates
 
 ### Cambridge Certificate of Proficiency
 **Administered by**: Cambridge University  
-**When**: 2020 
+**When**: 2020 <br>
 [View Certificate](assets/Cambridge Certificate of Proficiency.pdf)
 
 ### TOEFL
