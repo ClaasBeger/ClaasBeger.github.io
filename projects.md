@@ -1,3 +1,8 @@
+---
+layout: default
+title: Projects  # Replace with the specific page title
+---
+
 ## Projects
 
 ### SpikeDecoder
