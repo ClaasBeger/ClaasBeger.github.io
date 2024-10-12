@@ -1,3 +1,8 @@
+---
+layout: default
+title: Professional  # Replace with the specific page title
+---
+
 ## Professional Experience
 
 ### PwC - Responsible AI Validation Engine
