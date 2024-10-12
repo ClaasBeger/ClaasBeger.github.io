@@ -1,3 +1,8 @@
+---
+layout: default
+title: Home
+---
+
 ## Welcome to my page 
 
 I like developing useful things and looking into fascinating new topics in Computer Science.
