@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
 
   <!-- Google Fonts for better typography -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
   <style>
     /* Basic reset */
@@ -17,26 +17,30 @@
       font-family: 'Roboto', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
+      background-color: #f8f9fa; /* Light background for a softer look */
       color: #333;
+      line-height: 1.6; /* Improve readability */
     }
 
     header {
-      background-color: #333;
+      background-color: #007bff; /* Brand color for header */
       color: white;
-      padding: 20px 0;
+      padding: 40px 0; /* More padding for a more spacious feel */
       text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     }
 
     header h1 {
       margin: 0;
       font-size: 2.5rem;
+      letter-spacing: 1px; /* Slight spacing for elegance */
     }
 
     nav {
-      background-color: #444;
+      background-color: #0056b3; /* Darker shade for the navigation */
       text-align: center;
-      padding: 10px 0;
+      padding: 15px 0;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     }
 
     nav ul {
@@ -47,38 +51,49 @@
 
     nav ul li {
       display: inline;
-      margin-right: 15px;
+      margin-right: 30px; /* Increased spacing for better separation */
     }
 
     nav ul li a {
       text-decoration: none;
       color: white;
-      font-weight: bold;
+      font-weight: 500; /* Slightly lighter font weight */
+      transition: color 0.3s; /* Smooth transition for hover effect */
     }
 
     nav ul li a:hover {
-      color: #ff5722;
+      color: #ffeb3b; /* Yellow highlight on hover */
     }
 
     main {
-      max-width: 1000px;
+      max-width: 800px; /* Reduce max width for better focus */
       margin: 20px auto;
-      padding: 20px;
+      padding: 30px; /* Increase padding for content */
       background: white;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 8px; /* Rounded corners for a softer look */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Deeper shadow for emphasis */
     }
 
     main img {
       max-width: 100%;
       height: auto;
+      border-radius: 8px; /* Match images with rounded corners */
     }
 
     footer {
-      background-color: #333;
+      background-color: #007bff; /* Match footer with header */
       color: white;
       text-align: center;
-      padding: 10px 0;
+      padding: 15px 0; /* Slightly reduced padding */
       margin-top: 40px;
+      position: relative;
+      bottom: 0; /* Stick footer at the bottom if content is short */
+      width: 100%; /* Full width for footer */
+    }
+
+    footer p {
+      margin: 0; /* Remove margin from footer text */
+      font-size: 0.9rem; /* Smaller text size for footer */
     }
   </style>
 </head>
@@ -108,4 +123,5 @@
 
 </body>
 </html>
+
 
