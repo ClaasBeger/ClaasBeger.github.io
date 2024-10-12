@@ -37,5 +37,5 @@ During my time at PwC I have worked on a very interesting topic, that gains more
 
 ### Contact Me
 
-[<img src="assets/LinkedIn_icon_circle.svg.png" alt="My LinkedIn" width="32" height="32">](https://www.linkedin.com/in/claas-beger-272b11187/)
-[<a href="mailto:claasbeger@gmail.com"><img src="assets/email_icon.png" alt="Email Me" width="32" height="32"></a>](mailto:claasbeger@gmail.com)
+[<img src="assets/LinkedIn_icon_circle.svg.png" alt="My LinkedIn" width="32" height="32">](https://www.linkedin.com/in/claas-beger-272b11187/)<br>
+[<a href="mailto:claasbeger@gmail.com"><img src="assets/email.png" alt="Email Me" width="32" height="32"></a>](mailto:claasbeger@gmail.com)
