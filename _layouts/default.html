@@ -3,34 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title | default: site.title }}</title>
-  <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+  <title>{{ page.title }} - {{ site.title }}</title>
+  
+  <!-- Link to main CSS (ensure it exists in your assets folder) -->
+  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+
+  <!-- Google Fonts for better typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Basic reset */
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    nav {
+      background-color: #444;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 15px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+
+    nav ul li a:hover {
+      color: #ff5722;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    main img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
+
   <header>
     <h1>{{ site.title }}</h1>
-    <nav>
-      <ul>
-        <li><a href="{{ '/' | relative_url }}">Home</a></li>
-        <li><a href="{{ '/projects' | relative_url }}">Projects</a></li>
-        <li><a href="{{ '/education' | relative_url }}">Education</a></li>
-        <li><a href="{{ '/professional' | relative_url }}">Professional</a></li>
-        <li><a href="{{ '/certificates' | relative_url }}">Certificates</a></li>
-      </ul>
-    </nav>
   </header>
+
+  <nav>
+    <ul>
+      <li><a href="{{ '/' | relative_url }}">Home</a></li>
+      <li><a href="{{ '/projects' | relative_url }}">Projects</a></li>
+      <li><a href="{{ '/education' | relative_url }}">Education</a></li>
+      <li><a href="{{ '/professional' | relative_url }}">Professional</a></li>
+      <li><a href="{{ '/certificates' | relative_url }}">Certificates</a></li>
+    </ul>
+  </nav>
 
   <main>
     {{ content }}
   </main>
 
   <footer>
-    <ul>
-      <li><a href="https://github.com/{{ site.social_links.github }}">GitHub</a></li>
-      <li><a href="https://www.linkedin.com/in/{{ site.social_links.linkedin }}">LinkedIn</a></li>
-      <li><a href="https://www.youtube.com/channel/{{ site.social_links.youtube_channel }}">YouTube</a></li>
-    </ul>
-    <p>&copy; {{ site.title }} {{ "now" | date: "%Y" }}</p>
+    <p>&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}</p>
   </footer>
+
 </body>
 </html>
+
