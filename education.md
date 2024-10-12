@@ -1,3 +1,8 @@
+---
+layout: default
+title: Education  # Replace with the specific page title
+---
+
 ## Education
 
 ### Technical University of Munich
