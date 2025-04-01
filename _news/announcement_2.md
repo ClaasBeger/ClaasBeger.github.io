@@ -6,4 +6,3 @@ related_posts: false
 ---
 
 My paper CoCoNUT: Structural Code Understanding does not fall out of a Tree got accepted at LLM4Code @ ICSE2025
----
