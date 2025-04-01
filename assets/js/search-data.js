@@ -440,16 +440,14 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/thus_spoke_zarathustra/";
-            },},{id: "news-a-simple-inline-announcement",
-          title: 'A simple inline announcement.',
+            },},{id: "news-i-started-my-master-s-program-at-cornell-and-moved-to-ithaca",
+          title: 'I started my Master’s Program at Cornell and moved to Ithaca.',
           description: "",
-          section: "News",},{id: "news-a-long-announcement-with-details",
-          title: 'A long announcement with details',
+          section: "News",},{id: "news-my-paper-coconut-structural-code-understanding-does-not-fall-out-of-a-tree-got-accepted-at-llm4code-icse2025",
+          title: 'My paper CoCoNUT: Structural Code Understanding does not fall out of a Tree...',
           description: "",
-          section: "News",handler: () => {
-              window.location.href = "/news/announcement_2/";
-            },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
-          title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
+          section: "News",},{id: "news-our-new-project-website-went-live-at-citegeist-org",
+          title: 'Our new project website went live at citegeist.org!',
           description: "",
           section: "News",},{id: "projects-project-1",
           title: 'project 1',
