@@ -7,7 +7,7 @@ olid: OL27465W
 isbn: 9780140441185
 categories: classics philosophy existentialism literary-fiction
 tags: top-100
-buy_link: https://www.amazon.com/Thus-Spoke-Zarathustra-Friedrich-Nietzsche/dp/0140441183
+buy_link: https://www.amazon.com/Thus-Spoke-Zarathustra-Everyone-Classics/dp/0140441182
 started: 2025-03-15
 released: 1883
 status: Ongoing
