@@ -181,6 +181,8 @@ exclude:
   - docker-compose-slim.yml
   - FAQ.md
   - Gemfile
+  - _posts/
+  - _pages/blog.md
   - Gemfile.lock
   - INSTALL.md
   - LICENSE
