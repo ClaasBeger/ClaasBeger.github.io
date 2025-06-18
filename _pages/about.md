@@ -19,4 +19,4 @@ announcements:
 
 ---
 
-I am currently a Master's student in Computer Science at Cornell University. My research interest centers around Artificial Intelligence, Machine Learning and how we can work towards what could be considered true Artificial Intelligence! For this purpose, I think it is the most promising direction to look towards Natural Intelligence, both with regard to the brain and psychology/cognition.
+I am currently a Graduate Fellow at Santa Fe Institute, doing research on multimodal reasoning. Prior to that I finished my Master's in Computer Science at Cornell University. My research interest centers around Artificial Intelligence, Machine Learning and how we can work towards what could be considered true Artificial Intelligence! For this purpose, I think it is the most promising direction to look towards Natural Intelligence, both with regard to the brain and psychology/cognition.
