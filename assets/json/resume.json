@@ -104,6 +104,20 @@
   ],
   "publications": [
     {
+      "name": "A Neuroscience-Inspired Dual-Process Model of Compositional Generalization",
+      "publisher": "",
+      "releaseDate": "2025-01-01",
+      "url": "https://arxiv.org/abs/2507.18868",
+      "summary": "ArXiv Preprint. Authors: Alex Noviello*, Claas Beger*, Jacob Groner, Kevin Ellis, Weinan Sun."
+    },
+    {
+      "name": "Memento: Note-Taking for Your Future Self",
+      "publisher": "",
+      "releaseDate": "2025-01-01",
+      "url": "https://arxiv.org/abs/2506.20642",
+      "summary": "ArXiv Preprint. Authors: Chao Wan, Albert Gong, Mihir Mishra, Carl-Leander Henneking, Claas Beger, Kilian Q. Weinberger."
+    },
+    {
       "name": "CoCoNUT: Structural Code Understanding does not fall out of a tree",
       "publisher": "",
       "releaseDate": "2025-01-01",
@@ -116,6 +130,13 @@
       "releaseDate": "2025-01-01",
       "url": "https://arxiv.org/abs/2501.17112",
       "summary": "ArXiv Preprint. Authors: Carl-Leander Henneking*, Claas Beger*."
+    },
+    {
+      "name": "Citegeist: Automated Generation of Related Work Analysis on the arXiv Corpus",
+      "publisher": "",
+      "releaseDate": "2025-01-01",
+      "url": "https://arxiv.org/abs/2503.23229",
+      "summary": "ArXiv Preprint. Authors: Claas Beger*, Carl-Leander Henneking*."
     }
   ],
   "skills": [
