@@ -28,6 +28,30 @@
   contents:
     # Add your open source projects here
 
+- title: Publications
+  type: time_table
+  contents:
+    - year: 2025
+      title: "A Neuroscience-Inspired Dual-Process Model of Compositional Generalization"
+      authors: "Alex Noviello*, Claas Beger*, Jacob Groner, Kevin Ellis, Weinan Sun"
+      venue: "arXiv preprint arXiv:2507.18868 [cs.AI]"
+    - year: 2025
+      title: "Memento: Note-Taking for Your Future Self"
+      authors: "Chao Wan, Albert Gong, Mihir Mishra, Carl-Leander Henneking, Claas Beger, Kilian Q. Weinberger"
+      venue: "arXiv preprint arXiv:2506.20642 [cs.CL]"
+    - year: 2025
+      title: "CoCoNUT: Structural Code Understanding does not fall out of a tree"
+      authors: "Claas Beger, Saikat Dutta"
+      venue: "arXiv preprint arXiv:2501.16456 [cs.LG]"
+    - year: 2025
+      title: "Decoding Human Preferences in Alignment: An Improved Approach to Inverse Constitutional AI"
+      authors: "Carl-Leander Henneking*, Claas Beger*"
+      venue: "arXiv preprint arXiv:2501.17112 [cs.LG]"
+    - year: 2025
+      title: "Citegeist: Automated Generation of Related Work Analysis on the arXiv Corpus"
+      authors: "Claas Beger*, Carl-Leander Henneking*"
+      venue: "arXiv preprint arXiv:2503.23229 [cs.LG]"
+
 - title: Honors and Awards
   type: time_table
   contents:
