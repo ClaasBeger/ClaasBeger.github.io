@@ -16,12 +16,7 @@
 - title: Experience
   type: time_table
   contents:
-    - title: Postbacc Research Assistant
-      institution: Santa Fe Institute
-      year: 2025.06 - Now
-      location: Santa Fe, New Mexico
-      description:
-        - Investigating and improvingcapabilities of current AI systems in multimodal settings on abstraction and reasoning tasks, collaborating with Professor Melanie Mitchell.
+    # Add your work experience here
 
 - title: Open Source Projects
   type: time_table

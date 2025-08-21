@@ -54,6 +54,14 @@
   ],
   "work": [
     {
+      "name": "Santa Fe Institute",
+      "position": "Postbacc Research Assistant",
+      "location": "Santa Fe, New Mexico",
+      "startDate": "2025-06-01",
+      "endDate": null,
+      "summary": "Investigating and improving capabilities of current AI systems in multimodal settings on abstraction and reasoning tasks, collaborating with Professor Melanie Mitchell."
+    },
+    {
       "name": "Cornell University",
       "position": "Graduate Teaching and Research Specialist",
       "location": "Ithaca, New York",
