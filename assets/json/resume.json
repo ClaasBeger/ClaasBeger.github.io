@@ -104,6 +104,13 @@
   ],
   "publications": [
     {
+      "name": "Do AI Models Perform Human-like Abstract Reasoning Across Modalities?",
+      "publisher": "",
+      "releaseDate": "2025-01-01",
+      "url": "https://arxiv.org/abs/2510.02125",
+      "summary": "ArXiv Preprint. Authors: Claas Beger, Ryan Yi, Shuhao Fu, Arseny Moskvichev, Sarah W. Tsai, Sivasankaran Rajamanickam, Melanie Mitchell."
+    },
+    {
       "name": "A Neuroscience-Inspired Dual-Process Model of Compositional Generalization",
       "publisher": "",
       "releaseDate": "2025-01-01",
