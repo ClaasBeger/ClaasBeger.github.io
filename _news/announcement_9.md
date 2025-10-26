@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-"Investigating Abstraction Capabilities of the o3 Model Using Textual and Visual Modalities" (Forthcoming) accepted at Neurips Workshop [Multimodal Algorithmic Reasoning](https://marworkshop.github.io/neurips25/)!
+"Investigating Abstraction Capabilities of the o3 Model Using Textual and Visual Modalities" (Forthcoming) accepted as a Spotlight Neurips Workshop [Multimodal Algorithmic Reasoning](https://marworkshop.github.io/neurips25/)!
