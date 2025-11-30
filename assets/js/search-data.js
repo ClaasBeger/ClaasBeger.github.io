@@ -88,7 +88,7 @@ ninja.data = [{
           section: "News",},{id: "news-refining-inverse-constitutional-ai-for-dataset-validation-under-the-eu-ai-act-forthcoming-accepted-at-neurips-workshop-regulatable-machine-learning",
           title: '“Refining Inverse Constitutional AI for Dataset Validation under the EU AI Act” (Forthcoming)...',
           description: "",
-          section: "News",},{id: "news-investigating-abstraction-capabilities-of-the-o3-model-using-textual-and-visual-modalities-forthcoming-accepted-as-a-spotlight-neurips-workshop-multimodal-algorithmic-reasoning",
+          section: "News",},{id: "news-investigating-abstraction-capabilities-of-the-o3-model-using-textual-and-visual-modalities-forthcoming-accepted-as-a-spotlight-at-neurips-workshop-multimodal-algorithmic-reasoning",
           title: '“Investigating Abstraction Capabilities of the o3 Model Using Textual and Visual Modalities” (Forthcoming)...',
           description: "",
           section: "News",},{id: "news-new-paper-on-abstraction-capabilities-across-modalities-on-arc-tasks-out-on-arxiv-also-check-out-melanie-s-blog-https-aiguide-substack-com-p-do-ai-reasoning-models-abstract-and",
