@@ -31,17 +31,23 @@
   {% assign max_lines = 2 %}
 {% endif %}
 
+{% if site.github_stats_api_url %}
+  {% assign stats_api_url = site.github_stats_api_url %}
+{% else %}
+  {% assign stats_api_url = "https://github-readme-stats.vercel.app" %}
+{% endif %}
+
 <div class="repo p-2 text-center">
   <a href="https://github.com/{{ include.repository }}">
     <img
       class="only-light w-100"
       alt="{{ include.repository }}"
-      src="https://github-readme-stats.vercel.app/api/pin/?username={{ repo_url[0] }}&repo={{ repo_url[1] }}&theme={{ site.repo_theme_light }}&locale={{ lang }}&show_owner={{ show_owner }}&description_lines_count={{ max_lines }}"
+      src="{{ stats_api_url }}/api/pin/?username={{ repo_url[0] }}&repo={{ repo_url[1] }}&theme={{ site.repo_theme_light }}&locale={{ lang }}&show_owner={{ show_owner }}&description_lines_count={{ max_lines }}"
     >
     <img
       class="only-dark w-100"
       alt="{{ include.repository }}"
-      src="https://github-readme-stats.vercel.app/api/pin/?username={{ repo_url[0] }}&repo={{ repo_url[1] }}&theme={{ site.repo_theme_dark }}&locale={{ lang }}&show_owner={{ show_owner }}&description_lines_count={{ max_lines }}"
+      src="{{ stats_api_url }}/api/pin/?username={{ repo_url[0] }}&repo={{ repo_url[1] }}&theme={{ site.repo_theme_dark }}&locale={{ lang }}&show_owner={{ show_owner }}&description_lines_count={{ max_lines }}"
     >
   </a>
 </div>

@@ -18,17 +18,22 @@
     {% comment %} https://github.com/anuraghazra/github-readme-stats?tab=readme-ov-file#available-locales {% endcomment %}
 {% endcase %}
 
+{% if site.github_stats_api_url %}
+  {% assign stats_api_url = site.github_stats_api_url %}
+{% else %}
+  {% assign stats_api_url = "https://github-readme-stats.vercel.app" %}
+{% endif %}
 <div class="repo p-2 text-center">
   <a href="https://github.com/{{ include.username }}">
     <img
       class="only-light w-100"
       alt="{{ include.username }}"
-      src="https://github-readme-stats.vercel.app/api/?username={{ include.username }}&theme={{ site.repo_theme_light }}&locale={{ lang }}&show_icons=true"
+      src="{{ stats_api_url }}/api/?username={{ include.username }}&theme={{ site.repo_theme_light }}&locale={{ lang }}&show_icons=true"
     >
     <img
       class="only-dark w-100"
       alt="{{ include.username }}"
-      src="https://github-readme-stats.vercel.app/api/?username={{ include.username }}&theme={{ site.repo_theme_dark }}&locale={{ lang }}&show_icons=true"
+      src="{{ stats_api_url }}/api/?username={{ include.username }}&theme={{ site.repo_theme_dark }}&locale={{ lang }}&show_icons=true"
     >
   </a>
 </div>
