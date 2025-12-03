@@ -26,25 +26,27 @@
         {% endif %}
       {% endif %}
       {% if entry.preview %}
-        {% if entry.preview contains '://' %}
-          <img class="preview z-depth-1 rounded" src="{{ entry.preview }}">
-        {% else %}
-          {% assign entry_path = entry.preview | prepend: '/assets/img/publication_preview/' %}
-          {%
-            include figure.liquid
-            loading="eager"
-            path=entry_path
-            sizes = "200px"
-            class="preview z-depth-1 rounded"
-            zoomable=true
-            avoid_scaling=true
-            alt=entry.preview
-          %}
-        {% endif %}
-      {% endif %}
-      {% if entry.award_ribbon %}
-        {% assign ribbon_path = entry.award_ribbon | prepend: '/assets/img/publication_preview/' %}
-        <img class="award-ribbon" src="{{ ribbon_path | relative_url }}" alt="Award ribbon" style="width: 100%; max-width: 200px; margin-top: 0.5rem; display: block;">
+        <div style="position: relative; display: inline-block; width: 100%;">
+          {% if entry.preview contains '://' %}
+            <img class="preview z-depth-1 rounded" src="{{ entry.preview }}">
+          {% else %}
+            {% assign entry_path = entry.preview | prepend: '/assets/img/publication_preview/' %}
+            {%
+              include figure.liquid
+              loading="eager"
+              path=entry_path
+              sizes = "200px"
+              class="preview z-depth-1 rounded"
+              zoomable=true
+              avoid_scaling=true
+              alt=entry.preview
+            %}
+          {% endif %}
+          {% if entry.award_ribbon %}
+            {% assign ribbon_path = entry.award_ribbon | prepend: '/assets/img/publication_preview/' %}
+            <img class="award-ribbon" src="{{ ribbon_path | relative_url }}" alt="Award ribbon" style="position: absolute; top: 0; right: 0; width: 40%; max-width: 80px; z-index: 10; pointer-events: none;">
+          {% endif %}
+        </div>
       {% endif %}
     </div>
   {% endif %}
