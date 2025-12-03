@@ -6,5 +6,5 @@ repo_description_lines_max: 2
 github_repos:
   - ClaasBeger/SpikeDecoder
   - ClaasBeger/StructuralCodeUnderstanding
-  - ClaasBeger/RelatedWorkAnalysis
+  - ClaasBeger/MIRAGE
   - chenneking/citegeist
