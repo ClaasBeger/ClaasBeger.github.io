@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /repositories/
-title: repositories
+title: Repositories
 description: An overview of my publicly hosted repositories.
 nav: true
 nav_order: 4
