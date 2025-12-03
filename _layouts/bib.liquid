@@ -42,6 +42,10 @@
           %}
         {% endif %}
       {% endif %}
+      {% if entry.award_ribbon %}
+        {% assign ribbon_path = entry.award_ribbon | prepend: '/assets/img/publication_preview/' %}
+        <img class="award-ribbon" src="{{ ribbon_path | relative_url }}" alt="Award ribbon" style="width: 100%; max-width: 200px; margin-top: 0.5rem; display: block;">
+      {% endif %}
     </div>
   {% endif %}
 
