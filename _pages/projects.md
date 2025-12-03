@@ -1,8 +1,8 @@
 ---
 layout: page
-title: projects
+title: Other Projects
 permalink: /projects/
-description: A growing collection of my projects.
+description: Projects outside of academia
 nav: true
 nav_order: 99
 horizontal: false
