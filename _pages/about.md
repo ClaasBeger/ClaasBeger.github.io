@@ -19,6 +19,6 @@ announcements:
 
 ---
 
-I am currently a Graduate Fellow at Santa Fe Institute, doing research on multimodal reasoning. Prior to that I finished my Master's in Computer Science at Cornell University. My research interest centers around Artificial Intelligence, Machine Learning and how we can work towards what could be considered true Artificial Intelligence! For this purpose, I think it is the most promising direction to look towards Natural Intelligence, both with regard to the brain and psychology/cognition.
+I am currently a Graduate Fellow at Santa Fe Institute, doing research on multimodal reasoning under Professor [Melanie Mitchell](https://melaniemitchell.me/). Prior to that I finished my Master's in Computer Science at Cornell University, where I worked with [Kevin Ellis](https://www.cs.cornell.edu/~ellisk/), [Kilian Weinberger](https://www.cs.cornell.edu/~kilian/) and [Saikat Dutta](https://www.cs.cornell.edu/~saikatd/). My research interest centers broadly around Human-like Artificial Intelligence. For this purpose, I think it is the most promising direction to look towards Natural Intelligence, both with regard to the brain and psychology/cognition.
 
 I am applying to PhD programs for the fall 2025 cycle.
