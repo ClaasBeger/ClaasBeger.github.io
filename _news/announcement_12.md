@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-New paper on visual concept hypotheses on Bongard problems out on arxiv! [arXiv:2602.03038](https://arxiv.org/abs/2602.03038)
+New paper on using VLMs for visual concept hypothesis formation on Bongard problems out on arxiv! [arXiv:2602.03038](https://arxiv.org/abs/2602.03038)
