@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="{{ site.lang }}">
+  <head>
+    {% include head.liquid %}
+    <link rel="stylesheet" href="{{ '/assets/conceptarc/visualizer.css' | relative_url }}">
+    <style>
+      .human-abstraction-page {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+      .human-abstraction-page .paper-title {
+        text-align: center;
+        font-size: 1.75rem;
+        font-weight: 600;
+        line-height: 1.35;
+        margin-bottom: 1.25rem;
+      }
+      .human-abstraction-page .paper-authors {
+        text-align: center;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        margin-bottom: 0.5rem;
+      }
+      .human-abstraction-page .paper-authors .author-name {
+        white-space: nowrap;
+      }
+      .human-abstraction-page .paper-affiliations {
+        text-align: center;
+        font-size: 0.9rem;
+        color: var(--global-text-color-light, #666);
+        line-height: 1.6;
+        margin-bottom: 1.75rem;
+      }
+      .human-abstraction-page .paper-affiliations sup {
+        font-weight: 600;
+      }
+      .human-abstraction-page .paper-abstract {
+        max-width: 900px;
+        margin: 0 auto 2.5rem;
+        padding: 1.25rem 1.5rem;
+        background: var(--global-card-bg-color, #f8f9fa);
+        border-radius: 8px;
+        border-left: 4px solid var(--global-theme-color, #2698ba);
+      }
+      .human-abstraction-page .paper-abstract h2 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+      }
+      .human-abstraction-page .paper-abstract p {
+        margin-bottom: 0;
+        text-align: justify;
+        line-height: 1.65;
+      }
+      .human-abstraction-page .visualizer-section h2 {
+        font-size: 1.35rem;
+        font-weight: 600;
+        margin-bottom: 0.35rem;
+      }
+      .human-abstraction-page .visualizer-section .section-desc {
+        color: var(--global-text-color-light, #666);
+        margin-bottom: 1rem;
+      }
+      .human-abstraction-page .dataset-download {
+        text-align: center;
+        color: var(--global-text-color-light, #666);
+        margin-top: 1.5rem;
+        margin-bottom: 2rem;
+      }
+    </style>
+  </head>
+
+  <body class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %}">
+    {% include header.liquid %}
+
+    <div class="container mt-5 human-abstraction-page" role="main">
+      {{ content }}
+    </div>
+
+    {% if site.footer_fixed %}
+      <footer class="fixed-bottom" role="contentinfo">
+        <div class="container mt-0 text-center">
+          &copy; Copyright {{ site.time | date: '%Y' }} {{ site.first_name }} {{ site.last_name }}.
+        </div>
+      </footer>
+    {% else %}
+      <footer class="sticky-bottom mt-5" role="contentinfo">
+        <div class="container text-center">
+          &copy; Copyright {{ site.time | date: '%Y' }} {{ site.first_name }} {{ site.last_name }}.
+        </div>
+      </footer>
+    {% endif %}
+    {% include scripts.liquid %}
+    <script src="{{ '/assets/conceptarc/visualizer.js' | relative_url }}"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        try {
+          window.visualizer = new ConceptARCVisualizer('conceptarc-visualizer', {
+            cellSize: 34,
+            maxCellSize: 64,
+            minCellSize: 8,
+            dataRoot: '{{ "/assets/conceptarc" | relative_url }}'
+          });
+        } catch (e) {
+          console.error('Visualizer init error:', e);
+        }
+      });
+    </script>
+  </body>
+</html>
