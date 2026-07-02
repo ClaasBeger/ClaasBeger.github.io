@@ -1,0 +1,161 @@
+Task,Rule
+AboveBelow1,Remove all objects or pixels below horizontal line
+AboveBelow2,Remove all objects or pixels above green square
+AboveBelow3,Move horizontal line above square down vertically to rest on top of square
+AboveBelow4,Color leftmost pixel of shorter lines above longest horizontal line with color of longest horizontal line. Color rightmost pixel of shorter lines below longest horizontal line with color of longest horizontal line. 
+AboveBelow5,"In each vertical line, take color of different colored pixel, and color all pixels above that pixel with that color.  "
+AboveBelow6,"In each rectangular object, take color of differently colored lines and color rows in the object below those differently colored plines with that color. "
+AboveBelow7,Move object that is on top of any rectangle to bottom of that rectangle. 
+AboveBelow8,"Remove all colored rows of rectangles, as well as any part of the ""snake-like"" cyan object inside the green rows.  "
+AboveBelow9,Remove pixels below solid horizontal line. 
+AboveBelow10,Fill in pixels below the line with the same color as that line.  
+Center1,Put single pixel of the same color in center of each object
+Center2,Extract center pixel in each line
+Center3,Extract center object from each large unfilled object
+Center4,Delete pixel or object that is in the center of the grid
+Center5,Move horizonal or vertical pair of pixels to center of horizontal or vertical line
+Center6,Move single pixel or group of pixels to center of larger object
+Center7,Extract center row from set of horizontal lines
+Center8,"For each line , move single (differently colored) pixel to center of line and extend that single pixel by two pixels in direction perpendicular to line."
+Center9,"For each pair of parallel lines of the same color, move single pixel in direction perpendicular to the lines to the space at the center (horizontal or vertical) of the pair of lines"
+Center10,"For each pair of gray objects, place single blue pixel at the center of the space between them. "
+CleanUp1,Recolor noise pixels to fit striped pattern
+CleanUp2,Recolor noise pixels so that filled rectangle is a uniform color
+CleanUp3,Remove noise pixels so that all filled objects are a uniform color
+CleanUp4,Remove noise pixels so that all unfilled rectangles have a uniform color boundary and the pixels inside these rectangles are all the background color
+CleanUp5,Remove noise pixels from background and repeating shape
+CleanUp6,Remove noise pixels from background and symmetric shapes
+CleanUp7,"Remove cyan rectangle from grid, and complete copied shapes that were ""beneath"" the cyan rectangle"
+CleanUp8,"Remove noise pixels from grid, revealing diagonal arrangement of squares"
+CleanUp9,"Remove noise pixels from background and from sides of unfilled squares, so that sides of unfilled squares have a uniform color "
+CleanUp10,"Remove noise pixels so that only shapes are two intersecting or T-shaped lines, each of which span the grid either horizontally, vertically, or diagonally"
+CompleteShape1,Fill in missing pixels to complete the shape
+CompleteShape2,Fill in missing pixels to make each of the intersecting lines solid. At the intersection keep the row.
+CompleteShape3,Fill in missing pixels to complete the sides of the unfilled rectangles
+CompleteShape4,"In the input, two sides of a rectangle are drawn; draw the other (missing) sides. "
+CompleteShape5,"For each yellow shape, add single green pixel to make it a square.  For each green shape, add single yellow pixel to make it a square. "
+CompleteShape6,"For each shape of a uniform color, add pixels to make it a complete filled rectangle. "
+CompleteShape7,Add pixels of the same color as the existing pixels to create a filled-in square. 
+CompleteShape8,"For the pixels of non-gray colors, fill in pixels of the same color to make the same shape as the gray shape in the top right corner, then delete that gray shape.  "
+CompleteShape9,Fill in single pixel of same color as other pixels to complete shape. 
+CompleteShape10,"Fill in missing pixels on ""bottom"" (longest h orizontal or vertical) row of pyramid.  "
+Copy1,Append a copy of the grid to the left (horizontally) of the original grid. 
+Copy2,Put a copy of the smaller shape inside the larger unfilled rectangle. Keep the original smaller shape where it was.  
+Copy3,Add pixels to the right part of the grid so that the right part is identical to the left part.  
+Copy4,"For each of the single pixels, copy the filled square with the same outer color, and put each copy with its top left corner in the position of one of the single pixels. "
+Copy5,"The single blue pixels indicate how many copies to make of the adjacent object, and which direction to extend the grid so those copies can be placed.  For each single blue pixel, make a copy of the object and place it in extended grid in the direction of the single pixel, deleting the single pixel but leaving the row or column of that pixel as all black."
+Copy6,"If objects on input grid are arrayed horizontally, append copy of grid to bottom of original grid, with a horizontal line of all black pixels separating the original grid from the copy.  If objects on input grid are arrayed vertically, then append copy of grid to right of original grid, with a vertical line of all black pixels separating the original grid from the copy. "
+Copy7,"The left object in the input is identical to the right object except the left one has a different colored line on it.  Copy that line to corresponding location on the right object, keeping the original left object and its line intact. "
+Copy8,"The left object in the input is identical to the right object except that it has another object or pattern of pixels ""attached to it on the top, bottom, right, or left.  Copy the attachment to the corresponding position in the right object, keeping the left object and its attachment intact. "
+Copy9,"For each single (isolated) pixel in the grid, copy the larger object of the same color and place the copy centered on that pixel.  "
+Copy10,"Copy the outer object (that encloses an inner object) on the left or top side of the grid, and place it so that it encloses the other object on the right or bottom of the grid. "
+Count1,"Count the number of objects in the input and output a 1x6 grid with yellow pixels filled in from left to right, where the number of yellow pixels is equal to the count.  "
+Count2,"Count the number n of sides on the blue object, and output a 1xn dimensional grid filled in by orange pixels. "
+Count3,"Count the number n of lines in the input, and output a 1xn grid filled with green pixels"
+Count4,"Count the number n of colors in the input, and output a 1xn grid filled with black pixels. "
+Count5,Count the numbern  of grid cells inside the green rectangles.  Output a 1xn grid filled with black pixels. 
+Count6,"Count the number n of non-black pixels inside the unfilled rectangle in the input.  Output a 7x1 grid, filled in order of top to bottom with n yellow pixels.  "
+Count7,Count the number n of pixels on the border of the unfilled object whose color is different from the rest of the border.  Output an nx1 grid filled with red pixels. 
+Count8,"Count the number n of pixels in the filled object, whose color is different from the rest of the filled object.  Output an nx1 grid filled with red pixels. "
+Count9,Count the number n of differnet objects in the input.  Output a 1xn grid filled with black pixels. 
+Count10,Count the number n of levels in each object.  Output a 1xn grid filled with black pixels. 
+ExtendToBoundary1,"Extend a line from the side of the object to the boundary of the grid, in the direction in which has the most empty space in the grid.  "
+ExtendToBoundary2,"From the isloated pixel, extend a line out in both vertical directions until the top and bottom of the line collide with an object boundary."
+ExtendToBoundary3,"From the isolated pixel, extend an unbroken line of pixels ending at (but not intersecting with) the dotted line.  The unbroken line of pixels is perpendicular to the dotted line."
+ExtendToBoundary4,Extend the colored shape or pixel until it touches the other colored shape in a perpendicular manner (choose the pixel or shape that will touch the other one for elongation)
+ExtendToBoundary5,"Extend the (orange) pixel to all four directions in a diagonal manner (top right, top left, bottom right, bottom left) until it touches the grid boundary."
+ExtendToBoundary6,Extend the blue pixel or pixels in a diagonal way to the top right direction until the red shape or the grid boundary is touched.
+ExtendToBoundary7,Extend the colored (non-grey and non-black) pixels in a horizontal or vertical manner towards the grey line until it is touched.
+ExtendToBoundary8,Extend the pixel inside the rectangle shape horizontally and vertically until it touches the surrounding rectangle in the extension direction.
+ExtendToBoundary9,Extend the shape inside the other shape in a horizontal and vertical manner until it touches the surrounding shape in extension direction.
+ExtendToBoundary10,Extend the orange pixels towards the direction of the yellow shape until it touches the inner boundary of the yellow shape.
+ExtractObjects1,Extract the biggest single-colored connected component with a minimal bounding box by cropping everything around it.
+ExtractObjects2,Extract the biggest single-colored connected component that is not part of a background pattern with a minimal bounding box by setting all other contained colors to black.
+ExtractObjects3,"Extract the rectangle that is in the foreground. Alternatively, extract the shape that is not being overlapped or repeated."
+ExtractObjects4,Extract the biggest shown rectangle without background.
+ExtractObjects5,Extract the repeating rectangle shape and align its instances horizontally in the order of their appearance from left to right in a minimal bounding box. 
+ExtractObjects6,"Extract the shape on the left and the shape on the right or the top and the bottom of the yellow line without a colored background, by aligning them horizontally for a vertical yellow line and vertically for a horizontal yellow line in a minimal bounding box."
+ExtractObjects7,"Extract the shape on the left and the shape on the right of the separation line which spans one grid length, without a colored background, by aligning them horizontally for a vertical separation line and vertically for a horizontal separation line in a minimal bounding box."
+ExtractObjects8,Extract the shapes which are surrounded by black pixels and arrange them in the order of appearance from left to right in a minimal bounding box.
+ExtractObjects9,Extract the shape contained in a rectangle of another color in a minimal bounding box. Replace all colors that are not the color of the extracted shape with black.
+ExtractObjects10,Extract a single example of the repeating rectangle shape that is made up by two colors in a minimal bounding box. Without these shapes the rest of the grid must be a single color.
+FilledNotFilled1,"Produce a single pixel of the color of the shape that is not filled, meaning that there are black pixels fully surrounded by coloured ones."
+FilledNotFilled2,Produce a completely black grid with the dimensions of the filled shape (meaning the shape that does not enclose any black pixels).
+FilledNotFilled3,Produce a grid displaying the shape that is enclosed fully in another colored shape in a minimal bounding box. The inner shape may also be black.
+FilledNotFilled4,"Reproduce the input grid completely, while filling the contained shape with the color of the shape if it is not filled. "
+FilledNotFilled5,"Reproduce the input grid completely, while filling the contained shape with the color of the shape if it is not filled, and removing the body leaving only a one-pixel outer boundary for shapes that are filled. "
+FilledNotFilled6,"Reproduce the input grid completely, while filling the contained shapes with the color of the respective shape if they are not filled, and removing the body leaving only a one-pixel outer boundary for shapes that are filled. "
+FilledNotFilled7,"Reproduce the input grid completely, while filling the gap between two parallel colored lines with the color of the respective lines, or replacing the body of a rectangle with black pixels leaving only two parallel colored lines, one at the top and one at the bottom."
+FilledNotFilled8,"Reproduce the input grid completely, while filling the gap between two parallel colored lines with the respective color, producing a rectangle.  "
+FilledNotFilled9,"Fill the area inside of the blue shape with red pixels up to the top, meaning the highest point where blue pixels are still on the right and the left side."
+FilledNotFilled10,"Reproduce the grid completely, while completing the pattern that alternates between yellow and black pixels inside of the green shape."
+HorizontalVertical1,"Reproduce the grid completely, while replacing the black pixels inside of rectangles with a longer vertical axis with green pixels and the black pixels inside of of rectangles with a longer horizontal axis with orange pixels. "
+HorizontalVertical2,"Reproduce the grid completely, while replacing shapes that include continuous vertical lines that span the entire shape height in a single color with black pixels. "
+HorizontalVertical3,"Reproduce the grid completely, while adding a continuous blue line at the left grid border in a vertical manner for shapes that are repeated in a vertical manner (meaning the shapes are at the same horizontal position but a varying vertical one), or a continuous horizontal blue line at the top for shapes that are repeated in a horizontal manner."
+HorizontalVertical4,"Reproduce the grid completely, while coloring horizontal red lines with green pixels."
+HorizontalVertical5,"Reproduce the grid completely, while adding a continuous horizontal green line at the top of the grid, if the two outer lines of the yellow shape are oriented in a horizontal manner, or a continuous vertical green line at the right border if the two outer lines are oriented in a vertical manner."
+HorizontalVertical6,"Reproduce the grid completely, while adding a continuous vertical green line at the right border of the grid if the blue shape is longer in a vertical manner than in a horizontal one, or adding a continuous horizontal green line at the top of the grid if the blue shape is longer horizontally than vertically."
+HorizontalVertical7,"Reproduce the grid completely, while adding a vertical continuous line in the color of the two pixels inside or adjacent to the larger shape with another color at the right edge of the grid, if the two pixels are aligned in vertical manner, or adding a horizontal continuous line at the top of the grid in the pixel color if the two pixels are aligned in a vertical manner."
+HorizontalVertical8,"Reproduce the grid completely, while replacing the differently colored shapes at the top and the bottom of the green shape with black pixels."
+HorizontalVertical9,"Reproduce the grid completely, while coloring vertical lines with yellow pixels and coloring horizontal lines with orange pixels."
+HorizontalVertical10,"Reproduce the grid completely, while adding a cyan continuous vertical line at the right edge of the grid if the contained lines are horizontal, or adding a continuous cyan line at the top edge of the grid if the contained lines are vertical."
+InsideOutside1,Produce a grid of black pixels with width 1 and height equal to the amount of colored pixels outside of the colored rectangle shape.
+InsideOutside2,"Reproduce the grid completely, while removing the yellow pixel if it is not between the two red pixels and removing the two red pixels otherwise. Between may be interpreted as laying on a line that connects the two red pixels."
+InsideOutside3,"Reproduce the grid completely, while removing the yellow pixel if it is outside the shape outlined with red pixels or instead removing the red pixels if the yellow pixel is inside of the outlined shape."
+InsideOutside4,"Reproduce the gird completely, while removing the singular magenta pixel if it is outside of the innermost shape. If the magenta pixel is inside the innermost shape it is not removed. Innermost refers to the shape that is contained inside antother shape."
+InsideOutside5,"Reproduce the grid completely, while deleting all shapes that are not fully contained within another shape."
+InsideOutside6,"Reproduce the grid completely, while deleting all pixels that are contained within the singular different colored shape, which may feature small gaps, as well as the shape itself."
+InsideOutside7,"Produce a grid with hight of 1 and width of 1 pixel for every pixel contained fully within the two rectangle shapes from left to right, with the color of the surrounding rectangle."
+InsideOutside8,"Reproduce the grid completely, while deleting all pixels that are not contained in the open shape. Containment is fulfilled if at least three directions contain a pixel that belongs to the shape before reaching the grid border."
+InsideOutside9,"Reproduce the grid completely, while deleting all yellow pixels that are not between two red lines, Between means that, when going in the four main directions, at least twice a red pixel that is part of a line will be met prior the grid border."
+InsideOutside10,"Reproduce the grid completely, while replacing the pixels that are overshadowing a background shape with the color of that shape. In addition, replace all pixels that are outside of the shape with black pixels."
+MoveToBoundary1,"Reproduce the grid completely, while shifting all blue pixels toward the red line until one of them is directly adjacent to a red pixel."
+MoveToBoundary2,"Reproduce the grid completely, while shifting all pixels into the main direction of the orange shapes, meaning to the right edge if they are horizontal and to the bottom if they are vertical. Pixels should only be shifted until they encounter the edge or another colored pixel. "
+MoveToBoundary3,"Reproduce the gird completely, while shifting all pixels to the right until at least one pixel of every connected shape touches the right grid boundary. Do not shift pixels over each other."
+MoveToBoundary4,"Reproduce the grid completely, while shifting all pixels to the left, until at least one pixel of every connected shape touches the left grid boundary. Do not shift pixels over each other."
+MoveToBoundary5,"Reproduce the grid completely, while shifting all shapes to the edge that the line that meets another line in the middle points towards."
+MoveToBoundary6,"Reproduce the grid completely, while shifting the singular pixel to the top edge if the long line is oriented vertically, or shifting the singular pixel to the right edge if the long line is oriented horizontically."
+MoveToBoundary7,"Reproduce the grid completely, while shifting the smaller shape into the direction of the larger shape, until at least one pixel from the smaller shape is adjacent to a pixel of the larger shape."
+MoveToBoundary8,"Reproduce the grid completely, while shifting the dashed line towards the solid line in the direction of the dashed pixels until at least one pixel is directly adjacent to the pixels of the solid line."
+MoveToBoundary9,"Reproduce the grid completely, while shifting the right shape to the right edge of the grid, until one of the pixels touches the right boundary. The shape may also be dashed instead of solid."
+MoveToBoundary10,"Reproduce the grid completely, while shifting the right shape to the right edge of the grid, until one of the pixels touches the right boundary. The shape may also be dashed instead of solid."
+Order1,"Reproduce the grid completely, while re-ordering rectangles according to their size from smallest to largest. Ordering should happen according to the primary axis in the input, e.g left to right or top to bottom."
+Order2,"Reproduce the grid completely, while re-ordering lines according to their size, small to large vertical length, at the bottom left of the grid. Ties can be broken randomly."
+Order3,"Reproduce the grid completely, while re-ordering shapes according to the amount of differently colored pixels contained within the shapes, in small to large manner."
+Order4,"Reproduce the grid completely, while re-ordering shapes according to the vertical position or reach of the single pixels or smaller shapes contained within or adjacent to the colored rectangles or lines. Ordering should be lowest to highest, and the ordering indicators should be removed if adjacent or filled in if contained within the shape."
+Order5,"Reproduce the grid completely, while re-ordering the boxes within green lines according to the amount of yellow pixels they contain, in a few to most manner."
+Order6,"Reproduce the grid completely, while re-ordering rectangles according to their shapes from smallest to largest. Ordering should happen according to the primary axis in the input, e.g left to right or top to bottom."
+Order7,"Reproduce the grid completely, while re-ordering the left and right boxes separated by a grey line according to the amount of yellow rectangles they feature, in a less to more manner."
+Order8,Produce a grid with height 1 and one colored pixel per color contained in the input grid from top to bottom.
+Order9,"Reproduce the grid completely, while re-ordering the green rectangles according to their size in a smallest to largest manner from bottom to top, while maintaining black lines as separators between them."
+Order10,Produce a grid with height 1 and one colored pixel per color contained in the input grid ordered by outermost to innermost shape.
+SameDifferent1,"Reproduce the grid completely, while removing all shapes that are not contained at least twice."
+SameDifferent2,"Reproduce the grid completely, while removing all shapes that are not contained at least twice."
+SameDifferent3,"Reproduce the grid completely, while removing all shapes whose colors are not contained at least twice."
+SameDifferent4,"Reproduce the grid completely, while removing all shapes whose primary direction (e.g vertical, diagonal, horizontal) is not contained at least twice."
+SameDifferent5,Produce a single pixel of the color that is inside of at least two shapes.
+SameDifferent6,"Reproduce the grid completely, while removing all shapes whose colors are contained at least twice. If the shapes are filled with a different color this should be removed as well, and not be seen as an independent shape."
+SameDifferent7,"Reproduce the grid completely, while removing all shapes that are not contained at least twice, where inner shapes are to be treated as standalone."
+SameDifferent8,"Produce the shape that is contained in both colored rectangles separated by a black line in a minimal bounding box. The contained shape may also be black. If there is no such shape, produce a singular black pixel."
+SameDifferent9,"Reproduce the grid completely, while coloring the contained shapes in cyan if they are equal and in grey if the shapes are not equal."
+SameDifferent10,"Reproduce the grid completely, while removing the contents of the right side of the grey boundary line if the contents are not equal to the left side."
+TopBottom2D1,Produce the highest of the contained shapes in a minimal bounding box.
+TopBottom2D2,Produce the lowest of the contained shapes in a minimal bounding box.
+TopBottom2D3,"Reproduce the grid completely, while coloring the top horizontal line of the contained shape with red pixels."
+TopBottom2D4,"Reproduce the grid completely, while removing the shapes at the very top and the very bottom of the grid."
+TopBottom2D5,"Reproduce the grid completely, while deleting all but the lowest contained shape."
+TopBottom2D6,Produce the lowest contained shape in a minimal bounding box.
+TopBottom2D7,Produce the highest contained shape in a minimal bounding box.
+TopBottom2D8,"Reproduce the grid completely, while coloring all contained shapes in the color of the lowest contained shape."
+TopBottom2D9,"Reproduce the grid completely, while coloring the highest contained shape grey."
+TopBottom2D10,"Reproduce the grid completely, while switching the uppermost and lowermost contained shapes."
+TopBottom3D1,"Reproduce the grid completely, while switching the color of overlapping segments (e.g color in front switches to color in back)."
+TopBottom3D2,"Reproduce the grid completely, while deleting those shapes which are overlapped by a horizontal line."
+TopBottom3D3,"Reproduce the grid completely, while deleting those shapes which overlap a background shape. The pixels that were previously overlapped should be colored in line with the background shape."
+TopBottom3D4,"Reproduce the grid completely, while shifting the shape that overlaps another one to the left by one pixel."
+TopBottom3D5,Produce the shape that is not overlapped by another one and overlaps another shape in a minimal bounding box.
+TopBottom3D6,"Produce the shape that is overlapped by all other shapes, or is ""at the bottom of the stack"" in a minimal bounding box."
+TopBottom3D7,"Reproduce the grid completely, while recoloring overlapping pixels in favor of the vertical lines."
+TopBottom3D8,"Reproduce the grid completely, while switching the color of overlapping pixels, meaning if the pixel is currently the color of the horizontal line, it should be recolored to the vertical line."
+TopBottom3D9,"Reproduce the grid completely, while recoloring all contained shapes to the color of the shape(s) that is overlapping another shape."
+TopBottom3D10,"Reproduce the grid completely, while moving the shape that is currently in the front to the back, meaning that all overlapping pixels are recolored in favor of the background shape."

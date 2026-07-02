@@ -1,0 +1,802 @@
+timestamp,concept,puzzle,test_idx,effort,is_correct,err,tools_used,answer,summary,programming_calls,Rule_correct,rule_evaluation_reasoning,Rule,validated,Rule_correct_label,validation_level,starred
+2025-07-24T02:12:12,ExtendToBoundary,ExtendToBoundary1,1,medium,1,,0,"0 0 0 0 0 0 0 0
+0 6 6 6 6 6 6 6
+0 6 6 6 6 6 6 6
+0 6 6 6 6 6 6 6
+0 6 6 6 6 6 6 6
+0 6 6 6 6 6 6 6
+0 6 6 6 6 6 6 6
+0 0 0 0 6 0 0 0
+0 0 0 0 6 0 0 0
+0 0 0 0 6 0 0 0
+0 0 0 0 6 0 0 0
+0 0 0 0 6 0 0 0","**Evaluating shape extension**
+
+I'm determining the best direction for shape growth based on open spaces. For Example 2, there’s a larger area below than above, so extending downward makes sense. They extended along the middle column instead of the bottom row. The rule is to grow the shape towards the greater open space using the central line in a perpendicular direction. For Example 1, I choose east and extend horizontally, while for Example 2, I go south and extend vertically. The plan involves identifying the bounding box and the direction with the largest area of zeros.
+
+**Analyzing external face sizes**
+
+I'm assessing the sizes of the external faces of a grid. North has 1 row (size 5), and south has 7 rows below row 6, making it the larger side. West has 1 column, and east has 10 columns. So, I’ll extend downward since south is the largest. But they extended along the central column instead of just downward.
+
+For the bounding box, I’ll see the available space and guide extensions based on the grid configuration, filling in the largest zero space with color. Now, let’s confirm the provided grid dimensions: I see we have 12 rows and 8 columns.
+
+Rule: Find the solid rectangle of non-zero cells. Compare the empty zones that touch each of its four sides; choose the side with the largest empty area. If that side is above or below, copy the rectangle’s middle column downward or upward (respectively) with the same colour until the grid edge. If it is left or right, copy the rectangle’s middle row toward that side until the edge. Do not change any other cells.",,1,"The Evaluated Rule captures the essence of the Ground Truth Rule by identifying the direction with the most empty space and extending the object accordingly. Although it includes additional specifications about how to copy the rectangle's middle column or row, the core transformation of extending in the direction of the most empty space remains intact.","Find the solid rectangle of non-zero cells. Compare the empty zones that touch each of its four sides; choose the side with the largest empty area. If that side is above or below, copy the rectangle’s middle column downward or upward (respectively) with the same colour until the grid edge. If it is left or right, copy the rectangle’s middle row toward that side until the edge. Do not change any other cells.",1,Correct - Intended,2,0
+2025-07-24T02:13:17,ExtendToBoundary,ExtendToBoundary1,2,medium,1,,0,"0 0 0 0 0 0 0
+0 0 0 0 0 0 0
+1 1 1 1 1 1 1
+0 1 1 1 1 1 0
+0 0 1 1 1 0 0
+0 0 0 1 0 0 0
+0 0 0 1 0 0 0
+0 0 0 1 0 0 0
+0 0 0 1 0 0 0
+0 0 0 1 0 0 0
+0 0 0 1 0 0 0","**Analyzing grid transformations**
+
+I'm examining a transformation rule based on given examples of grids filled with numbers. For instance, in a 5x14 grid, I see a 3x3 block of 3's starting at the top left. The output modifies the middle row by extending all the 3’s to the right across that row while keeping the top and bottom rows unchanged. Next, I need to look at the second example, which features a 6x5 region of 2's in a 14x7 grid and see how that might be processed.
+
+**Identifying transformation rules**
+
+So, I'm analyzing a grid where rows 1-6 have 2's in columns 1-5, creating a filled region of 6x5. The output should keep this region while extending a vertical line of 2's from row 7 to row 13 at column 3. I see that the center column is indeed column 3, so this checks out. It appears that the transformation may depend on the relationship between height and width: extending the longer dimension in the perpendicular direction. I need to confirm this with both examples!
+
+**Constructing the final grid**
+
+I'm counting the blanks above the top-most filled cell in column 3, which is at row 2. That gives me 2 blanks above, and 5 blanks below, so I will extend the column downward from row 6 to row 10 with 1's. The filled segments keep the original shape intact, as seen in earlier examples. Therefore, the final grid arrangement should include the updated column as well as existing values. I'll assemble the grid as 11 rows of 7 numbers, ensuring the output is well-structured with newlines.
+
+**Creating grid and JSON**
+
+I'm putting together the full grid lines, listing each row with numbers separated by spaces. The rows include zeros and ones based on the transformation rules we established earlier. Now, I need to clearly articulate those rules in a concise manner: I should identify the filled shape, find its central row and column, and extend that central line inward or outward to fill empty spaces until I reach the grid's edges. Finally, I'll construct a minified JSON format with the grid and rule clearly defined without unnecessary whitespace.
+
+Rule: Find the coloured shape. Take its middle row and its middle column. Choose the grid’s longer direction: if the grid is wider, use the middle row; if it is taller, use the middle column. From the edge of the shape, extend that line straight toward the side that contains the larger empty area, colouring cells with the shape’s colour until the border is reached.",,1,"The Evaluated Rule describes a process of extending a line from the shape towards the side with the larger empty area, which aligns with the Ground Truth Rule's intent. Although it includes additional steps regarding determining the middle row and column and choosing the longer direction, the core transformation of extending towards the area with more empty space remains consistent.","Find the coloured shape. Take its middle row and its middle column. Choose the grid’s longer direction: if the grid is wider, use the middle row; if it is taller, use the middle column. From the edge of the shape, extend that line straight toward the side that contains the larger empty area, colouring cells with the shape’s colour until the border is reached.",1,Correct - Intended,2,0
+2025-07-24T02:12:15,ExtendToBoundary,ExtendToBoundary1,3,medium,1,,0,"0 0 0 0 0 0 0 0 0
+0 4 0 0 0 0 0 0 0
+0 4 4 4 4 4 4 4 4
+0 4 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0","**Inferring output rules**
+
+I’m working on a rule from the examples given, where I see a rectangle of colored cells inside a larger grid of zeros. It seems the output adds a row or column of colored cells to create a crosshair extension through the grid’s center. Looking at the first example, I notice a 3x3 colored block located in rows 1-3 and columns 1-3. The output includes the center row being extended across all columns, but I need to count the positions carefully to confirm.
+
+**Clarifying output rules**
+
+I’m analyzing how the output is created. For the input row 2, I see it originally has four numbers, and the output extends it horizontally across the row while keeping the left ends zero. This means the extension goes to the right only, beginning after the last colored block. Now moving on to Example 2, a new grid shows a vertical line of color below this rectangle's center. So, the vertical extension occurs downward while keeping other rows unchanged. I’ll confirm these findings!
+
+**Defining extension rules**
+
+I've noticed that the extensions don't go left, and in Example 2, they extend vertically downward instead. It seems the rule is to extend the center line outward, filling the empty space of the grid. For each colored rectangle, I identify the direction of its longer dimension and then extend that line towards the open space until the grid edge. The aim is to expand in the direction with the largest contiguous zeros, avoiding boundaries. This ensures the extensions utilize the space wisely!
+
+Rule: Identify the coloured rectangle. Measure how many background cells lie immediately beyond each of its four sides. Choose the side with the largest such gap, then extend the rectangle’s central row (if the chosen side is left or right) or central column (if it is above or below) from the rectangle’s edge to the grid’s edge with the rectangle’s colour, leaving everything else unchanged.",,1,"The Evaluated Rule captures the essence of the Ground Truth Rule by identifying the side with the most empty space and extending the rectangle accordingly. Although it includes additional steps such as measuring background cells and specifying the central row or column, these do not change the fundamental transformation of extending the object towards the grid's edge in the direction of the most empty space.","Identify the coloured rectangle. Measure how many background cells lie immediately beyond each of its four sides. Choose the side with the largest such gap, then extend the rectangle’s central row (if the chosen side is left or right) or central column (if it is above or below) from the rectangle’s edge to the grid’s edge with the rectangle’s colour, leaving everything else unchanged.",1,Correct - Intended,2,0
+2025-07-24T02:12:48,ExtendToBoundary,ExtendToBoundary10,1,medium,1,,0,"0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 7 0 0 0 0 0 0
+0 0 0 0 0 7 0 0 0 0 0 0
+0 0 0 0 0 7 0 0 0 0 0 0
+0 0 4 4 4 7 4 4 4 4 0 0
+0 0 4 0 0 7 0 0 0 4 0 0
+0 0 4 0 0 7 0 0 0 4 0 0
+0 0 4 0 0 7 0 0 0 4 0 0
+0 0 4 4 4 4 4 4 4 4 0 0
+0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0","**Explaining rectangle boundaries**
+
+I'm analyzing a rectangle defined by the outer boundaries at row 2, row 8, column 2, and column 8. Inside this rectangle, there's a lone 7 at row 5, column 0. This means I should fill the entire row 5 with 7s from column 0 to column 7 until I reach a 4. So, the new row 5 should look like: ""7 7 7 7 7 7 7 7 4 0."" The filling should only stop before encountering the 4 border.
+
+**Analyzing grid borders**
+
+I'm examining a 12x14 grid featuring a big hollow rectangle with a 4-border. The top border starts at row 1, spanning from column 2 to column 12, while columns 2 and 12 serve as vertical borders. Row 8 contains 4s, but row 9 is all zeros, creating gaps where I've noticed interesting patterns.
+
+In rows 2 to 7, I see vertical borders represented by 4s at columns 2 and 12. However, row 8 contains internal gaps at columns 3 and 9. Row 10 shows a 7 located at (10,3), and row 11 has another 7 at (11,9).
+
+**Updating the grid**
+
+Starting from row 10 and moving up until the cell right before a 4, I realize that rows 2 to 8 should have column 5 filled with 7s. So, I’ll update the grid accordingly. The final 12x12 grid representation shows zeros in the unaltered rows, with 7s appearing in the specified rows and column. 
+
+The filling rule is: each 7 extends in a straight line toward the nearest 4, filling intervening zeros but stopping before hitting any 4s. I'll format this as a minified JSON string for clarity.
+
+**Creating JSON grid representation**
+
+I'm constructing the grid string. Each row will be formatted with numbers separated by spaces, followed by new lines for organization. The final grid should have 12 rows, with specific placements of 7s and 4s.
+
+Next, for JSON formatting, I need to escape newlines properly, ensuring they appear as `\n` within the string. The rule description will confirm that each 7 extends towards the first visible 4, filling with 7s along the way. Let's finalize and produce the minified JSON with the required structure.
+
+Rule: Each 7 extends in the straight direction (up, down, left or right) to the nearest visible 4, turning intervening 0s into 7s and stopping before the 4.",,1,"The Evaluated Rule specifies that each 7 extends to the nearest visible 4, which implies a stopping condition that is not present in the Ground Truth Rule. The Ground Truth Rule allows for extension until touching the inner boundary of the yellow shape, which may not necessarily be the nearest 4. Therefore, the two rules describe different transformations.","Each 7 extends in the straight direction (up, down, left or right) to the nearest visible 4, turning intervening 0s into 7s and stopping before the 4.",1,Correct - Intended,2,0
+2025-07-24T02:13:08,ExtendToBoundary,ExtendToBoundary10,2,medium,1,,0,"0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 4 4 4 4 4 0 0
+0 0 0 0 4 0 0 0 4 0 0
+0 0 0 0 4 0 0 0 4 0 0
+7 7 7 7 7 7 7 7 4 0 0
+0 0 0 0 4 0 0 0 4 0 0
+0 0 0 0 4 0 0 0 4 0 0
+0 0 0 0 4 0 0 0 4 0 0
+0 0 0 0 4 7 7 7 7 7 7
+0 0 0 0 4 4 4 4 4 0 0","**Evaluating flood fill logic**
+
+I'm confirming the rule about starting from each seed of 7 and flooding along rows or columns until encountering a barrier of 4. For column 3, the seed at (10,3) can extend up to row 1, but since row 1 at column 3 is 4, it halts there. Row 0 remains 0 as row 1 acts as a barrier above it. Moving down, row 11's value at column 3 is originally 0, meaning there’s no downward extension since there’s no barrier of 4.
+
+**Clarifying propagation rules**
+
+The 7 seed stays unchanged at the bottom since row 11, column 3 is 0 and doesn't extend downward, meaning the only extension is upwards. In example 1, the seed at (5,0) extends to the right but not to the left since that direction is non-existent. The rule states that seeds should propagate inward toward the nearest 4 barrier along rows or columns. For 7s outside a 4-bounded rectangle, they will move vertically upward or horizontally right until encountering a barrier.
+
+**Defining propagation rules for 7s**
+
+The rule is to extend each 7 in the direction of its row or column until reaching the first 4. It should move along an unobstructed path of zeros, like a visibility line. For instance, the 7 at (10,3) checks horizontally but finds no reachable 4 to the left or right, only zeros. Vertical movement toward the 4 barrier located above in column 9 is better. The process involves identifying the rectangle formed by 4s and propagating each 7 toward it without overwriting the 4s.
+
+Rule: For every 7, look in the four orthogonal directions. If, in a direction, the first non-zero cell you meet is a 4 and every cell between is 0, recolor all those intermediate 0 cells to 7 (the 4 itself stays). Do this for all 7s once.",,1,"The Evaluated Rule focuses on recoloring intermediate cells between a 7 and a 4, while the Ground Truth Rule is about extending orange pixels towards a yellow shape until they touch its inner boundary. The two rules describe different transformations and do not achieve the same outcome.","For every 7, look in the four orthogonal directions. If, in a direction, the first non-zero cell you meet is a 4 and every cell between is 0, recolor all those intermediate 0 cells to 7 (the 4 itself stays). Do this for all 7s once.",1,Correct - Intended,2,0
+2025-07-24T02:17:39,ExtendToBoundary,ExtendToBoundary10,3,medium,0,mismatch,0,"0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 7 0 0 0 0 0 0
+0 4 4 4 7 4 4 4 4 0 0
+0 4 0 4 7 4 0 0 4 0 0
+0 4 0 4 7 4 0 0 4 0 0
+0 4 0 0 7 0 0 0 4 0 0
+0 4 0 0 7 0 0 0 4 0 0
+0 4 4 4 7 4 4 4 4 0 0
+0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0","**Inferring transformation rules**
+
+I need to deduce the transformation rule based on examples, examining an input grid with digits that represent colors. The grid has a thick border of 4's forming a rectangle, with a hollow area of zeros inside. I’ve noted that the border fills rows 2 to 8 and columns 2 to 8. There’s also a 7 positioned outside the rectangle at (5, 0), which is interesting because it’s in the same row as part of the rectangle.
+
+**Analyzing filling rules**
+
+I realized that the 7 lines up with the row where the rectangle’s internal area consists of zeros. This means in the output, row 5 fills with 7’s from columns 0 to 7, stopping at the right border of the rectangle, which is 4. The rule here is to propagate the 7 horizontally up to that border, filling the rectangle's hollow interior with 7s. 
+
+Moving to the second example, the grid is 12 rows and 14 columns with a rectangular border of 4's. Row 8 isn't continuous due to zeros, especially at column 4.
+
+**Producing the grid and rule**
+
+I’ve set the rows based on the transformations I’ve outlined. For instance, Row 2 has 7 inserted, affecting the surrounding 4s and zeros. Each row has been adjusted according to the rules identified. I noticed that there are hollow rectangles made of color 4, with 7s located outside. 
+
+The current rule states that for each 7, I should create a line of 7s through the empty spaces, converting the nearest 4 into a 7 while stopping one cell before the border. Now, I’ll put this in JSON format with the grid represented as a string.
+
+**Creating the grid and rule**
+
+I’m putting together the grid string, which is made up of numbers separated by spaces, with each row on a new line. The grid has a few 7s and a lot of 4s, with zeros filling the rest.
+
+Now, regarding the rule: It describes how to extend each 7 horizontally or vertically toward the nearest 4-frame. The goal is to change every 0 along that path to a 7, including the first 4 encountered, while stopping before hitting the far border. I’m crafting this into a JSON format now.
+
+Rule: For every external 7, move straight towards the nearest 4-frame in the same row or column. Recolour every 0 met and the first 4 reached to 7, stopping one cell before the frame on the opposite side. Do this for all 7s.",,0,"The Evaluated Rule specifies moving towards the nearest 4-frame in the same row or column and recoloring 0s and the first 4 reached to 7, which does not align with the Ground Truth Rule's instruction to extend orange pixels towards the yellow shape until it touches the inner boundary. The focus on external 7s and specific movement towards the nearest 4-frame introduces a different mechanism that does not capture the essence of the original transformation.","For every external 7, move straight towards the nearest 4-frame in the same row or column. Recolour every 0 met and the first 4 reached to 7, stopping one cell before the frame on the opposite side. Do this for all 7s.",1,Incorrect,2,0
+2025-07-24T02:18:14,ExtendToBoundary,ExtendToBoundary2,1,medium,1,,0,"0 0 0 0 0 0 0 0 0 0 0 0
+0 0 6 6 6 6 6 6 6 6 6 0
+0 0 6 0 0 7 0 0 0 0 6 0
+0 0 6 0 0 7 0 0 0 0 6 0
+0 0 6 0 0 7 0 0 0 0 6 0
+0 0 6 0 0 7 0 0 0 0 6 0
+0 0 6 0 0 7 0 0 0 0 6 0
+0 0 6 0 0 7 0 0 0 0 6 0
+0 0 6 0 0 7 0 0 0 0 6 0
+0 0 6 0 0 7 0 0 0 0 6 0
+0 0 6 0 0 7 0 0 0 0 6 0
+0 0 6 6 6 6 6 6 6 6 6 0
+0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0","**Analyzing rectangle color filling**
+
+I'm looking at a rectangle defined by rows 2 to 10 and columns 2 to 12. Originally, there seems to be a color value of 2 in row 6, column 7 based on the sequence given. I need to fill every cell in that vertical line from rows 2 to 10 with the same color, 2. The rule is about propagating the color vertically within the rectangle between the top and bottom borders. For another example, if border color is 4, it seems there might be a 1 in the same spot in row 6.
+
+**Analyzing grid transformations**
+
+I'm examining a grid from Example 2 where the input for row 6 is ""0 4 0 4 0 0 0 1 0 0 0 4 0 4 0"". The border rows appear to be 1 and 13. So, row 1 has 4's as a top border, while row 3 shows vertical stripes of 4 inside the interior. The transformation seems to replicate the color 1 vertical stripe downwards from row 4 to row 9, filling in zeros in those previously empty positions. 
+
+Row 4, initially having a 0 at index 7, is now replaced by 1, and similar changes happen to rows 5 through 9 as well.
+
+**Summarizing grid changes**
+
+I'm analyzing a grid with various rows, focusing on how to update it. The input grid has 14 rows and 12 columns. I see that, for rows 2 to 10, I need to change column 5 (index 5) from 0 to 7 while leaving any non-zero entries intact. The borders above and below influence the fill, particularly stopping just before row 11. 
+
+Thus, I'll produce the final output grid, reflecting these updates while preserving the original structure. Rows now filled with 7 will be rows 2, 3, 4, 6, 7, 8, 9, and 10.
+
+**Crafting transformation rule**
+
+I need to establish a rule for filling colors in a grid. The idea is to locate the only cell that has a color different from the frame and background zeros, then propagate that color vertically through its column, replacing consecutive zeros until hitting a non-zero cell. 
+
+I’ll create a minified JSON object that includes this transformation rule with a brief description and the grid itself, ensuring that I include newlines correctly for each row. Let's get this finalized!
+
+Rule: Extend the colour of the single interior non-zero cell vertically in its column, replacing consecutive 0s above and below it until a non-zero cell is encountered.",,1,"The Evaluated Rule captures the essence of extending a line vertically from a single interior non-zero cell until it encounters another non-zero cell, which aligns with the Ground Truth Rule's concept of extending a line until it hits an object boundary. Both rules focus on vertical extension and the interaction with boundaries, making them fundamentally similar.","Extend the colour of the single interior non-zero cell vertically in its column, replacing consecutive 0s above and below it until a non-zero cell is encountered.",1,Correct - Intended,2,0
+2025-07-24T02:14:09,ExtendToBoundary,ExtendToBoundary2,2,medium,1,,0,"5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5
+5 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 5
+5 0 5 5 5 5 5 3 5 5 5 5 5 5 5 0 0 0 5
+5 0 5 0 0 0 0 3 0 0 0 0 0 0 5 0 0 0 5
+5 0 5 0 0 5 5 3 5 5 5 5 0 0 5 0 0 0 5
+5 0 5 0 0 5 0 3 0 0 0 5 0 0 5 0 0 0 5
+5 0 5 0 0 5 5 5 5 5 5 5 0 0 5 0 0 0 5
+5 0 5 0 0 0 0 0 0 0 0 0 0 0 5 0 0 0 5
+5 0 5 5 5 5 5 5 5 5 5 5 5 5 5 0 0 0 5
+5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5
+5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5
+5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5","**Analyzing transformation rules**
+
+I need to figure out the transformation rules from the examples. The grid has zeros as the background, with a colored border forming a square or rectangle. Inside, there’s usually a special single pixel of a different color, with examples showing different values. For instance, in the first example, within a rectangle surrounded by a border of 3, there’s a '2' pixel at row 6, column 8. The output fills the entire vertical line of that column with '2's from rows 2 to 10. Let's check the grid coordinates closely.
+
+**Examining grid structure**
+
+The grid is a 15x15 setup with a border of 3 along the edges. There’s a single '2' at row 6, column 7. I see that row 1 is all zeros except for the border, and row 6 shows ""0 3 0 0 0 0 0 2 0..."". Inside the border, that '2' appears in multiple rows, so I'll fill column 7 in those inner rows with '2's. Looks like row 11 stays as a border and just has 3's. 
+
+For Example 2, with a border of 4's and a '1' at the same column, it seems rows 4 to 9 may also have '1's. Let’s confirm these details for my output.
+
+**Determining filling rules**
+
+I need to analyze the grid and how colors fill vertically. It looks like '8' fills upward and downward until it meets a non-zero cell. Specifically, in row 11, the cell at column 9 remains a '7', blocking further filling. I see similar rules when examining rows containing zeros and where '3' appears at column 7 of row 5. 
+
+The goal is to replace zeros in that column with '3' until encountering another non-zero cell. I’ll go through each row carefully to ensure I adhere to that rule!
+
+Rule: Locate the single coloured cell inside the frame (the colour that appears only once). Starting from it, extend vertically in its column both upward and downward, replacing background cells (0) with that colour until a non-zero cell is met (including the frame); never overwrite non-zero cells.",,1,"The Evaluated Rule captures the essence of extending vertically from a single colored cell until encountering a non-zero cell, which aligns with the Ground Truth Rule's concept of extending a line vertically until colliding with an object boundary. The additional specification of replacing background cells and not overwriting non-zero cells does not change the fundamental transformation being described.","Locate the single coloured cell inside the frame (the colour that appears only once). Starting from it, extend vertically in its column both upward and downward, replacing background cells (0) with that colour until a non-zero cell is met (including the frame); never overwrite non-zero cells.",1,Correct - Intended,2,0
+2025-07-24T02:15:41,ExtendToBoundary,ExtendToBoundary2,3,medium,1,,0,"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 9 9 9 9 9 9 9 9 9 9 9 0
+0 0 0 9 9 9 9 9 0 9 9 9 9 9 0
+0 0 0 9 9 9 9 9 0 9 9 9 9 9 0
+0 0 0 9 9 9 0 1 0 0 0 9 9 9 0
+0 0 0 9 9 9 0 1 0 0 0 9 9 9 0
+0 0 0 9 9 9 0 1 0 0 0 9 9 9 0
+0 0 0 9 9 9 0 1 0 0 0 9 9 9 0
+0 0 0 9 9 9 0 1 0 0 0 9 9 9 0
+0 0 0 9 9 9 9 9 9 9 9 9 9 9 0
+0 0 0 9 9 9 9 9 9 9 9 9 9 9 0
+0 0 0 9 9 9 9 9 9 9 9 9 9 9 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0","**Analyzing filling rules**
+
+I'm trying to get a handle on how the examples extend vertically. In Example 1, even though there are zeros horizontally, they only filled in the vertical line. I see that row 6, column 7 is surrounded by zeros, so they could have filled horizontally too, but didn't. It seems like the rule might be to extend along the direction where the pixel is centered. So, maybe for rectangles with odd widths, highlighting the center column is the key! In Example 2, the width is 15, indexing from 0 to 14.
+
+**Clarifying replication rules**
+
+I see that column 7 is the center, and the initial 1 is at that position, suggesting the rule is to replicate that color along the column in the rectangle—except where it hits borders. Looking at row 2, it shows a value of 0 in column 7, but I’m puzzled why it didn’t get filled. When I check upstream, I see row 2 retains its 0 because the 1 only extends downwards until it encounters a non-zero, so it seems the rule allows filling only within contiguous zeros. Let me re-confirm these findings to ensure they're accurate!
+
+**Determining vertical corridor**
+
+Looking at the grid, column 7 has zeros surrounded by nines in other columns. My focus is on the vertical corridor created by these zeros. Starting at row 7, column 7, I notice the value is 1 and need to extend upwards and downwards until I hit a non-zero. 
+
+Upwards, I'll fill the zeros in rows 4, 5, and 6 with 1s, stopping at row 3 where the value is 9. Moving downwards fills row 8 with a 1, halting at row 9 due to another 9. So, the final vertical segment will span from row 4 to row 8, confirming I maintain the grid size of 13x15.
+
+**Creating transformation rule**
+
+I’m finalizing the grid rows and noting that the 1s have been correctly positioned in their places. The transformation rule could be stated as: ""Propagate the unique interior color vertically through contiguous zeros until hitting a non-zero cell."" 
+
+Now, I'll format the grid as required, keeping the numbers separated by spaces, and prepare a JSON object without unnecessary whitespace. This will include the transformation rule and the grid, ensuring everything is clearly displayed for users to understand. Let's put it all together!
+
+Rule: Propagate the unique interior colour vertically up and down through contiguous zeros until blocked by a non-zero cell.",,1,"Both rules describe a process of extending a transformation vertically until encountering a boundary. The Evaluated Rule specifies propagating a unique interior color through contiguous zeros, which aligns with the concept of extending a line until blocked by a non-zero cell, as described in the Ground Truth Rule.",Propagate the unique interior colour vertically up and down through contiguous zeros until blocked by a non-zero cell.,1,Correct - Intended,2,0
+2025-07-24T02:21:54,ExtendToBoundary,ExtendToBoundary3,1,medium,1,,0,"0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0
+1 0 1 0 1 0 1 0 1 0 1 0
+2 0 0 0 0 0 0 0 0 0 0 0
+2 0 0 0 0 0 0 0 0 0 0 0
+2 0 0 0 0 0 0 0 0 0 0 0
+2 0 0 0 0 0 0 0 0 0 0 0
+2 0 0 0 0 0 0 0 0 0 0 0
+2 0 0 0 0 0 0 0 0 0 0 0
+2 0 0 0 0 0 0 0 0 0 0 0
+2 0 0 0 0 0 0 0 0 0 0 0","**Decoding the ARC Puzzle**
+
+I need to decode an ARC style puzzle by examining the examples. In the first example, the input grid is 12x12. I notice a column with repeated 5s in every even row of the second column. The single 4 appears at (row 5, col 11). The output keeps the 5s unchanged, and in row 5, I see a horizontal line of 4s from column 2 to 11, which indeed makes 10 positions. The original grid had a single 4 in (row 5, col 11).
+
+**Analyzing the Grid Pattern**
+
+I see that row indices go downward, so row 2 is above row 7. A contiguous vertical line fills column 8 from rows 2 to 7. I wonder why they started at row 2 instead of row 0; perhaps row 0 is blank, and row 1 has different values acting as a boundary. It seems the pattern connects a single color cell to the nearest line of the same color. For example, connecting a 4 at row 5, col 11, to a vertical line of 5s isn’t possible since those colors don’t match. Analyzing the grid structure reveals repeated colors forming patterns with a misaligned single cell. In the example grid, I confirm dimensions are 7 rows by 11 columns, spotting 3s in a diagonal pattern. The output modifications switched some zeros to 2s at specified positions.
+
+**Examining the Output Grid**
+
+Let’s break down the output grid. The first row mirrors the input, while the second remains unchanged. Row 4 now has a 2 at column 2, which was previously 0, and row 5 has a new 2 at column 1. It seems they created a diagonal of 2s linking the original 2 at (6,0) to a 3, but they stopped before touching it. The output appears to follow a rule: if there's a repeating color, the output fills in a line of a contrasting color that connects, ensuring a symmetrical pattern. I'll look more closely to confirm this pattern in various examples.
+
+Rule: Locate the straight line made of the majority of coloured cells (vertical, horizontal or main diagonal). Take the single coloured cell that is not on this line and, using its own colour, extend a new straight line through it in the direction perpendicular to the first line. Add cells one by one until the step that would overwrite a cell holding a different non-zero colour; stop just before that (overwriting identical-coloured cells is allowed).",,0,"The Evaluated Rule introduces a specific method of identifying a line based on the majority of colored cells and involves extending from a single colored cell not on that line, which diverges from the Ground Truth Rule's focus on extending from an isolated pixel to a perpendicular line without intersection. The core transformation functionality is not preserved.","Locate the straight line made of the majority of coloured cells (vertical, horizontal or main diagonal). Take the single coloured cell that is not on this line and, using its own colour, extend a new straight line through it in the direction perpendicular to the first line. Add cells one by one until the step that would overwrite a cell holding a different non-zero colour; stop just before that (overwriting identical-coloured cells is allowed).",1,Incorrect,2,0
+2025-07-24T02:18:22,ExtendToBoundary,ExtendToBoundary3,2,medium,1,,0,"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 7 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 7 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 7 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 7 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 7 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 7 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 7 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 7 0 0 0 0 0 0 0 0 0 0 0 0
+4 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0","**Inferring grid rules**
+
+I need to analyze the examples given to infer a rule for transforming an input grid. From the 12x12 grid, I see that the first column has multiple 5's every two rows, and there's a single 4 in row 5, column 11. The output reflects all but row 5, which transforms into: ""0 0 4 4 4 4 4 4 4 4 4 4"". This suggests that when a row contains a 4 in that specific spot, it changes how that row appears in the output, extending the 4 across certain columns.
+
+**Examining grid rules**
+
+In the input grid, there's one 7 located at row 7, column 8. To create a vertical line, I need to add 7's in rows 2-6, connecting row 1 to row 7. This leads to a possible rule: if there are exactly two 7's in a column, I fill the rows in between with 7's. In another case, row 5 has a 4 at column 11. It seems the rule might be to connect 4's between repeated elements in its row or column. I should clarify these connections and patterns!
+
+**Analyzing grid color rules**
+
+I'm observing how colors interact in a grid. For example, a diagonal of 2's appears from positions (6,0) along the anti-diagonal, filling until it reaches row 4, column 2. I wonder if the rule is to connect colors based on adjacency to non-zero values. It seems that when a color forms a line in one direction, like the vertical line of 5's, I fill horizontal lines from intersecting points with single colors, creating crosses. I need to clarify these connections and test further to determine how lines extend across the grid!
+
+**Formulating grid transformation rules**
+
+I'm simplifying instructions for extending colors in a grid. The process involves taking a unique pixel and extending a line perpendicular to an established main line until reaching that line, stopping one cell before crossing if colors differ. In examples, I see that extensions only go toward the main line. I need to finalize the grid, ensuring the correct representation while formatting it properly into a string format with spaces. Finally, I’ll summarize the transformation rules in a structured way!
+
+Rule: Identify the colour that already forms the longest straight line (horizontal, vertical or main diagonal). Locate the other coloured pixel(s) that are not on that line (usually a single square). From each such square draw a continuous straight line of its colour in the direction perpendicular to the pre-existing line, moving towards that line and filling every intervening zero cell. Stop one step before the crossing point if the two colours differ; include the crossing cell if both colours are the same. Leave all other cells unchanged.",,1,"The Evaluated Rule captures the essence of the Ground Truth Rule by extending lines of pixels in a direction perpendicular to an existing line, while also addressing the filling of intervening cells. Although it includes additional specifications regarding color and stopping conditions, the core transformation of creating an unbroken line of pixels towards the dotted line is maintained.","Identify the colour that already forms the longest straight line (horizontal, vertical or main diagonal). Locate the other coloured pixel(s) that are not on that line (usually a single square). From each such square draw a continuous straight line of its colour in the direction perpendicular to the pre-existing line, moving towards that line and filling every intervening zero cell. Stop one step before the crossing point if the two colours differ; include the crossing cell if both colours are the same. Leave all other cells unchanged.",1,Correct - Unintended,2,0
+2025-07-24T02:16:20,ExtendToBoundary,ExtendToBoundary3,3,medium,1,,0,"0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 6 0
+0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 6 0 8 0
+0 0 0 0 0 0 0 0 0 0 0 8
+0 0 0 0 0 0 6 0 0 0 0 0","**Analyzing transformation rules**
+
+I need to determine the transformation rule based on given examples. For instance, in a 12x12 grid, there's a vertical pattern in column 1 where values appear at specific indices. The output for row 5 changes significantly, as its original values are replaced with a new sequence along with solitary values from previous rows. It seems like the rule is to propagate the color from any solitary cell across the row to the left until it encounters a non-empty cell.
+
+**Exploring vertical extension rules**
+
+In the grid, row 1 remains unchanged, while rows 2 through 7 see a 7 added at column 8. This pattern suggests that the 7 extends vertically to row 1 but doesn't overwrite it since row 1 already has a 7 at that column. The unique aspect here is that the vertical fill occurs from row 2 to row 7, and there's no downward extension since row 8 consists of zeros. The pattern indicates that when encountering two orthogonal lines of the same color, there's a rule dictating the fill behavior.
+
+**Analyzing grid patterns**
+
+The vertical crosspoint occurs at even rows like row 0, 2, 4, etc., while row 5 contains a 4 that doesn't intersect. Thus, I should fill leftwards in row 5 from column 1 until it reaches the vertical line. The input grid's diagonal pattern of 3's and a seed of 2 at (6,0) allows me to extend the 2's upward along a diagonal path.
+
+When I analyze the movement from (6,0) to (5,1) and (4,2), the fill stops before reaching (3,3) because that cell is empty. This likely indicates a rule for extending colors: fill diagonally until I encounter a different colored cell. The complexity suggests there are two colors, forming distinct patterns and rules based on their positioning.
+
+**Updating the grid**
+
+I'm determining which direction along the slope vector leads to an intersection. It turns out that only moving in the (-1,-1) direction leads to an intersection, while the (+1,+1) direction goes off the grid. So, I will color the cell at (9,10) with color 8, stopping before the intersection point at (8,9). 
+
+Now, let me confirm the original grid and make the necessary updates to rows, ensuring I capture all positions accurately. Finally, I’ll summarize the transformation rule and represent the grid in a formatted string.
+
+Rule: Extend the color of the solitary cell along the straight direction that is perpendicular to the pre-existing line of coloured cells, colouring every cell from the solitary cell up to (but not including) the first cell that lies on the line.",,1,"The Evaluated Rule captures the essence of extending a line of pixels from the solitary cell in a direction perpendicular to the existing line, stopping before the first cell that intersects with the line. This aligns with the Ground Truth Rule's requirement of extending an unbroken line of pixels perpendicular to the dotted line.","Extend the color of the solitary cell along the straight direction that is perpendicular to the pre-existing line of coloured cells, colouring every cell from the solitary cell up to (but not including) the first cell that lies on the line.",1,Correct - Intended,2,0
+2025-07-24T02:14:12,ExtendToBoundary,ExtendToBoundary4,1,medium,1,,0,"0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 6 0 0 0
+0 0 6 0 0 0
+0 0 6 7 7 7
+0 0 6 0 0 0","**Exploring line extensions**
+
+I'm considering how to reduce the gap between columns when extending lines. By extending horizontally from row 1 toward column 2, I can make it adjacent to column 1 vertically. Initially, I see a horizontal line at columns 3, 4, and 5, but I need to extend leftwards to make a connection. The general rule is to extend a line in its orientation toward another line so they become adjacent. That should help simplify this situation!
+
+**Finalizing adjacency in the grid**
+
+I’m working on producing the final grid for the test input, which presents a specific arrangement. First, I identify the vertical line of 6s at column 2 across rows 2 to 5, followed by a horizontal line of 7s at row 4 in columns 4 and 5. Since column 2 isn't in the horizontal line's span, I can't establish adjacency there right away. By extending the horizontal line left to column 3, I can create the needed connection. This keeps both lines aligned while ensuring they share a side!
+
+**Finalizing the grid and rules**
+
+I’m working on completing the grid based on recent examples. For the test input, I’ve confirmed that the vertical line at column 2 connects to the new horizontal line added at column 3 in row 4. Now, row 4 contains three contiguous 7s from columns 3 to 5. So the updated grid looks like this:
+
+Row0: 0 0 0 0 0 0  
+Row1: 0 0 0 0 0 0  
+Row2: 0 0 6 0 0 0  
+Row3: 0 0 6 0 0 0  
+Row4: 0 0 6 7 7 7  
+Row5: 0 0 6 0 0 0  
+
+I’ll define the rule for extending lines to ensure clarity and then format the grid in minified JSON.
+
+Rule: Identify the single vertical line of one color and the single horizontal line of a different color. Extend whichever of the two can do so by continuing straight in its own direction (vertical line up/down, horizontal line left/right) until one of its endpoints becomes orthogonally adjacent to any cell of the other line. Fill the intervening cells with the extending line’s color and leave everything else unchanged.",,1,"The Evaluated Rule describes a process of extending lines until they touch each other in a perpendicular manner, which aligns with the essence of the Ground Truth Rule. Although it specifies the direction of extension and the filling of intervening cells, these details do not change the fundamental transformation of extending until orthogonally adjacent.","Identify the single vertical line of one color and the single horizontal line of a different color. Extend whichever of the two can do so by continuing straight in its own direction (vertical line up/down, horizontal line left/right) until one of its endpoints becomes orthogonally adjacent to any cell of the other line. Fill the intervening cells with the extending line’s color and leave everything else unchanged.",1,Correct - Intended,2,0
+2025-07-24T02:14:15,ExtendToBoundary,ExtendToBoundary4,2,medium,1,,0,"0 0 0 8 0 0
+0 0 0 8 0 0
+0 3 3 3 3 3
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0","**Clarifying line orientation for adjacency**
+
+I'm thinking about how to ensure two lines get close without merging. In the first example, a horizontal line stretches across, while a vertical one is below it. Extending the horizontal down won't work because it's meant to stay horizontal. Instead, to create adjacency, I can either move the vertical up or shift the horizontal right or left. The same principle applies in other examples where I adjust lines carefully without overlapping colored segments. The goal is to find a way to make them edge-adjacent!
+
+**Determining line extension for adjacency**
+
+I'm figuring out how to extend lines to create adjacency without overlap. In the provided grid, I see the vertical line at (0,3) with an 8 and a horizontal line of 3's across row 2. Since the vertical line can't extend upward and the horizontal can't go downward, extending the vertical line downward toward the horizontal line is the solution. Specifically, I'll move the 8 down into row 1, column 3, making them adjacent while keeping everything else intact.
+
+**Finalizing the grid output**
+
+I've established the final grid. In rows 0 and 1, I've placed the number 8, and row 2 features the horizontal line of 3's. Rows 3 to 5 remain unchanged. I'm now preparing to return the grid as a JSON object, with a descriptive rule stating that I should extend one of the two colored lines until it is adjacent to the perpendicular line, stopping just before any non-zero cell. The grid will be structured with space-separated numbers and newline-separated rows.
+
+Rule: Extend the straight coloured line (vertical or horizontal) through empty cells toward the perpendicular coloured line until the two lines become edge-adjacent, stopping just before any non-zero cell.",,1,"The Evaluated Rule captures the essence of the Ground Truth Rule by describing the extension of colored lines until they become edge-adjacent, which aligns with the concept of extending shapes or pixels to touch each other perpendicularly. The additional specification regarding stopping before non-zero cells does not fundamentally alter the transformation's intent.","Extend the straight coloured line (vertical or horizontal) through empty cells toward the perpendicular coloured line until the two lines become edge-adjacent, stopping just before any non-zero cell.",1,Correct - Intended,2,0
+2025-07-24T02:17:53,ExtendToBoundary,ExtendToBoundary4,3,medium,0,mismatch,0,"2 0 0 0 0 8
+2 0 0 0 8 0
+2 0 0 8 0 0
+2 0 8 0 0 0
+2 8 0 0 0 0
+8 0 0 0 0 0","**Defining grid transformation rules**
+
+I’m analyzing a 6x6 grid transformation by looking at examples of input and output. I can see that the output replicates a colored line into adjacent blank rows or columns, creating a continuous line from previously connected blocks. For instance, if there's a horizontal line in row 1, the output matches that row. Similarly, if a vertical line exists, it can extend upward until blocked by a different color or the grid's edge. That seems to be the transformation rule!
+
+**Analyzing grid extensions**
+
+I'm exploring how to extend color segments in a grid. For instance, if there are vertical 6's in column 1, the output adds 6's downward until it hits a non-zero cell, stopping before row 4 because of a different color present there. Similarly, with vertical 4's in column 4, the extension adds a 4 before encountering a 7. In another example, even if vertical 8's exist, they won't extend downward if blocked by 9's in another row. Each segment extends until obstructed by boundaries or different colored cells.
+
+**Refining extension rules**
+
+I'm analyzing grid extensions based on examples. In the first one, a vertical 2 extends upward but still leaves a gap from a horizontal 1. It seems the rule might involve extending lines to touch both boundaries of the grid or filling available zeros adjacent to segments. In each example, greater lines seem to be prioritized, but the orientation matters too. For instance, horizontal lines may extend to connect with vertical lines. I’m concluding that adjacency in rows or columns is a key component in determining how lines extend.
+
+Rule: Extend the straight line that touches the grid boundary along its own direction, moving away from that edge, until it comes into direct (orthogonal) contact with the other coloured shape. Leave all other cells unchanged.",,0,"The Evaluated Rule describes a similar transformation by extending a shape until it touches another shape orthogonally, which aligns with the Ground Truth Rule's intent. The additional specification about extending along the grid boundary does not change the fundamental transformation functionality.","Extend the straight line that touches the grid boundary along its own direction, moving away from that edge, until it comes into direct (orthogonal) contact with the other coloured shape. Leave all other cells unchanged.",1,Incorrect,2,0
+2025-07-24T02:16:57,ExtendToBoundary,ExtendToBoundary5,1,medium,1,,0,"7 0 0 0 0 0 0 0 7
+0 7 0 0 0 0 0 7 0
+0 0 7 0 0 0 7 0 0
+0 0 0 7 0 7 0 0 0
+0 0 0 0 7 0 0 0 0
+0 0 0 7 0 7 0 0 0
+0 0 7 0 0 0 7 0 0
+0 7 0 0 0 0 0 7 0
+7 0 0 0 0 0 0 0 7","**Analyzing grid mapping rules**
+
+I need to figure out how to create an output grid based on a single '7' located somewhere in a 7x7 grid. Let's take example 1: with '7' in the center at position (3,3) in a zero-based index. The output grid should be symmetrical around this center, so I'll place '7's along both diagonals. Starting with indices ranging from 0 to 6, I can outline where the '7's will go, showcasing the pattern in the output grid.
+
+**Mapping symmetrical patterns**
+
+In the analysis of the grid, I see that Row 3 has only a center '7' at (3,3). Row 4 includes '7's at (4,2) and (4,4). Row 5 should have '7's at (5,1) and (5,5). Row 6 has '7's at (6,0) and (6,6). 
+
+So, the rule is to fill both diagonals with '7's where the row equals the column, or the row plus column equals the grid size minus one, creating a symmetrical pattern around this center. In other cases, the '7' may not be at the center, but the diagonals will still pass through its position.
+
+**Continuing diagonal pattern analysis**
+
+I'm mapping diagonals in a grid where '7' is located. Starting from a given position, I can examine the northwest and northeast directions, confirming there are '7's at those points. The same goes for south-west and south-east, as I continue until I reach grid edges. 
+
+When I look at a 6x6 grid, similar rules apply to mark '7's along diagonals, confirming the output aligns with expectations. My findings show that every diagonal can hold a consistent pattern, reinforcing the rules for '7' placements in various grid sizes.
+
+**Filling grid diagonals with 7s**
+
+I'm focusing on filling a grid based on the position of a single '7'. Here’s the plan: I’ll adjust both diagonals through that center '7', filling corresponding positions with '7's. For a 9x9 grid centered at (4,4), I need to check both main and anti-diagonal positions to set '7's accordingly. Each row will be formatted as a string with space-separated values, maintaining the required structure. Finally, I’ll encapsulate the rule and grid representation into a clean JSON format.
+
+Rule: Set all cells on the two 45° diagonals that pass through the lone 7 in the input grid to 7; leave every other cell as is.",,1,"The Evaluated Rule specifies setting cells on the two 45° diagonals through the lone 7 to 7, which does not match the Ground Truth Rule's instruction to extend the orange pixel in all four diagonal directions until it touches the grid boundary. The Evaluated Rule is more restrictive and does not encompass the full transformation described in the Ground Truth Rule.",Set all cells on the two 45° diagonals that pass through the lone 7 in the input grid to 7; leave every other cell as is.,1,Correct - Intended,2,0
+2025-07-24T02:13:15,ExtendToBoundary,ExtendToBoundary5,2,medium,1,,0,"0 0 0 0 0 0 0 0 7
+0 0 0 0 0 0 0 7 0
+7 0 0 0 0 0 7 0 0
+0 7 0 0 0 7 0 0 0
+0 0 7 0 7 0 0 0 0
+0 0 0 7 0 0 0 0 0
+0 0 7 0 7 0 0 0 0
+0 7 0 0 0 7 0 0 0
+7 0 0 0 0 0 7 0 0","**Calculating indices for grid**
+
+I'm computing indices from 0 to 8. For the main diagonal, if I set the row value to be col + 2, I find that values would be: Column 0 gives row 2, column 1 gives row 3, and so on. However, columns 7 and 8 exceed the range. 
+
+For the anti-diagonal, I find pairs where the sum of row and column equals 8. Positioning gives me a set of coordinates that I can use to create a grid filled with 0s and the specified 7s. Let's build those row strings.
+
+**Building grid rows**
+
+Let's see how to construct the rows based on the positions from the diagonals. 
+
+Row 1 has a 7 at column 7, confirmed from the anti-diagonal. For Row 2, it holds a 7 from both the main diagonal at column 0 and anti-diagonal at column 6. 
+
+Continuing this approach, Row 3 has 7 at column 1 and 5, Row 4 at columns 2 and 4, then Row 5 has it at column 3, and Row 6 has both at columns 2 and 4. Row 7 includes column 1 and 5, while Row 8 has column 0 and 6. Let me check for duplicates again in Row 6.
+
+**Summarizing grid rows**
+
+Now I have the row summaries ready:
+
+Row 0 has a single 7 at the end. Row 1 has it at column 7. Row 2 includes 7s at columns 0 and 6, while Row 3 has it at columns 1 and 5. Row 4 presents a pair at columns 2 and 4, and Row 5 only has one at column 3. Row 6 is symmetrical with two at columns 2 and 4, just like Row 4. 
+
+I’m preparing the JSON to describe the rules for the grid and formatting it into a compact layout. Each row will be newline-separated and numbers spaced out correctly.
+
+Rule: Draw the two diagonals (slope ±1) that intersect at the single non-zero cell, colouring them with that cell's value.",,1,"The Evaluated Rule specifies drawing two diagonals that intersect at a single non-zero cell, which does not extend the pixel in all four diagonal directions until it touches the grid boundary as described in the Ground Truth Rule. Therefore, the transformation functionalities are not equivalent.","Draw the two diagonals (slope ±1) that intersect at the single non-zero cell, colouring them with that cell's value.",1,Correct - Intended,2,0
+2025-07-24T02:15:04,ExtendToBoundary,ExtendToBoundary5,3,medium,1,,0,"7 0 0
+0 7 0
+0 0 7","**Examining 6x6 grid patterns**
+
+I'm analyzing a 6x6 grid with seven 7s placed at specific coordinates. In Row 0, 7s appear at positions 0 and 4. Row 1 has them at positions 1 and 3, and Row 2 has one at position 2. I note variations across columns rather than a consistent pattern, especially in Row 5, where 7 appears only in column 5. I'm checking diagonal positions, confirming that Row 4 has a 7 conflicting with my earlier entries. This requires careful review!
+
+**Analyzing grid diagonals**
+
+I’m checking the positions of 7s in the grid and confirming the main diagonal has them. However, for the anti-diagonal, Row 0, Column 4, is 7, while Column 5 is 0. I’m listing the coordinates of 7s and noticing a symmetrical pattern around the center. It looks like I'm observing another diagonal formed from (0,4) to (4,0). I think the pattern might create an X shape emanating from the input cell, extending to the grid edges. I’ll test those diagonal directions next!
+
+Rule: From the single colored cell, propagate that value along both diagonals (NW-SE and NE-SW) until the grid edges are reached, creating an X shape.",,1,"Both rules describe a diagonal extension from a central point, with the Evaluated Rule specifying propagation along both diagonal axes until reaching the grid edges, which aligns with the Ground Truth Rule's intent of extending in a diagonal manner.","From the single colored cell, propagate that value along both diagonals (NW-SE and NE-SW) until the grid edges are reached, creating an X shape.",1,Correct - Intended,2,0
+2025-07-24T02:15:23,ExtendToBoundary,ExtendToBoundary6,1,medium,1,,0,"0 0 0 0 0 0 2 2 0
+0 0 0 0 0 0 2 2 0
+0 0 0 0 0 0 2 2 0
+0 0 0 0 0 1 2 2 0
+0 0 0 0 1 0 2 2 0
+0 0 0 1 0 0 2 2 0
+0 0 1 0 0 0 2 2 0
+0 1 0 0 0 0 2 2 0","**Clarifying path rules**
+
+I'm analyzing a rectangular grid situation where I see row 2 having a partial rectangle at columns 0-5, and I note that row 2, column 8 has a zero converted to one. The diagonal from (9,1) continues up-right but stops when it hits the boundary at row 2, column 8, since column 9 is out-of-bounds. The rule seems to hold: I draw an up-right diagonal from a starting 1 until I reach an out-of-bounds area or hit a 2.
+
+**Analyzing grid path behavior**
+
+I’m looking at how to fill cells along a path, starting from initial cells containing 1s but avoiding 2s. In Example 3, row 2, column 8 isn't part of the rectangle, which has 1s included within it. Going to Example 4, with the grid being 10x10, there are multiple starting points at row 9, columns 0 and 3. So I see 1s forming diagonal lines up-right. As I verify the output, diagonal steps continually pass through the grid, acknowledging collisions around rectangle areas. It’s getting detailed, but I'm tracking the flow of paths carefully!
+
+**Examining path with obstacles**
+
+I'm figuring out how to draw paths based on starting points with 1s while avoiding 2s. The first starting point is at (9,3), which leads up-right but stops before hitting obstacles like 2s or the grid boundary. This rule implies that I place a 1 for every step diagonally until I hit a non-zero number or go out of bounds. I also notice that multiple seeds from 1 can create separate diagonal paths, which might interact without overlapping. Now, examining an 8-row grid confirms my understanding!
+
+**Producing final grid**
+
+I'm confirming that row 3, column 5 is right before the rectangle, and it's time to finalize the grid with updates. I'll list the initial grid and note that starting positions will influence the subsequent rows. Each cell marked as 1 will be updated correctly without modifying the rectangle boundaries.
+
+Next, I'm creating the JSON object to encode the final grid as a space-separated string. Each grid line will include newlines encoded correctly, following the structure provided in previous examples. This aims to ensure everything is clear and organized. Let's wrap it up!
+
+Rule: For every original 1, walk step-by-step one cell up and one cell to the right. Paint each visited 0 as 1 and stop just before leaving the grid or entering a non-zero cell (typically a 2 block).",,1,"The Evaluated Rule specifies a step-by-step movement up and to the right, which does not capture the diagonal extension of the blue pixels as described in the Ground Truth Rule. The Ground Truth Rule allows for continuous diagonal movement until a boundary or red shape is encountered, while the Evaluated Rule restricts movement to individual steps and does not account for the diagonal nature of the transformation.","For every original 1, walk step-by-step one cell up and one cell to the right. Paint each visited 0 as 1 and stop just before leaving the grid or entering a non-zero cell (typically a 2 block).",1,Correct - Intended,2,0
+2025-07-24T02:14:23,ExtendToBoundary,ExtendToBoundary6,2,medium,1,,0,"0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0
+2 2 2 2 2 2 2 0 1
+2 2 2 2 2 2 2 1 0
+0 0 0 0 0 0 1 0 0
+0 0 0 0 0 1 0 0 0
+0 0 0 0 1 0 0 0 0
+0 0 0 1 0 0 0 0 0
+0 0 1 0 0 0 0 0 0","**Analyzing grid transformation**
+
+I’m contemplating a grid transformation. We have a grid filled with 0’s, 1’s, and 2’s. The idea is perhaps to add a diagonal line of 1’s that ascends from the bottom left to the upper right. In a 6x6 grid example, the input has a block of 2’s at the top and a 1 at the bottom row, second column. I need to clarify the positions of new 1’s and their placements in the output.
+
+**Examining diagonal formation in the grid**
+
+In my exploration of a 10x10 grid, I see two '1's located at row 9, columns 0 and 3. It seems these create ascending diagonals upwards to the right. The output for row 9 stays the same, with those '1's intact. Moving up, row 8 produces '1's at columns 1 and 4. As I go through each row, I notice the diagonals originating from the starting points overlap, forming a single diagonal line up toward row 0. Interesting how they converge!
+
+**Mapping diagonal propagation**
+
+I’m examining how to propagate a diagonal from the starting '1' at row 8, column 2 in a 9x9 grid. The diagonal will go upward-right to fill empty cells until it hits a non-zero cell, like a '2'. I recognized that while row 3 has 2’s from columns 0 to 6, columns 7 and 8 are free. Therefore, I can place a '1' in row 3, column 7, and row 2, column 8. I need to ensure I stay within bounds during this process!
+
+**Establishing final grid positions**
+
+After confirming that the propagation path stops at row 2, column 8, I need to finalize the grid structure. Starting from the original grid, I note that rows without any '1's remain as all zeros. I do manage to place '1's in specific positions as I move up diagonally. By carefully following my rules about stopping at non-zero cells and keeping boundaries in mind, I get the final grid ready. It’s looking good and ready to be structured in JSON format!
+
+Rule: For every cell that contains a 1, keep it and continue placing 1s one step up and one step to the right (−1 row, +1 column) as long as the target cell is inside the grid and currently 0; stop when the next step would leave the grid or hit a non-zero cell. All other cells stay unchanged.",,1,"The Evaluated Rule captures the essence of extending the blue pixels (1s) diagonally to the top right until a boundary or non-zero cell is encountered, which aligns with the Ground Truth Rule's intent.","For every cell that contains a 1, keep it and continue placing 1s one step up and one step to the right (−1 row, +1 column) as long as the target cell is inside the grid and currently 0; stop when the next step would leave the grid or hit a non-zero cell. All other cells stay unchanged.",1,Correct - Intended,2,0
+2025-07-24T02:15:50,ExtendToBoundary,ExtendToBoundary6,3,medium,1,,0,"0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0
+0 0 0 2 2 2 2 2 0
+0 0 0 2 2 2 2 2 0
+0 0 0 0 0 1 2 2 0
+0 0 0 0 1 0 2 2 0
+0 0 0 1 0 1 2 2 0
+0 0 1 0 1 0 0 0 1
+0 1 0 1 0 0 0 1 0","**Analyzing beam placements**
+
+I'm looking into Row 7's index 7, which shows the output ""0 0 1 0 0 1 2 2 0 0"". I notice there are two instances of 1, one at col 2 and another at col 5, which is relevant. For Row 6's index 6, the output is ""0 0 0 1 0 0 2 2 0 0,"" but it only contains a 1 at col 3. The rule here is that beams stop once they hit a non-zero cell, so the second beam stops at Row 7, col 5, due to a barrier.
+
+**Verifying paths and grid structure**
+
+It seems consistent that the path halts before reaching a cell containing a 2. The first beam continues across the grid but crosses areas associated with 2, appearing at row 3 col 6. However, at row 4 col 5, there's a critical point above the 2's, but since col 5 is to the left of this area, it doesn't cause issues. I find that row 7 has a 1 in col 5 due to the second beam, and I need to confirm my observations about the overall grid structure.
+
+**Updating the grid values**
+
+I've laid out the original grid values for all rows and identified where to place 1's based on the beams. The path stops at certain points, so I need to ensure I'm correctly adding 1's at the specified positions in each row. After adjustments, Row 4 now has a 1 at col 5, Row 6 has two 1's at col 3 and col 5, and Row 7 has 1's at col 2, col 4, and col 8. Finally, I review each row to confirm the updates are accurate and in order.
+
+**Crafting minified JSON**
+
+I need to summarize the edge cases and the final grid into a minified JSON format. For Row 4, the presence of 1 at col 5 is important, while the values in col 6 and col 7 show 2's. 
+
+I’ll create the grid as a multiline string with spaces to separate values and use ""\n"" to embed line breaks appropriately. The rule text will describe how to extend the diagonals from the 1's without overwriting existing values. 
+
+Finally, I’ll format the JSON object as required without any extra spaces or newlines at the end.
+
+Rule: From each existing 1, extend a diagonal of 1s upward and to the right (−1 row, +1 column) until the next step would leave the grid or meet a non-zero cell; leave the rest unchanged.",,1,"The Evaluated Rule captures the essence of extending the blue pixels diagonally to the top right until encountering a boundary or a non-zero cell, which aligns with the Ground Truth Rule's intent.","From each existing 1, extend a diagonal of 1s upward and to the right (−1 row, +1 column) until the next step would leave the grid or meet a non-zero cell; leave the rest unchanged.",1,Correct - Intended,2,0
+2025-07-24T02:13:17,ExtendToBoundary,ExtendToBoundary7,1,medium,1,,0,"5 6 6 6 6 6 6 6 6 6 0 0 0 0
+5 0 0 0 0 0 0 0 0 0 0 0 0 0
+5 0 0 0 0 0 0 0 0 0 0 0 0 0
+5 6 6 6 6 6 6 6 6 6 6 6 6 6
+5 0 0 0 0 0 0 0 0 0 0 0 0 0
+5 0 0 0 0 0 0 0 0 0 0 0 0 0","Rule: Locate the solid wall made of one colour that spans the entire height or width of the grid; it stays unchanged and blocks passage. Every other coloured cell extends a straight line in the perpendicular direction toward that wall, filling all intervening zero cells up to (but not including) the wall.",,1,"The Evaluated Rule describes a similar transformation by allowing colored cells to extend towards a solid wall, which effectively serves the same purpose as extending towards the grey line in the Ground Truth Rule. Both rules involve extending colored pixels until they reach a barrier, albeit the Evaluated Rule specifies a solid wall and includes additional details about filling intervening cells.","Locate the solid wall made of one colour that spans the entire height or width of the grid; it stays unchanged and blocks passage. Every other coloured cell extends a straight line in the perpendicular direction toward that wall, filling all intervening zero cells up to (but not including) the wall.",1,Correct - Intended,2,0
+2025-07-24T02:12:27,ExtendToBoundary,ExtendToBoundary7,2,medium,1,,0,"3 3 3 3 5 0 0 0
+0 0 0 0 5 0 0 0
+0 0 0 0 5 0 0 0
+0 0 0 0 5 0 0 0
+0 0 0 0 5 3 3 3
+0 0 0 0 5 0 0 0
+0 0 0 0 5 0 0 0
+0 0 0 0 5 0 0 0
+0 0 0 0 5 0 0 0
+0 0 0 3 5 0 0 0
+0 0 0 0 5 0 0 0
+0 0 0 0 5 0 0 0","I'm counting the input example provided, which consists of 17 rows of numbers. There's a clear horizontal line of 5s at row 6, serving as a barrier across all columns. Additionally, there are two positions of 3 located at row 3 and column 3. It's interesting to note how the arrangement creates a visual distinction, highlighting both the 5s and 3s. I wonder how this could be relevant to the task at hand, perhaps for a pattern recognition or data analysis exercise.
+
+I'm analyzing the grid output where I've noted the rows and columns. The vertical lines of 3s connect to the horizontal 5s, and it seems like row 3 still has its 3 intact. I see some possible confusion with indexing, particularly with rows and columns relating to the 5s barrier. I’m counting how the 3s extend downward and stop just above the row of 5s, confirming that they don't overwrite that line. I realize I need to clarify the line count for the output to ensure accuracy.
+
+I'm analyzing the grid alongside barriers and extensions. It seems there are no cells to fill when a 3 is adjacent to a barrier. I’ve checked example rows and confirmed that the filled rows are structured correctly. Based on my observations, I've created a final grid representation of 12 rows, and I've written out each row clearly. I plan to summarize the rules concisely and format the grid in JSON for clarity, using newline characters to create an organized view of the output.
+
+I'm crafting a rule for the grid based on the non-zero colors 3 and 4 adjacent to a barrier represented by color 5. The idea is to extend lines toward this barrier, filling cells in the row or column until I reach the cell right next to the barrier, without overwriting it. It sounds straightforward, but I need to ensure clarity in the rule itself. Finally, I’ll prepare a minified JSON format for this rule to keep everything organized.
+
+Rule: Locate the straight, uninterrupted line made of colour 5; it functions as a wall. If the wall is vertical, each other coloured cell (non-zero, non-5) is extended horizontally toward the wall, overwriting zeros until the square directly beside the wall. If the wall is horizontal, each other coloured cell is extended vertically toward the wall in the same way. The wall itself is never overwritten and every other cell stays as it was.",,1,"The Evaluated Rule describes a similar transformation to the Ground Truth Rule by extending colored cells towards a wall (the grey line) in a specified manner, whether the wall is vertical or horizontal. Although it introduces the concept of a 'wall' and specifies the behavior for color 5, the core functionality of extending colored pixels towards the grey line remains intact.","Locate the straight, uninterrupted line made of colour 5; it functions as a wall. If the wall is vertical, each other coloured cell (non-zero, non-5) is extended horizontally toward the wall, overwriting zeros until the square directly beside the wall. If the wall is horizontal, each other coloured cell is extended vertically toward the wall in the same way. The wall itself is never overwritten and every other cell stays as it was.",1,Correct - Intended,2,0
+2025-07-24T02:14:14,ExtendToBoundary,ExtendToBoundary7,3,medium,1,,0,"0 0 0 0 5 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 5 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 5 7 7 7 7 7 7 7 7 7 7
+0 0 7 7 7 7 7 5 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 5 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 5 0 0 0 0 0 0 0","**Clarifying color projections**
+
+In example one, I see that the primary line is vertical with anchors on the left and right, creating perpendicular directions. In example two, the line is horizontal and anchors are above and below, leading to vertical lines. The key rule here is to create orthogonal projections from the secondary color anchors to the primary color line, filling along the path in a perpendicular direction until reaching the adjacent cell next to the primary line without overlapping it.
+
+**Defining color lines**
+
+I need to clarify how to identify primary and secondary colors. In my examples, the primary color is represented as 5, while secondary colors are 4 and 3. The primary color shows up more often and appears to form the longest line. A helpful rule could be to identify any color that occurs more than once as primary. 
+
+For the test input on a 6x17 grid, I see a diagonal line of 5s. I’ll refine the rules to consider diagonal arrangements and how to fill paths towards that line based on the secondary color (7s) locations.
+
+**Defining paths to fill**
+
+I'm trying to define the path for filling cells based on the primary and secondary colors. For diagonal lines, the perpendicular direction is another diagonal with slope -1. However, I might consider a Manhattan path, following rows and columns that intersect the diagonal.
+
+In my examples, I see how the path relates to the alignment of the grid. For anchors, the rule could be to fill along the same row or column towards the nearest primary color cell, stopping before touching the primary line to maintain clarity in the grid.
+
+Rule: A single colour (here 5) already forms one straight, uninterrupted line. Every occurrence of any other colour is an ‘anchor’. For each anchor look along its row and, if that row contains a cell of the line-colour with nothing but 0’s in between, paint its own colour into every 0 up to (but not including) the line-colour. If the anchor’s row does not contain the line-colour but its column does, do the same down the column. No cell of the line-colour is overwritten.",,1,"The Evaluated Rule introduces the concept of anchors and focuses on painting colors based on the presence of a line-color in the same row or column, which diverges from the original intent of extending colored pixels towards a grey line. The Ground Truth Rule emphasizes extending colors directly towards the grey line, while the Evaluated Rule adds conditions and does not directly address the extension towards the grey line.","A single colour (here 5) already forms one straight, uninterrupted line. Every occurrence of any other colour is an ‘anchor’. For each anchor look along its row and, if that row contains a cell of the line-colour with nothing but 0’s in between, paint its own colour into every 0 up to (but not including) the line-colour. If the anchor’s row does not contain the line-colour but its column does, do the same down the column. No cell of the line-colour is overwritten.",1,Correct - Intended,2,0
+2025-07-24T02:12:43,ExtendToBoundary,ExtendToBoundary8,1,medium,1,,0,"0 8 8 8 8 8 8 8 8 8 8 8 0 0 0
+0 8 0 2 0 0 0 0 0 0 0 8 0 0 0
+0 8 0 2 0 0 0 0 0 0 0 8 0 0 0
+0 8 0 2 0 0 0 0 0 0 0 8 0 0 0
+0 8 2 2 2 2 2 2 2 2 2 8 0 0 0
+0 8 0 2 0 0 0 0 0 0 0 8 0 0 0
+0 8 0 2 0 0 0 0 0 0 0 8 0 0 0
+0 8 0 2 0 0 0 0 0 0 0 8 0 0 0
+0 8 0 2 0 0 0 0 0 0 0 8 0 0 0
+0 8 0 2 0 0 0 0 0 0 0 8 0 0 0
+0 8 0 2 0 0 0 0 0 0 0 8 0 0 0
+0 8 0 2 0 0 0 0 0 0 0 8 0 0 0
+0 8 8 8 8 8 8 8 8 8 8 8 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0","**Deducing matrix rules**
+
+I need to figure out the rule for a given input. For the example of a 14x14 matrix, I see that it has an outer border of zeros. The first row has 14 zeros, confirming the size. Inside, there's a rectangle formed by threes. The top and bottom rows of this rectangle are at index 1 and 12. There’s also a fourth element located at row 10, column 7. I’ll analyze how these numbers fill a central vertical line of fours.
+
+**Analyzing grid structure**
+
+Let's break down the grid row by row. Row 0 has all zeros, while Row 1 has zeros at the edges and threes in columns 1 through 12. Rows 2 to 9 share a similar pattern, with zeroes and threes in specific columns. Row 10 stands out with a single 4 at column 7. 
+
+Looking closely at Row 10, it shifts significantly in output to show a horizontal line of 4s from columns 2 to 11. This suggests that a single 4 transformed into a plus shape. I'll review this structure further.
+
+**Examining the cross pattern**
+
+I see a vertical line of 4s in column 7, extending from row 2 to row 11, creating a cross centered around the original 4. This cross spreads outwards until it hits the borders of 3s. Now, let’s test input 2 with a grid of 6 rows by 20 columns. There's a 6 located at row 3, column 13, and a rectangular frame of 1s forms around it.
+
+In the output, rows 1 and 2 include the original 6, while row 3 shows a horizontal line of 6s from column 2 to 17, leaving columns 1 and 18 as frame edges. The vertical line extends up to row 1, halting at the 1 in row 0. The vertical span also proceeds downward to row 4, within the frame.
+
+**Constructing grid structure and rules**
+
+I've outlined the grid with 14 rows and each row containing 15 elements. The task is to establish a rule that says, ""Extend the unique interior color horizontally and vertically until it hits the frame color, forming a cross."" 
+
+Next, I will create a JSON object for this grid, ensuring that I include newline characters and spaces correctly. The final grid will be formatted as a string, preserving spaces and using `\n` to represent line breaks while ensuring it’s minified with no spaces outside.
+
+Rule: Draw a cross of the lone interior color by extending it horizontally and vertically until just before the border color inside the frame",,1,"The Evaluated Rule specifies drawing a cross of the interior color and stopping just before the border color, which introduces a limitation not present in the Ground Truth Rule. The Ground Truth Rule allows for full extension until touching the surrounding rectangle, while the Evaluated Rule does not.",Draw a cross of the lone interior color by extending it horizontally and vertically until just before the border color inside the frame,1,Correct - Intended,2,0
+2025-07-24T02:16:04,ExtendToBoundary,ExtendToBoundary8,2,medium,1,,0,"0 0 0 0 0 0 0 0
+0 9 9 9 9 9 9 0
+0 9 0 0 3 0 9 0
+0 9 0 0 3 0 9 0
+0 9 0 0 3 0 9 0
+0 9 0 0 3 0 9 0
+0 9 0 0 3 0 9 0
+0 9 3 3 3 3 9 0
+0 9 0 0 3 0 9 0
+0 9 0 0 3 0 9 0
+0 9 0 0 3 0 9 0
+0 9 0 0 3 0 9 0
+0 9 0 0 3 0 9 0
+0 9 0 0 3 0 9 0
+0 9 9 9 9 9 9 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0","**Clarifying rectangle boundaries**
+
+I'm realizing the input has 17 rows, which is great! This means the rectangle encloses rows 1 to 14 and columns 1 to 6. I want to extend the row of 3 across horizontally within this rectangle, so I’ll focus on row 7 (index 7) and columns 2 to 5. 
+
+I see that the top border, row 1, consists of a sequence of six 9's, confirming that my interior columns are indeed 2 to 5, while the interior rows run from 2 to 13. The single 3 is at row 7, column 4.
+
+**Filling the grid**
+
+I’m extending the horizontal row on row 7 across the interior columns 2 to 5. I also need to extend vertically down column 4 from rows 2 to 13. So, I'll place 3s in those positions: row 7, columns 2 to 5, and column 4 across rows 2 to 13. The original zeros in these areas will become 3s, but I’ll keep the outer zeros intact. 
+
+I’ll build my final 17-row by 8-column grid accordingly based on the original input.
+
+**Crafting the final grid**
+
+I’m setting column 4 to 3 for rows 2 through 13. Row 0 and Row 1 remain unchanged as borders. Row 2 now reads 0 9 0 0 3 0 9 0. Rows 3 to 6 become identical, having 3 in column 4 as well. 
+
+For Row 7, I’m filling in columns 2 to 5 with 3s. Row 14 stays the same since it’s a border, and Rows 15 and 16 remain as zeros. Now, I’ll prepare the grid as a string while summarizing the transformation rule for the JSON output. Let’s make it clear and concise!
+
+**Constructing the grid string**
+
+I’m putting together the grid string, starting with each row: Row 0 is ""0 0 0 0 0 0 0 0"", and moving down, Row 1 is ""0 9 9 9 9 9 9 0"". Rows 2 through 13 have ""0 9 0 0 3 0 9 0"" except for Row 7, which has ""0 9 3 3 3 3 9 0"". Row 14 remains ""0 9 9 9 9 9 9 0"", while Rows 15 and 16 are ""0 0 0 0 0 0 0 0"". Now, I just need to concatenate these with newline separators and prepare the final JSON!
+
+Rule: Inside the rectangular frame made of the predominant non-zero colour, locate the single interior cell of a different colour and extend that cell’s colour horizontally and vertically until, but not including, the frame, forming a cross.",,1,"The Evaluated Rule specifies extending only a single interior cell of a different color, while the Ground Truth Rule involves extending the pixel inside the rectangle shape regardless of color. This fundamental difference in the scope of the transformation leads to a different outcome, making the Evaluated Rule incorrect.","Inside the rectangular frame made of the predominant non-zero colour, locate the single interior cell of a different colour and extend that cell’s colour horizontally and vertically until, but not including, the frame, forming a cross.",1,Correct - Intended,2,0
+2025-07-24T02:18:03,ExtendToBoundary,ExtendToBoundary8,3,medium,1,,0,"0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0
+0 0 7 0 7 0 7 0 7 0 0 0
+0 7 0 7 5 7 0 7 0 7 0 0
+7 0 0 0 5 0 0 0 0 0 7 0
+0 7 5 5 5 5 5 5 5 7 0 0
+7 0 0 0 5 0 0 0 0 0 7 0
+0 7 0 0 5 0 0 0 0 7 0 0
+7 0 0 0 5 0 0 0 0 0 7 0
+0 7 0 7 5 7 0 7 0 7 0 0
+0 0 7 0 7 0 7 0 7 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0","**Understanding transformation rules**
+
+I need to figure out the transformation rules from the input to output based on two examples. In Example 1, the input is a 14x14 grid with a zero border. There’s an outer square of color 3 creating a border in the rectangle. The interior consists of zeros, and there’s one colored cell 4 at row 10, column 7. So, row 10 means the 11th row. The output keeps the outer border unchanged. I need to analyze all of this to identify the rules.
+
+**Analyzing output structure**
+
+In the output, there's a vertical line of 4s at column 7 from rows 2 to 9. Row 2 shows ""0 3 0 0 0 0 0 4 0 0 0 0 3 0,"" highlighting the 4 at column 7. Then row 10 becomes ""0 3 4 4 4 4 4 4 4 4 4 4 3 0,"" changing from the original. The transformation creates a horizontal line across row 10 while keeping the 4s. So, there's a plus sign shape formed by the intersecting lines of 4s, keeping it within the outer border of 3s.
+
+Rule: Inside a single-colour closed border there is exactly one differently coloured interior cell. Paint that cell’s colour across its entire row and column inside the border, stopping just before the border cells.",,1,"The Evaluated Rule specifies painting a single differently colored interior cell's color across its entire row and column, which is a different transformation than extending the pixel inside the rectangle shape until it touches the surrounding rectangle. The core functionality of the transformations is not equivalent.","Inside a single-colour closed border there is exactly one differently coloured interior cell. Paint that cell’s colour across its entire row and column inside the border, stopping just before the border cells.",1,Correct - Intended,2,0
+2025-07-24T02:20:00,ExtendToBoundary,ExtendToBoundary9,1,medium,1,,0,"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 8 8 8 8 8 8 8 8 8 8 8 8 0 0
+0 0 0 8 0 0 4 4 0 0 0 0 0 0 8 0 0
+0 0 0 8 0 0 4 4 0 0 0 0 0 0 8 0 0
+0 0 0 8 0 0 4 4 0 0 0 0 0 0 8 0 0
+0 0 0 8 0 0 4 4 0 0 0 0 0 0 8 0 0
+0 0 0 8 4 4 4 4 4 4 4 4 4 4 8 0 0
+0 0 0 8 4 4 4 4 4 4 4 4 4 4 8 0 0
+0 0 0 8 0 0 4 4 0 0 0 0 0 0 8 0 0
+0 0 0 8 0 0 4 4 0 0 0 0 0 0 8 0 0
+0 0 0 8 0 0 4 4 0 0 0 0 0 0 8 0 0
+0 0 0 8 0 0 4 4 0 0 0 0 0 0 8 0 0
+0 0 0 8 8 8 8 8 8 8 8 8 8 8 8 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0","**Examining transformation rules**
+
+I’m trying to understand the transformation rule for a grid with a colored border and a central filled area. The outer frame color might be 3, 4, or 6, while the inner area is different colors like 2, 5, or 7. The output seems to indicate filled inner areas based on a pattern. Let’s look at Example 1: there’s a rectangular border of color 3, leaving a hole filled with color 2s forming a small cluster. I’m curious about how the edges factor in.
+
+**Analyzing output patterns**
+
+I’m observing that the cluster of 2s in Example 1 appears primarily in rows 3-5. Specifically, row 4 displays a pattern where color 3 forms a border, with a 3x3 cluster of 2s in the center. The output fills this inner area with additional 2s, particularly horizontally across columns in rows 3-5. However, it seems unchanged for row 2 and some rows below, suggesting that filling occurs only where vertical clusters originally existed, while preserving other patterns. I'm curious about how this filling works.
+
+**Re-evaluating grid examples**
+
+Let's take a closer look at Example 1. The grid has 11 rows and 18 columns, with a border of color 3 across row 1. The cluster of 2s appears from rows 3-5, and there are vertical stripes of 2s in columns 7-9 across rows 2-8, which matches the vertical extension. 
+
+In Example 3, while I initially thought there was a rectangular border of color 6, the grid instead has a diamond pattern. It includes a central cluster of 7s, which could expand horizontally in the transformation rule. Row 5 shows a filled area of 7s, indicating this pattern!
+
+Rule: Extend the inner colour horizontally across every row it occupies and vertically across every column it occupies, filling background cells until the frame colour is met and without overwriting existing non-background cells.",,0,"The Evaluated Rule captures the essence of the Ground Truth Rule by extending the inner shape in both horizontal and vertical directions until it meets the surrounding shape, while also ensuring that existing non-background cells are not overwritten. The additional specification about filling background cells does not change the fundamental transformation being described.","Extend the inner colour horizontally across every row it occupies and vertically across every column it occupies, filling background cells until the frame colour is met and without overwriting existing non-background cells.",1,Incorrect,2,0
+2025-07-24T02:20:19,ExtendToBoundary,ExtendToBoundary9,2,medium,0,mismatch,0,"0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 2 0 0 0 0 0 0
+0 0 0 0 2 3 2 0 0 0 0 0
+0 0 0 2 0 3 3 2 0 0 0 0
+0 0 2 0 3 3 3 3 2 0 0 0
+0 0 0 2 3 3 3 3 0 2 0 0
+0 0 0 0 2 3 3 0 2 0 0 0
+0 0 0 0 0 2 3 2 0 0 0 0
+0 0 0 0 0 0 2 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0","**Examining expansion patterns**
+
+It seems the small 3x3 block expands to fill a larger square while staying within its rectangular area. However, it looks like only certain rows, specifically row 2 and row 6, remain just three wide. This makes me think the expansion might create a diamond shape. I should check Example 2 for clarity. In this case, there’s a 15x16 grid with a border of 4's surrounding mostly zeros, except for a small 2x2 block of 5's in the lower right. The output shows that the 5’s are expanded but don't fill the entire interior, forming a cross pattern instead.
+
+**Analyzing row expansions**
+
+In row 8, the output shows a complete fill with 5's across columns 3 to 12, and row 9 looks similar. For row 10, only columns 10 and 11 are filled. This indicates that the expansion happens primarily in the center rows where the block originally exists. Looking back at Example 1, there was horizontal expansion in rows 3 to 5 to include color 2 across columns 5 to 12. I seem to observe a rule: for each row containing cells of a new color, I fill the entire interior width of that row, keeping vertical dimensions the same.
+
+**Clarifying rules of expansion**
+
+I see that row 2 contains 0's and 3's but initially seemed like it had 2's. After checking the output, row 2 doesn't expand since it doesn't have any 2's. The 3x3 block is actually in rows 3, 4, and 5. The rule appears to be identifying filled interior rows with the fill color and filling the entire width of each such row. Now, Example 3 introduces a diagonal pattern with 6's forming an X shape, and the 7's in the center block are expanded horizontally. It looks like the 7's fill the spaces between the 6's.
+
+**Analyzing row expansions**
+
+Looking closely at row 3, it shows zeros at columns 5 and 9, indicating that not all cells between the boundary colors were filled. In row 5, the output reveals that 7's fill the entire region between the boundary 6's, but row 3 has gaps. It seems that the rows intersecting the filled region fill horizontally while maintaining a one-cell gap from the boundary. This rule might apply across other examples too, particularly when forming a diamond shape expanding outward from the center. It appears there's a consistency needed in how far the fill extends while respecting these gaps.
+
+**Understanding fill rules**
+
+I'm analyzing how the rows are filled with values. Rows 3, 4, and 5 originally had certain values, while rows above and below also get filled vertically. It appears there’s a diamond-like pattern where vertical stripes extend across the interior rows, yet horizontal fills are limited to the width of original rows.
+
+The idea is that the interior width determines how far fills can spread, with a maximum dictated by the original row's width, creating a cohesive fill pattern across these rows without extending beyond the original block structure.
+
+Rule: Two colours exist. The most frequent one (frame) outlines a closed figure; the other one (block) sits completely inside it. Build a plus from the block without touching the frame. Horizontal arm: look at every row that already contains a block cell, find the nearest frame cell to its left and to its right, take the largest of all left limits and the smallest of all right limits, then paint those rows with the block colour between those two frame cells (exclusive). Vertical arm: for every column that already contains a block cell, find the first frame cell above the block and the first frame cell below it, then paint that entire column with the block colour between those two frame cells (exclusive). Leave everything else unchanged.",,0,"The Evaluated Rule specifies a method to create a plus shape from the block without touching the frame, which is a different transformation than simply extending the shape inside the other shape until it touches the surrounding shape. The focus on creating a plus shape introduces a specific structure that is not present in the Ground Truth Rule.","Two colours exist. The most frequent one (frame) outlines a closed figure; the other one (block) sits completely inside it. Build a plus from the block without touching the frame. Horizontal arm: look at every row that already contains a block cell, find the nearest frame cell to its left and to its right, take the largest of all left limits and the smallest of all right limits, then paint those rows with the block colour between those two frame cells (exclusive). Vertical arm: for every column that already contains a block cell, find the first frame cell above the block and the first frame cell below it, then paint that entire column with the block colour between those two frame cells (exclusive). Leave everything else unchanged.",1,Incorrect,2,0
+2025-07-24T02:30:10,ExtendToBoundary,ExtendToBoundary9,3,medium,1,,0,"7 7 7 7 7 7
+7 0 7 7 0 7
+7 0 7 7 0 7
+7 0 7 7 0 7
+7 0 7 7 0 7
+7 7 7 7 7 7
+7 7 7 7 7 7
+7 0 7 7 0 7
+7 0 7 7 0 7
+7 0 7 7 0 7
+7 0 7 7 0 7
+7 7 7 7 7 7","**Analyzing filling rules**
+
+I’m considering the rule for filling the largest contiguous region of zeros. It should be adjacent to an inner color cell, but not to the border color. Stepping back, I also think about whether the rule could involve filling zeros in rows containing more than half zeros with the inner color. Examining Example 3, there’s a diagonal border pattern of 6 and a central 3x3 region of 7's that expands to fill a diamond shape. I need to inspect the grid more closely to map the coordinates.
+
+**Examining output patterns**
+
+I'm looking at the output from Example 3 to see how the 7's expand in relation to the 6's that form a symmetrical ring. It seems that the 7's replace zeros diagonally adjacent to the 6's, but I need to analyze it row by row. 
+
+Row 0 remains unchanged, while Row 1 is similar to the input. In Row 2, I see 7's filling gaps between 6's. Subsequent rows show more changes, with 7's expanding into a plus sign or diamond shape. I need to visualize this clearly as I piece it together!
+
+**Exploring fill patterns**
+
+I'm hypothesizing that the border rectangle defines the area and that filler cells inside are reflected horizontally and vertically until the entire interior shape is filled. However, Example 2 shows a vertical/horizontal cross pattern that complicates things. 
+
+I realize I need to consider drawing lines from the filler block to the border edges in all directions. In Example 1, some changes occur based on these lines. I’m trying to confirm how vertical lines only extend downward from the central columns. I’ll need to analyze Example 1's outputs more closely to ensure I'm understanding the fill process correctly.
+
+**Finalizing grid representation**
+
+I'm detailing the fill process based on the previous rows and how the vertical and horizontal fills affect the overall grid. After examining the rows, I see that certain rows remain unchanged while others fill with 7's. Now, I'm preparing the grid as a string of numbers separated by spaces, following the required format with newlines between the rows.
+
+Next, I’m crafting the rule description, highlighting how the inner colored regions extend horizontally and vertically until they reach the nearest non-background cell. Finally, I need to format this into a minified JSON structure. I’m ensuring the representation matches the expected format while including appropriate line breaks within the grid string.
+
+Rule: For any enclosed coloured component (one that does not touch the outer frame), paint background cells with that same colour horizontally on every row where the component appears, extending left and right until the first non-background cell is met, and paint background cells vertically on every column where the component appears, extending upward and downward until the first non-background cell is met. The result is the union of the original grid and these horizontal and vertical extensions.",,0,"The Evaluated Rule describes a process of extending the shape in both horizontal and vertical directions until it encounters a non-background cell, which aligns with the essence of the Ground Truth Rule. Although the Evaluated Rule includes additional details about painting background cells and specifies the color indices, the core transformation of extending the shape until it touches surrounding elements is preserved.","For any enclosed coloured component (one that does not touch the outer frame), paint background cells with that same colour horizontally on every row where the component appears, extending left and right until the first non-background cell is met, and paint background cells vertically on every column where the component appears, extending upward and downward until the first non-background cell is met. The result is the union of the original grid and these horizontal and vertical extensions.",1,Incorrect,2,0
