@@ -22,7 +22,7 @@ nav: false
   <div><sup>a</sup> Santa Fe Institute, 1399 Hyde Park Road, Santa Fe, New Mexico 87501, USA</div>
   <div><sup>b</sup> Indiana University Bloomington, Department of Informatics, Cognitive Science Program, and Center for Possible Minds, 815 E 10th St, Bloomington, Indiana 47408, USA</div>
   <div><sup>c</sup> Ndea</div>
-  <div><sup>1</sup> Equal contribution</div>
+  <div><sup>1</sup> To whom correspondence should be addressed. E-mail: <a href="mailto:mm@santafe.edu">mm@santafe.edu</a>, <a href="mailto:jacobf@iu.edu">jacobf@iu.edu</a></div>
 </div>
 
 <div class="paper-abstract">
