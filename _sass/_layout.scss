@@ -6,6 +6,7 @@ body {
   padding-bottom: 70px;
   color: var(--global-text-color);
   background-color: var(--global-bg-color);
+  font-family: "Source Sans 3", "Source Sans Pro", system-ui, sans-serif;
 
   h1,
   h2,
@@ -14,6 +15,7 @@ body {
   h5,
   h6 {
     scroll-margin-top: 66px;
+    font-family: "Source Serif 4", "Source Serif Pro", Georgia, serif;
   }
 }
 

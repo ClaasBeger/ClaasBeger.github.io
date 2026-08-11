@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: Santa Fe Institute
+subtitle: Research Scientist, Stealth Startup
 
 profile:
   align: right
@@ -19,4 +19,4 @@ announcements:
 
 ---
 
-I am currently a Graduate Fellow at Santa Fe Institute, doing research on multimodal reasoning under Professor [Melanie Mitchell](https://melaniemitchell.me/). Prior to that I finished my Master's in Computer Science at Cornell University, where I worked with [Kevin Ellis](https://www.cs.cornell.edu/~ellisk/), [Kilian Weinberger](https://www.cs.cornell.edu/~kilian/) and [Saikat Dutta](https://www.cs.cornell.edu/~saikatd/). My research interest centers broadly around Human-like Artificial Intelligence. For this purpose, I think it is the most promising direction to look towards Natural Intelligence, both with regard to the brain and psychology/cognition.
+I am currently a Research Scientist at a stealth startup in New York City. Previously, I was a Graduate Fellow at the Santa Fe Institute, where I worked on multimodal reasoning with Professor [Melanie Mitchell](https://melaniemitchell.me/). Prior to that I finished my Master's in Computer Science at Cornell University, where I worked with [Kevin Ellis](https://www.cs.cornell.edu/~ellisk/), [Kilian Weinberger](https://www.cs.cornell.edu/~kilian/) and [Saikat Dutta](https://www.cs.cornell.edu/~saikatd/). My research interest centers broadly around Human-like Artificial Intelligence. For this purpose, I think it is the most promising direction to look towards Natural Intelligence, both with regard to the brain and psychology/cognition.
