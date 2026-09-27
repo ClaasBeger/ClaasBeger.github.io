@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Started as a Research Scientist at a stealth startup in New York City.
+Joined a Stealth Startup as a Research Scientist in New York.
