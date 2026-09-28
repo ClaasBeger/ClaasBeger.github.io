@@ -439,6 +439,47 @@ ul.task-list input[type="checkbox"] {
   .contact-note {
     font-size: 0.8rem;
   }
+
+  // Compact row of icons placed directly under the bio
+  &.social-compact {
+    text-align: left;
+    margin: 0.75rem 0 1.5rem;
+
+    .contact-icons {
+      font-size: 1.5rem;
+
+      a {
+        margin-right: 0.6rem;
+
+        img {
+          width: 1.4rem;
+          height: 1.4rem;
+          margin-bottom: 0;
+        }
+
+        svg {
+          width: 1.5rem;
+          height: 1.5rem;
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .contact-note {
+      color: var(--global-text-color-light);
+      margin-top: 0.25rem;
+    }
+  }
+}
+
+// News table: Bootstrap's .table sets a fixed dark text color, which is unreadable in dark mode
+.news .table {
+  color: var(--global-text-color);
+
+  th {
+    color: var(--global-text-color);
+    white-space: nowrap;
+  }
 }
 
 .wechat-modal {
@@ -474,6 +515,7 @@ ul.task-list input[type="checkbox"] {
 // Footer
 footer.fixed-bottom {
   background-color: var(--global-footer-bg-color);
+  border-top: 1px solid var(--global-divider-color);
   font-size: 0.75rem;
 
   .container {
