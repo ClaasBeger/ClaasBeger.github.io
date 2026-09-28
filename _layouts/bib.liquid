@@ -44,7 +44,12 @@
           {% endif %}
           {% if entry.award_ribbon %}
             {% assign ribbon_path = entry.award_ribbon | prepend: '/assets/img/publication_preview/' %}
-            <img class="award-ribbon" src="{{ ribbon_path | relative_url }}" alt="Award ribbon" style="position: absolute; top: 0; right: 0; width: 40%; max-width: 80px; z-index: 10; pointer-events: none;">
+            <img
+              class="award-ribbon"
+              src="{{ ribbon_path | relative_url }}"
+              alt="Award ribbon"
+              style="position: absolute; top: 0; right: 0; width: 40%; max-width: 80px; z-index: 10; pointer-events: none;"
+            >
           {% endif %}
         </div>
       {% endif %}
@@ -203,7 +208,10 @@
 
     <!-- TLDR -->
     {% if entry.tldr %}
-      <div class="tldr-box" style="background-color: var(--global-card-bg-color); border-left: 3px solid var(--global-theme-color); border: 1px solid var(--global-divider-color); border-left-width: 3px; padding: 0.75rem 1rem; margin: 0.75rem 0; border-radius: 4px; font-size: 0.9rem; line-height: 1.5; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+      <div
+        class="tldr-box"
+        style="background-color: var(--global-card-bg-color); border-left: 3px solid var(--global-theme-color); border: 1px solid var(--global-divider-color); border-left-width: 3px; padding: 0.75rem 1rem; margin: 0.75rem 0; border-radius: 4px; font-size: 0.9rem; line-height: 1.5; box-shadow: 0 1px 3px rgba(0,0,0,0.1);"
+      >
         <strong style="color: var(--global-theme-color);">TLDR:</strong> <span style="color: var(--global-text-color);">{{ entry.tldr }}</span>
       </div>
     {% endif %}
@@ -381,7 +389,7 @@
       <div class="bibtex hidden">
         {% highlight bibtex %}
         {{- entry.bibtex | hideCustomBibtex -}}
-        {% endhighlight %}
+      {% endhighlight %}
       </div>
     {% endif %}
 

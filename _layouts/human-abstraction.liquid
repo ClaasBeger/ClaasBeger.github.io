@@ -80,13 +80,17 @@
     {% if site.footer_fixed %}
       <footer class="fixed-bottom" role="contentinfo">
         <div class="container mt-0 text-center">
-          &copy; Copyright {{ site.time | date: '%Y' }} {{ site.first_name }} {{ site.last_name }}.
+          &copy; Copyright {{ site.time | date: '%Y' }}
+          {{ site.first_name }}
+          {{ site.last_name }}.
         </div>
       </footer>
     {% else %}
       <footer class="sticky-bottom mt-5" role="contentinfo">
         <div class="container text-center">
-          &copy; Copyright {{ site.time | date: '%Y' }} {{ site.first_name }} {{ site.last_name }}.
+          &copy; Copyright {{ site.time | date: '%Y' }}
+          {{ site.first_name }}
+          {{ site.last_name }}.
         </div>
       </footer>
     {% endif %}
@@ -99,7 +103,7 @@
             cellSize: 34,
             maxCellSize: 64,
             minCellSize: 8,
-            dataRoot: '{{ "/assets/conceptarc" | relative_url }}'
+            dataRoot: '{{ "/assets/conceptarc" | relative_url }}',
           });
         } catch (e) {
           console.error('Visualizer init error:', e);

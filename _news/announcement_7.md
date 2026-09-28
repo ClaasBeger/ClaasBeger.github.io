@@ -7,4 +7,3 @@ related_posts: false
 
 "A Neuroscience-Inspired Dual-Process Model of Compositional Generalization" accepted at Neurips Workshop [Interpreting Cognition
 in Deep Learning Models](https://coginterp.github.io/neurips2025/)!
-

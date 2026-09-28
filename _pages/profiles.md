@@ -8,7 +8,7 @@ nav_order: 7
 ---
 
 {% if site.data.people.profiles.size > 0 %}
-  {% for person in site.data.people.profiles %}
+{% for person in site.data.people.profiles %}
   <div class="profile" style="text-align: {{ person.align }}">
       <img src="{{ person.image }}" {% if person.image_circular %}style="border-radius: 50%;"{% endif %}>
       <div class="profile-content">

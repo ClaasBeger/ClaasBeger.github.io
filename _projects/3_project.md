@@ -44,6 +44,7 @@ Our team developed a progressive web application that works seamlessly across bo
 ### Entrepreneurial Experience
 
 Beyond the technical development, this project provided valuable experience in:
+
 - Market research and product validation
 - Business model development
 - Pitching to potential investors

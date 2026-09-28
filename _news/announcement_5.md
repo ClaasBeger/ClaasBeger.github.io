@@ -5,5 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Our new project *Citegeist: Automated Related Work Generation* has won the Faculty Prize of the Statistics and Data Science Department at the [Bits on our Mind Project competition at Cornell](https://cis.cornell.edu/about/outreach-events/boom-bits-our-minds/awards/boom-2025-award-recipients)!
-
+Our new project _Citegeist: Automated Related Work Generation_ has won the Faculty Prize of the Statistics and Data Science Department at the [Bits on our Mind Project competition at Cornell](https://bowers.cornell.edu/about/outreach-events/boom-bits-our-minds/awards)!

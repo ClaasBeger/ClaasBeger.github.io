@@ -46,4 +46,4 @@ Working in close collaboration with industry professionals from Siemens, our tea
 
 The practical experience gained through this industry collaboration provided valuable insights into developing enterprise-grade applications that meet rigorous industry standards.
 
-For more information about this project, including detailed design reviews and client acceptance tests, visit the [applied software engineering group website](https://ase.cit.tum.de/projects/ipraktikum/22w/siemens/).
+For more information about the iPraktikum course, visit the [course website](https://aet.cit.tum.de/projects/ipraktikum/).

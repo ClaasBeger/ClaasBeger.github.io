@@ -6,4 +6,3 @@ related_posts: false
 ---
 
 "Refining Inverse Constitutional AI for Dataset Validation under the EU AI Act" accepted at NeurIPS Workshop [Regulatable Machine Learning](https://regulatableml.github.io/)!
-
