@@ -3,37 +3,118 @@
   contents:
     - name: Full Name
       value: Claas Beger
-    - name: Date of Birth
-      value: 
+    - name: Location
+      value: New York, New York
     - name: Languages
       value: English, German
 
 - title: Education
   type: time_table
   contents:
-    # Add your education history here
+    - title: MEng in Computer Science
+      institution: Cornell University
+      year: 2024 – 2025
+      location: Ithaca, NY
+      description:
+        - "GPA: 4.21/4.3"
+    - title: Exchange Semester, Computer Science
+      institution: Hong Kong University of Science and Technology
+      year: 2022
+      location: Hong Kong
+      description:
+        - "GPA: 4.1/4.3"
+    - title: BS in Information Systems
+      institution: Technical University of Munich
+      year: 2019 – 2024
+      location: Munich, Germany
+      description:
+        - "GPA: 3.7/4.0"
 
 - title: Experience
   type: time_table
   contents:
-    # Add your work experience here
-
-- title: Open Source Projects
-  type: time_table
-  contents:
-    # Add your open source projects here
+    - title: Research Scientist
+      institution: Stealth Startup
+      year: 2026 – now
+      location: New York, NY
+      description:
+        - Developing label-free distillation methods for training models without human-annotated supervision.
+        - Building evaluations that characterize jagged intelligence, i.e. uneven capability profiles across tasks.
+    - title: Graduate Fellow
+      institution: Santa Fe Institute
+      year: 2025 – 2026
+      location: Santa Fe, NM
+      description:
+        - Researched multimodal abstract reasoning in AI models under Professor Melanie Mitchell.
+        - Designed evaluation benchmarks and analysis pipelines for scientific reasoning with Sandia National Laboratories.
+    - title: Graduate Teaching and Research Specialist
+      institution: Cornell University
+      year: 2025
+      location: Ithaca, NY
+      description:
+        - Co-designed assignments, projects, and exams for Introduction to Machine Learning.
+        - Graded and provided feedback on students' work; held office hours for Q&A.
+    - title: Responsible AI Engineering Intern
+      institution: PwC
+      year: 2022 – 2023
+      location: Munich, Germany
+      description:
+        - Integrated SHAP and LIME into an explainable AI interface for TensorFlow, PyTorch, and sklearn models.
+        - Co-authored and presented a white paper at Bitkom Big Data & AI Summit Berlin 2022.
+    - title: Financial Technologies SWE Intern
+      institution: Deutsche Bank
+      year: 2021 – 2022
+      location: Frankfurt, Germany
+      description:
+        - Developed microservices in Python and Java (Spring Boot) on Red Hat OpenShift.
+        - Managed database migration and analysis workflows using Flywaydb, JDBC, JPA, and PostgreSQL.
+        - Collaborated with teams to integrate services into trading and risk management systems.
+    - title: Research Assistant
+      institution: Institute of Computational Biology Munich
+      year: 2020 – 2021
+      location: Munich, Germany
+      description:
+        - Built neural networks for classification and clustering of 20+ million single-cell samples using TensorFlow and Keras.
+        - Developed autoencoders to generate synthetic diabetic cell samples to augment datasets.
+        - Processed and visualized biological data in collaboration with computational biologists.
+    - title: Teaching Assistant
+      institution: TU Munich, Chairs of Information Systems and Applied Software Engineering
+      year: 2020 – 2021
+      location: Munich, Germany
+      description:
+        - Led weekly tutorials on software engineering, design patterns, model-based engineering, and information systems.
+        - Developed exam questions, assisted with grading and lecture preparation, and held office hours for student support.
 
 - title: Honors and Awards
   type: time_table
   contents:
-    # Add your awards and honors here
+    - year: 2026
+      title: Diverse Intelligences Fellowship (6000 USD)
+      institution: Natural and Artificial Minds Initiative, Princeton University
+    - year: 2025
+      title: Poster Award, Society for Philosophy and Psychology (300 USD)
+      institution: 51st Annual Meeting of the SPP
+      description:
+        - 'Awarded for "Towards AI Collaborators: Exploring Goal, Value, and Role-Based Alignment in AI."'
+    - year: 2025
+      title: Spotlight Presentation, NeurIPS 2025 Workshop on Multimodal Algorithmic Reasoning
+      description:
+        - For "Investigating Abstraction Capabilities of the o3 Model Using Textual and Visual Modalities."
+    - year: 2025
+      title: Department of Statistics and Data Science Faculty Award (1000 USD)
+      institution: Cornell University
+      description:
+        - Awarded for the research project "Citegeist."
+    - year: 2022
+      title: Dean's List
+      institution: Hong Kong University of Science and Technology
+      description:
+        - Top 5% of the undergraduate student body.
 
-- title: Academic Interests
-  type: nested_list
+- title: Skills
+  type: map
   contents:
-    # Add your research interests here
-
-- title: Other Interests
-  type: list
-  contents:
-    # Add your other interests and hobbies here
+    - name: Technologies
+      value: Python, C++, Java, Swift, vLLM, PyTorch, TensorFlow, peft, DeepSpeed, Pandas, Spring Boot
+    - name: Areas
+      value: Machine Learning, NLP, Computer Vision, Software Engineering, Neuromorphic Algorithms
