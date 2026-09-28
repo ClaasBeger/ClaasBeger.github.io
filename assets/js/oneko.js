@@ -1,6 +1,8 @@
 // oneko.js: https://github.com/adryd325/oneko.js (MIT License, Copyright (c) adryd)
 // Modified: clicking the cat makes it purr and stay put for a while, and the cat lives in page
 // coordinates: it scrolls away with the content and only chases the cursor once scrolling stops.
+// Each visit starts with the cat asleep next to the page title; the first click wakes it up.
+// State is kept in sessionStorage so a new visit starts fresh.
 
 (function oneko() {
   const isReducedMotion =
@@ -21,6 +23,7 @@
   let mouseClientX = 0;
   let mouseClientY = 0;
   let hasMousePos = false;
+  let asleep = true;
   let lastScrollTime = 0;
   const scrollSettleMs = 250;
 
@@ -33,6 +36,34 @@
   const pettingDuration = 10000;
   let pettedUntil = 0;
   let audioCtx = null;
+
+  function storage() {
+    try {
+      return window.sessionStorage;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  // While asleep, the cat curls up just after the page title (or near the top right as a fallback)
+  function placeAtTitle() {
+    const title = document.querySelector(".post-title") || document.querySelector("h1");
+    let x = window.innerWidth - 80;
+    let y = 90;
+    if (title) {
+      const range = document.createRange();
+      range.selectNodeContents(title);
+      const rect = range.getBoundingClientRect();
+      if (rect.width > 0) {
+        x = rect.right + 28;
+        y = rect.bottom - 18;
+      }
+    }
+    nekoPosX = Math.min(Math.max(16, x + window.scrollX), pageWidth() - 16);
+    nekoPosY = Math.max(16, y + window.scrollY);
+    nekoEl.style.left = `${nekoPosX - 16}px`;
+    nekoEl.style.top = `${nekoPosY - 16}px`;
+  }
 
   function pageWidth() {
     return document.documentElement.scrollWidth;
@@ -120,8 +151,12 @@
     }
   
     if (persistPosition) {
-      let storedNeko = JSON.parse(window.localStorage.getItem("oneko"));
-      if (storedNeko !== null) {
+      let storedNeko = null;
+      try {
+        storedNeko = JSON.parse(storage().getItem("oneko"));
+      } catch (e) {}
+      if (storedNeko && storedNeko.asleep === false) {
+        asleep = false;
         nekoPosX = storedNeko.nekoPosX;
         nekoPosY = storedNeko.nekoPosY;
         mousePosX = storedNeko.mousePosX;
@@ -146,7 +181,7 @@
     nekoEl.style.position = "absolute";
     nekoEl.style.pointerEvents = "auto";
     nekoEl.style.cursor = "pointer";
-    nekoEl.title = "Pet the cat";
+    nekoEl.title = asleep ? "Wake the cat" : "Pet the cat";
     nekoEl.style.imageRendering = "pixelated";
     nekoEl.style.left = `${nekoPosX - 16}px`;
     nekoEl.style.top = `${nekoPosY - 16}px`;
@@ -155,8 +190,18 @@
     nekoEl.style.backgroundImage = `url(${nekoFile})`;
     
     document.body.appendChild(nekoEl);
+    if (asleep) {
+      placeAtTitle();
+      setSprite("sleeping", 0);
+    }
 
-    nekoEl.addEventListener("click", pet);
+    nekoEl.addEventListener("click", function () {
+      if (asleep) {
+        wake();
+      } else {
+        pet();
+      }
+    });
 
     document.addEventListener("mousemove", function (event) {
       mouseClientX = event.clientX;
@@ -174,7 +219,11 @@
     
     if (persistPosition) {
       window.addEventListener("beforeunload", function (event) {
-        window.localStorage.setItem("oneko", JSON.stringify({
+        if (asleep) return;
+        const store = storage();
+        if (!store) return;
+        store.setItem("oneko", JSON.stringify({
+          asleep: false,
           nekoPosX: nekoPosX,
           nekoPosY: nekoPosY,
           mousePosX: mousePosX,
@@ -276,12 +325,22 @@
     idleAnimationFrame += 1;
   }
 
+  function wake() {
+    asleep = false;
+    nekoEl.title = "Pet the cat";
+    idleAnimation = null;
+    idleAnimationFrame = 0;
+    idleTime = 10; // look alert for a moment before the first chase
+    setSprite("alert", 0);
+    showBubble("mrrp?", false);
+  }
+
   function pet() {
     pettedUntil = performance.now() + pettingDuration;
     idleAnimation = null;
     idleAnimationFrame = 0;
     purr();
-    showBubble();
+    showBubble("purr", true);
   }
 
   // Synthesized purr: low-passed brown noise, amplitude-modulated at ~25 Hz, in two "breaths"
@@ -337,12 +396,15 @@
     }
   }
 
-  function showBubble() {
+  function showBubble(text, withHeart) {
     const bubble = document.createElement("div");
-    const heart = document.createElement("span");
-    heart.textContent = " \u2665";
-    heart.style.color = "#e25577";
-    bubble.append("purr", heart);
+    bubble.append(text);
+    if (withHeart) {
+      const heart = document.createElement("span");
+      heart.textContent = " \u2665";
+      heart.style.color = "#e25577";
+      bubble.append(heart);
+    }
     bubble.ariaHidden = true;
     Object.assign(bubble.style, {
       position: "absolute",
@@ -370,6 +432,13 @@
 
   function frame() {
     frameCount += 1;
+
+    if (asleep) {
+      // Follow the title if the layout shifts (fonts loading, resizing)
+      placeAtTitle();
+      setSprite("sleeping", Math.floor(frameCount / 4));
+      return;
+    }
 
     if (performance.now() < pettedUntil) {
       // Sit content with eyes closed while purring, then curl up and doze
