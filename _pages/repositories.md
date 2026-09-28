@@ -2,7 +2,7 @@
 layout: page
 permalink: /repositories/
 title: Repositories
-description: An overview of my publicly hosted repositories.
+description: Code for my papers and projects.
 nav: true
 nav_order: 4
 ---

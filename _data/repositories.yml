@@ -1,10 +1,7 @@
-github_users:
-  - ClaasBeger
-
 repo_description_lines_max: 2
 
 github_repos:
   - ClaasBeger/SpikeDecoder
+  - Seal-Research/OmniCode
   - ClaasBeger/StructuralCodeUnderstanding
-  - ClaasBeger/MIRAGE
   - chenneking/citegeist
