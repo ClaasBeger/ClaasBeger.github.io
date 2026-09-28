@@ -1,5 +1,6 @@
 // oneko.js: https://github.com/adryd325/oneko.js (MIT License, Copyright (c) adryd)
-// Modified: clicking the cat makes it purr and stay put for a while.
+// Modified: clicking the cat makes it purr and stay put for a while, and the cat lives in page
+// coordinates: it scrolls away with the content and only chases the cursor once scrolling stops.
 
 (function oneko() {
   const isReducedMotion =
@@ -14,8 +15,14 @@
   let nekoPosX = 32;
   let nekoPosY = 32;
   
+  // Cat and mouse positions are in page (document) coordinates
   let mousePosX = 0;
   let mousePosY = 0;
+  let mouseClientX = 0;
+  let mouseClientY = 0;
+  let hasMousePos = false;
+  let lastScrollTime = 0;
+  const scrollSettleMs = 250;
 
   let frameCount = 0;
   let idleTime = 0;
@@ -26,6 +33,13 @@
   const pettingDuration = 10000;
   let pettedUntil = 0;
   let audioCtx = null;
+
+  function pageWidth() {
+    return document.documentElement.scrollWidth;
+  }
+  function pageHeight() {
+    return document.documentElement.scrollHeight;
+  }
 
   const nekoSpeed = 10;
   const spriteSets = {
@@ -112,6 +126,11 @@
         nekoPosY = storedNeko.nekoPosY;
         mousePosX = storedNeko.mousePosX;
         mousePosY = storedNeko.mousePosY;
+        if (typeof storedNeko.mouseClientX === "number") {
+          mouseClientX = storedNeko.mouseClientX;
+          mouseClientY = storedNeko.mouseClientY;
+          hasMousePos = true;
+        }
         frameCount = storedNeko.frameCount;
         idleTime = storedNeko.idleTime;
         idleAnimation = storedNeko.idleAnimation;
@@ -124,7 +143,7 @@
     nekoEl.ariaHidden = true;
     nekoEl.style.width = "32px";
     nekoEl.style.height = "32px";
-    nekoEl.style.position = "fixed";
+    nekoEl.style.position = "absolute";
     nekoEl.style.pointerEvents = "auto";
     nekoEl.style.cursor = "pointer";
     nekoEl.title = "Pet the cat";
@@ -140,9 +159,18 @@
     nekoEl.addEventListener("click", pet);
 
     document.addEventListener("mousemove", function (event) {
-      mousePosX = event.clientX;
-      mousePosY = event.clientY;
+      mouseClientX = event.clientX;
+      mouseClientY = event.clientY;
+      hasMousePos = true;
     });
+
+    window.addEventListener(
+      "scroll",
+      function () {
+        lastScrollTime = performance.now();
+      },
+      { passive: true }
+    );
     
     if (persistPosition) {
       window.addEventListener("beforeunload", function (event) {
@@ -151,6 +179,8 @@
           nekoPosY: nekoPosY,
           mousePosX: mousePosX,
           mousePosY: mousePosY,
+          mouseClientX: mouseClientX,
+          mouseClientY: mouseClientY,
           frameCount: frameCount,
           idleTime: idleTime,
           idleAnimation: idleAnimation,
@@ -206,10 +236,10 @@
       if (nekoPosY < 32) {
         avalibleIdleAnimations.push("scratchWallN");
       }
-      if (nekoPosX > window.innerWidth - 32) {
+      if (nekoPosX > pageWidth() - 32) {
         avalibleIdleAnimations.push("scratchWallE");
       }
-      if (nekoPosY > window.innerHeight - 32) {
+      if (nekoPosY > pageHeight() - 32) {
         avalibleIdleAnimations.push("scratchWallS");
       }
       idleAnimation =
@@ -315,8 +345,8 @@
     bubble.append("purr", heart);
     bubble.ariaHidden = true;
     Object.assign(bubble.style, {
-      position: "fixed",
-      left: `${Math.min(Math.max(nekoPosX, 40), window.innerWidth - 40)}px`,
+      position: "absolute",
+      left: `${Math.min(Math.max(nekoPosX, 40), pageWidth() - 40)}px`,
       top: `${Math.max(nekoPosY - 34, 4)}px`,
       transform: "translateX(-50%)",
       padding: "1px 6px",
@@ -352,6 +382,15 @@
       return;
     }
 
+    // Stay put while the page is scrolling (or before the cursor has been seen); resume once it settles
+    if (!hasMousePos || performance.now() - lastScrollTime < scrollSettleMs) {
+      idle();
+      return;
+    }
+
+    mousePosX = mouseClientX + window.scrollX;
+    mousePosY = mouseClientY + window.scrollY;
+
     const diffX = nekoPosX - mousePosX;
     const diffY = nekoPosY - mousePosY;
     const distance = Math.sqrt(diffX ** 2 + diffY ** 2);
@@ -382,8 +421,8 @@
     nekoPosX -= (diffX / distance) * nekoSpeed;
     nekoPosY -= (diffY / distance) * nekoSpeed;
 
-    nekoPosX = Math.min(Math.max(16, nekoPosX), window.innerWidth - 16);
-    nekoPosY = Math.min(Math.max(16, nekoPosY), window.innerHeight - 16);
+    nekoPosX = Math.min(Math.max(16, nekoPosX), pageWidth() - 16);
+    nekoPosY = Math.min(Math.max(16, nekoPosY), pageHeight() - 16);
 
     nekoEl.style.left = `${nekoPosX - 16}px`;
     nekoEl.style.top = `${nekoPosY - 16}px`;
