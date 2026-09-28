@@ -59,15 +59,23 @@
       "location": "New York, New York",
       "startDate": "2026-07-01",
       "endDate": null,
-      "summary": ""
+      "summary": "",
+      "highlights": [
+        "Developing label-free distillation methods for training models without human-annotated supervision.",
+        "Building evaluations that characterize jagged intelligence, i.e. uneven capability profiles across tasks."
+      ]
     },
     {
       "name": "Santa Fe Institute",
-      "position": "Postbacc Research Assistant",
+      "position": "Graduate Fellow",
       "location": "Santa Fe, New Mexico",
       "startDate": "2025-06-01",
       "endDate": "2026-06-30",
-      "summary": "Investigating and improving capabilities of current AI systems in multimodal settings on abstraction and reasoning tasks, collaborating with Professor Melanie Mitchell."
+      "summary": "",
+      "highlights": [
+        "Researched multimodal abstract reasoning in AI models under Professor Melanie Mitchell.",
+        "Designed evaluation benchmarks and analysis pipelines for scientific reasoning with Sandia National Laboratories."
+      ]
     },
     {
       "name": "Cornell University",
@@ -75,15 +83,11 @@
       "location": "Ithaca, New York",
       "startDate": "2025-01-01",
       "endDate": "2025-05-01",
-      "summary": "Created and graded exams for the course Introduction to Machine Learning."
-    },
-    {
-      "name": "PwC",
-      "position": "Responsible AI Engineering Intern",
-      "location": "Munich, Bavaria",
-      "startDate": "2022-06-01",
-      "endDate": "2023-01-01",
-      "summary": "Integrated and adapted XAI libraries (SHAP, LIME) into a unified assessment engine compatible with TensorFlow, PyTorch, and scikit-learn. Developed and presented a project white paper at BitKom Big Data & AI Summit Berlin 2022."
+      "summary": "",
+      "highlights": [
+        "Co-designed assignments, projects, and exams for Introduction to Machine Learning.",
+        "Graded and provided feedback on students' work; held office hours for Q&A."
+      ]
     },
     {
       "name": "Siemens",
@@ -91,7 +95,23 @@
       "location": "Munich, Bavaria",
       "startDate": "2022-10-01",
       "endDate": "2023-02-01",
-      "summary": "Developed a decentralized decision-making application for autonomous agents in Swift and built an auctioning algorithm under the strategy pattern to optimally match agents with clients."
+      "summary": "",
+      "highlights": [
+        "Developed a decentralized decision-making iOS application for autonomous agents in Swift.",
+        "Built an auctioning algorithm using the strategy pattern to optimally match agents with clients."
+      ]
+    },
+    {
+      "name": "PwC",
+      "position": "Responsible AI Engineering Intern",
+      "location": "Munich, Bavaria",
+      "startDate": "2022-06-01",
+      "endDate": "2023-01-01",
+      "summary": "",
+      "highlights": [
+        "Integrated SHAP and LIME into an explainable AI interface for TensorFlow, PyTorch, and scikit-learn models.",
+        "Co-authored and presented a white paper at Bitkom Big Data & AI Summit Berlin 2022."
+      ]
     },
     {
       "name": "Deutsche Bank",
@@ -99,121 +119,82 @@
       "location": "Frankfurt, Hessia",
       "startDate": "2021-10-01",
       "endDate": "2022-01-01",
-      "summary": "Created and maintained microservices with Python and Java (SpringBoot) on Fabric (RedHat OpenShift). Migrated and analyzed financial databases using FlywayDB, JDBC, JPA, and PostgreSQL."
+      "summary": "",
+      "highlights": [
+        "Developed microservices in Python and Java (Spring Boot) on Red Hat OpenShift.",
+        "Managed database migration and analysis workflows using Flywaydb, JDBC, JPA, and PostgreSQL.",
+        "Collaborated with teams to integrate services into trading and risk management systems."
+      ]
     },
     {
-      "name": "Helmholtz Center Munich",
+      "name": "Technical University of Munich",
+      "position": "Teaching Assistant",
+      "location": "Munich, Bavaria",
+      "startDate": "2020-10-01",
+      "endDate": "2021-09-01",
+      "summary": "",
+      "highlights": [
+        "Led weekly tutorials on software engineering, design patterns, model-based engineering, and information systems for the Chairs of Information Systems and Applied Software Engineering.",
+        "Developed exam questions, assisted with grading and lecture preparation, and held office hours."
+      ]
+    },
+    {
+      "name": "Institute of Computational Biology, Helmholtz Munich",
       "position": "Research Assistant",
       "location": "Munich, Bavaria",
       "startDate": "2020-09-01",
       "endDate": "2021-06-01",
-      "summary": "Developed neural networks for classification and clustering of over 20 million single cell samples using Python (TensorFlow, Keras, Pandas) and created an autoencoder for generating synthetic diabetic cell samples."
+      "summary": "",
+      "highlights": [
+        "Built neural networks for classification and clustering of 20+ million single-cell samples using TensorFlow and Keras.",
+        "Developed autoencoders to generate synthetic diabetic cell samples to augment datasets."
+      ]
     }
   ],
-  "publications": [
+  "awards": [
     {
-      "name": "Cognitive Science-Inspired Evaluation of Large Language Models",
-      "publisher": "CogSci 2026 Symposium",
-      "releaseDate": "2026-01-01",
-      "url": "",
-      "summary": "Symposium at the Annual Meeting of the Cognitive Science Society (CogSci 2026)."
+      "title": "Diverse Intelligences Fellowship (6000 USD)",
+      "date": "2026-02",
+      "awarder": "Natural and Artificial Minds Initiative, Princeton University",
+      "summary": ""
     },
     {
-      "name": "Bongards at the Boundary of Perception and Reasoning: Programs or Language?",
-      "publisher": "CogSci 2026",
-      "releaseDate": "2026-01-01",
-      "url": "https://arxiv.org/abs/2602.03038",
-      "summary": "Full paper at CogSci 2026. Authors: Cassidy Langenfeld, Claas Beger, Gloria Geng, Wasu Top Piriyakulkij, Keya Hu, Yewen Pu, Kevin Ellis."
+      "title": "Spotlight Presentation",
+      "date": "2025-12",
+      "awarder": "NeurIPS 2025 Workshop on Multimodal Algorithmic Reasoning",
+      "summary": "For \"Investigating Abstraction Capabilities of the o3 Model Using Textual and Visual Modalities.\""
     },
     {
-      "name": "OmniCode: A Benchmark for Evaluating Software Development Agents",
-      "publisher": "ACL 2026 Findings",
-      "releaseDate": "2026-01-01",
-      "url": "https://aclanthology.org/2026.findings-acl.2020/",
-      "summary": "Findings of ACL 2026. Authors: Atharv Sonwane, Eng-Shen Tu, Wei-Chung Lu, Claas Beger, et al."
+      "title": "Poster Award (300 USD)",
+      "date": "2025-06",
+      "awarder": "Society for Philosophy and Psychology",
+      "summary": "For \"Towards AI Collaborators: Exploring Goal, Value, and Role-Based Alignment in AI.\""
     },
     {
-      "name": "Do AI Models Perform Human-like Abstract Reasoning Across Modalities?",
-      "publisher": "arXiv",
-      "releaseDate": "2025-01-01",
-      "url": "https://arxiv.org/abs/2510.02125",
-      "summary": "ArXiv Preprint. Authors: Claas Beger, Ryan Yi, Shuhao Fu, Arseny Moskvichev, Sarah W. Tsai, Sivasankaran Rajamanickam, Melanie Mitchell."
+      "title": "Faculty Award (1000 USD)",
+      "date": "2025-04",
+      "awarder": "Department of Statistics and Data Science, Cornell University",
+      "summary": "For the research project \"Citegeist.\""
     },
     {
-      "name": "A Neuroscience-Inspired Dual-Process Model of Compositional Generalization",
-      "publisher": "NeurIPS 2025 CogInterp Workshop",
-      "releaseDate": "2025-01-01",
-      "url": "https://arxiv.org/abs/2507.18868",
-      "summary": "NeurIPS 2025 Workshop on Interpreting Cognition in Deep Learning Models (CogInterp). Authors: Alex Noviello*, Claas Beger*, Jacob Groner, Kevin Ellis, Weinan Sun."
-    },
-    {
-      "name": "π-CoT: Prolog-Initialized Chain-of-Thought Prompting for Multi-Hop Question-Answering",
-      "publisher": "arXiv",
-      "releaseDate": "2025-01-01",
-      "url": "https://arxiv.org/abs/2506.20642",
-      "summary": "ArXiv Preprint (also known as Memento). Authors: Chao Wan, Albert Gong, Mihir Mishra, Carl-Leander Henneking, Claas Beger, Kilian Q. Weinberger."
-    },
-    {
-      "name": "CoCoNUT: Structural Code Understanding does not fall out of a tree",
-      "publisher": "LLM4Code Workshop at ICSE 2025",
-      "releaseDate": "2025-01-01",
-      "url": "https://ieeexplore.ieee.org/document/11028290",
-      "summary": "LLM4Code Workshop at ICSE 2025. Authors: Claas Beger, Saikat Dutta."
-    },
-    {
-      "name": "Refining Inverse Constitutional AI for Dataset Validation under the EU AI Act",
-      "publisher": "NeurIPS 2025 RegML Workshop",
-      "releaseDate": "2025-01-01",
-      "url": "https://openreview.net/forum?id=4kgWf4DRrd",
-      "summary": "NeurIPS 2025 Workshop on Regulatable Machine Learning (RegML). Authors: Carl-Leander Henneking, Claas Beger."
-    },
-    {
-      "name": "Decoding Human Preferences in Alignment: An Improved Approach to Inverse Constitutional AI",
-      "publisher": "arXiv",
-      "releaseDate": "2025-01-01",
-      "url": "https://arxiv.org/abs/2501.17112",
-      "summary": "ArXiv Preprint. Authors: Carl-Leander Henneking*, Claas Beger*."
-    },
-    {
-      "name": "Citegeist: Automated Generation of Related Work Analysis on the arXiv Corpus",
-      "publisher": "arXiv",
-      "releaseDate": "2025-01-01",
-      "url": "https://arxiv.org/abs/2503.23229",
-      "summary": "ArXiv Preprint. Authors: Claas Beger*, Carl-Leander Henneking*."
+      "title": "Dean's List",
+      "date": "2022-06",
+      "awarder": "Hong Kong University of Science and Technology",
+      "summary": "Top 5% of the undergraduate student body."
     }
   ],
   "skills": [
     {
       "name": "Programming Languages",
-      "keywords": [
-        "Python",
-        "C++",
-        "Java",
-        "Swift",
-        "SQL"
-      ]
+      "keywords": ["Python", "C++", "Java", "Swift", "SQL"]
     },
     {
-      "name": "Frameworks & Tools",
-      "keywords": [
-        "PyTorch",
-        "TensorFlow",
-        "Numpy",
-        "scikit-learn",
-        "Pandas",
-        "SpringBoot"
-      ]
+      "name": "ML Frameworks & Tools",
+      "keywords": ["PyTorch", "vLLM", "peft", "DeepSpeed", "TensorFlow", "Pandas"]
     },
     {
       "name": "Areas",
-      "keywords": [
-        "Machine Learning",
-        "NLP",
-        "Computer Vision",
-        "Software Engineering",
-        "Data Mining",
-        "Technical Presentation"
-      ]
+      "keywords": ["Machine Learning", "NLP", "Computer Vision", "Software Engineering", "Neuromorphic Algorithms"]
     }
   ],
   "languages": [
