@@ -12,3 +12,4 @@ _sass/font-awesome/*.scss
 _sass/tabler-icons/*.scss
 _scripts/search.liquid.js
 assets/conceptarc/data/**
+assets/js/oneko.js

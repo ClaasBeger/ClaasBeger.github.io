@@ -35,6 +35,9 @@ repo_theme_dark: dark # https://github.com/anuraghazra/github-readme-stats/blob/
 github_stats_api_url: https://gh-stats-gilt.vercel.app
 # Custom GitHub profile trophy API URL (leave empty to use default public service)
 github_trophy_api_url: https://github-profile-trophy-liart.vercel.app
+# Small pixel cat that chases the mouse cursor (https://github.com/adryd325/oneko.js)
+oneko: true
+
 repo_trophies:
   enabled: true
   theme_light: flat # https://github.com/ryo-ma/github-profile-trophy
