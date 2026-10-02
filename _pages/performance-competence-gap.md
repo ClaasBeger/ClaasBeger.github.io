@@ -64,17 +64,15 @@ nav: false
 
 <h3>Accuracy and rule correctness diverge</h3>
 <p class="section-desc">We classify the natural-language rule behind each answer as correct-intended (it captures the intended abstraction), correct-unintended (it works on the demonstrations but is an unintended solution), or incorrect. With textual inputs, a sizeable share of the models' correct outputs come with rules that miss the intended abstraction. With visual inputs, output accuracy drops sharply, yet many incorrect outputs come with rules that do capture the intended abstraction.</p>
-<figure class="paper-figure">
-  <img src="{{ '/assets/performance-competence-gap/figures/rule_evaluation_by_modality.png' | relative_url }}" loading="lazy" alt="Stacked bar chart of the percentage of tasks for o3, Claude and Gemini with textual and visual inputs, and for humans, split by correct and incorrect output grid. Each bar is divided into correct-intended, correct-unintended, incorrect and not-classified rules.">
-  <figcaption>Rule classification for tasks with correct and incorrect output grids, as a percentage of the 480 tasks, for o3, Claude Sonnet 4 and Gemini 2.5 Pro (medium effort, with Python tools) with textual and visual inputs, and for human participants. Rules were not collected for humans' incorrect outputs, so these are shown as not classified.</figcaption>
-</figure>
+<div class="paper-figure">
+  {% include figure.liquid path="assets/performance-competence-gap/figures/rule_evaluation_by_modality.png" avoid_scaling=true zoomable=true loading="lazy" alt="Stacked bar chart of the percentage of tasks for o3, Claude and Gemini with textual and visual inputs, and for humans, split by correct and incorrect output grid. Each bar is divided into correct-intended, correct-unintended, incorrect and not-classified rules." caption="Rule classification for tasks with correct and incorrect output grids, as a percentage of the 480 tasks, for o3, Claude Sonnet 4 and Gemini 2.5 Pro (medium effort, with Python tools) with textual and visual inputs, and for human participants. Rules were not collected for humans' incorrect outputs, so these are shown as not classified." %}
+</div>
 
 <h3>Humans describe objects, models describe grids</h3>
 <p class="section-desc">ConceptARC builds on core-knowledge priors such as objectness. Most human rules are phrased in terms of objects, while the models' rules more often focus on colours, individual pixels and other low-level features of the grid.</p>
-<figure class="paper-figure paper-figure-narrow">
-  <img src="{{ '/assets/performance-competence-gap/figures/term_proportions_with_tools.png' | relative_url }}" loading="lazy" alt="Bar chart of the proportion of rules using objectness terms and grid-specific terms. Humans: about 0.89 objectness and 0.14 grid-specific. Claude Sonnet 4, o3 and Gemini 2.5 Pro: about 0.42 to 0.53 objectness and 0.80 to 0.88 grid-specific.">
-  <figcaption>Proportion of rules that use objectness terms and grid-specific terms, for humans and for Claude Sonnet 4, o3 and Gemini 2.5 Pro with Python tools.</figcaption>
-</figure>
+<div class="paper-figure paper-figure-narrow">
+  {% include figure.liquid path="assets/performance-competence-gap/figures/term_proportions_with_tools.png" avoid_scaling=true zoomable=true loading="lazy" alt="Bar chart of the proportion of rules using objectness terms and grid-specific terms. Humans: about 0.89 objectness and 0.14 grid-specific. Claude Sonnet 4, o3 and Gemini 2.5 Pro: about 0.42 to 0.53 objectness and 0.80 to 0.88 grid-specific." caption="Proportion of rules that use objectness terms and grid-specific terms, for humans and for Claude Sonnet 4, o3 and Gemini 2.5 Pro with Python tools." %}
+</div>
 
 <h3>Correct outputs from unintended rules</h3>
 <p class="section-desc">In each example below the model's output matches the ground truth, but its rule does not capture the intended abstraction.</p>
@@ -83,18 +81,15 @@ nav: false
   <button type="button" role="tab" aria-selected="false" data-example="algorithmic">Algorithmic rule</button>
   <button type="button" role="tab" aria-selected="false" data-example="numerical">Numerical encoding</button>
 </div>
-<figure class="paper-figure rule-example" data-example="heuristic">
-  <img src="{{ '/assets/performance-competence-gap/figures/rule_example_heuristic.png' | relative_url }}" loading="lazy" alt="Example task with training examples, the model's rule, the test input, and a correct model output that matches the ground truth.">
-  <figcaption><strong>Heuristic.</strong> The rule picks the colour with the lowest density relative to its bounding box. Generic heuristics like bounding boxes and cell connectivity recur throughout the models' rules.</figcaption>
-</figure>
-<figure class="paper-figure rule-example" data-example="algorithmic" hidden>
-  <img src="{{ '/assets/performance-competence-gap/figures/rule_example_algorithmic.png' | relative_url }}" loading="lazy" alt="Example task with training examples, a long step-by-step model rule, the test input, and a correct model output that matches the ground truth.">
-  <figcaption><strong>Algorithmic rule.</strong> The rule is a step-by-step procedure that removes the background colour and searches for the shortest repeating period in rows and columns.</figcaption>
-</figure>
-<figure class="paper-figure rule-example" data-example="numerical" hidden>
-  <img src="{{ '/assets/performance-competence-gap/figures/rule_example_numerical_encoding.png' | relative_url }}" loading="lazy" alt="Example task where the model's rule refers to the largest non-zero colour in the grid, with the referenced cells highlighted in the training examples and test input.">
-  <figcaption><strong>Numerical encoding.</strong> The rule refers to the &ldquo;largest non-zero colour&rdquo;, relying on the numbers used to encode colours in the textual input.</figcaption>
-</figure>
+<div class="paper-figure rule-example" data-example="heuristic">
+  {% include figure.liquid path="assets/performance-competence-gap/figures/rule_example_heuristic.png" avoid_scaling=true zoomable=true loading="lazy" alt="Example task with training examples, the model's rule, the test input, and a correct model output that matches the ground truth." caption="<strong>Heuristic.</strong> The rule picks the colour with the lowest density relative to its bounding box. Generic heuristics like bounding boxes and cell connectivity recur throughout the models' rules." %}
+</div>
+<div class="paper-figure rule-example" data-example="algorithmic" hidden>
+  {% include figure.liquid path="assets/performance-competence-gap/figures/rule_example_algorithmic.png" avoid_scaling=true zoomable=true loading="lazy" alt="Example task with training examples, a long step-by-step model rule, the test input, and a correct model output that matches the ground truth." caption="<strong>Algorithmic rule.</strong> The rule is a step-by-step procedure that removes the background colour and searches for the shortest repeating period in rows and columns." %}
+</div>
+<div class="paper-figure rule-example" data-example="numerical" hidden>
+  {% include figure.liquid path="assets/performance-competence-gap/figures/rule_example_numerical_encoding.png" avoid_scaling=true zoomable=true loading="lazy" alt="Example task where the model's rule refers to the largest non-zero colour in the grid, with the referenced cells highlighted in the training examples and test input." caption="<strong>Numerical encoding.</strong> The rule refers to the &ldquo;largest non-zero colour&rdquo;, relying on the numbers used to encode colours in the textual input." %}
+</div>
 </section>
 
 <section class="visualizer-section">
