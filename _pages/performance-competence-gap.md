@@ -28,7 +28,7 @@ nav: false
 
 <div class="paper-links">
   <a href="https://arxiv.org/abs/2510.02125" target="_blank" rel="noopener noreferrer"><i class="ai ai-arxiv"></i> arXiv</a>
-  <a href="https://huggingface.co/datasets/AIHumanAbstraction/ConceptARC_Rule_Annotations" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-database"></i> Data</a>
+  <a href="https://huggingface.co/datasets/ClaasBeger/ConceptARC_Rule_Annotations" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-database"></i> Data</a>
 </div>
 
 <div class="paper-abstract">
@@ -98,7 +98,7 @@ nav: false
   <div id="conceptarc-visualizer"></div>
   <p class="dataset-download">
     Full data can be downloaded from
-    <a href="https://huggingface.co/datasets/AIHumanAbstraction/ConceptARC_Rule_Annotations" target="_blank" rel="noopener noreferrer">AIHumanAbstraction/ConceptARC_Rule_Annotations</a>
+    <a href="https://huggingface.co/datasets/ClaasBeger/ConceptARC_Rule_Annotations" target="_blank" rel="noopener noreferrer">ClaasBeger/ConceptARC_Rule_Annotations</a>
     on Hugging Face.
   </p>
 </section>
