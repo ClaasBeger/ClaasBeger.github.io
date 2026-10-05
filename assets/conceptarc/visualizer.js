@@ -462,6 +462,20 @@ class ConceptARCVisualizer {
   }
 
   // ---------- Flexible field accessors ----------
+  // Puzzle name from a human Task path, e.g. "corpus/Center/Center10.json" -> "Center10"
+  taskStem(task) {
+    return String(task || "")
+      .split("/")
+      .pop()
+      .replace(/\.json$/i, "")
+      .trim();
+  }
+
+  // Natural order so Center2 comes before Center10
+  sortPuzzles(puzzles) {
+    return puzzles.sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" }));
+  }
+
   getPuzzleFromRow(row) {
     if (!row) return "";
     if (row.puzzle && row.puzzle.trim()) {
@@ -716,7 +730,7 @@ class ConceptARCVisualizer {
 
   setupStandardNavigation() {
     console.log("Setting up standard navigation");
-    const puzzles = [...new Set(this.data.map((r) => this.getPuzzleFromRow(r)))].filter((p) => p).sort();
+    const puzzles = this.sortPuzzles([...new Set(this.data.map((r) => this.getPuzzleFromRow(r)))].filter((p) => p));
     console.log("Found puzzles:", puzzles);
 
     const puzzleSelect = document.getElementById("puzzle-select");
@@ -780,17 +794,7 @@ class ConceptARCVisualizer {
 
   updateHumanPuzzles() {
     const concept = document.getElementById("concept-select").value;
-    const puzzles = [
-      ...new Set(
-        this.data
-          .filter((r) => r.Task.includes(concept))
-          .map((r) =>
-            r.Task.split("/")
-              .pop()
-              .replace(/\.json$/, "")
-          )
-      ),
-    ].sort();
+    const puzzles = this.sortPuzzles([...new Set(this.data.map((r) => this.taskStem(r.Task)).filter((p) => p.replace(/\d+$/, "") === concept))]);
     const puzzleSelect = document.getElementById("human-puzzle-select");
     puzzleSelect.innerHTML = puzzles.map((p) => `<option value="${p}">${p}</option>`).join("");
 
@@ -802,7 +806,9 @@ class ConceptARCVisualizer {
 
   updateHumanTests() {
     const puzzle = document.getElementById("human-puzzle-select").value;
-    const tests = [...new Set(this.data.filter((r) => r.Task.includes(puzzle)).map((r) => r.Test))].sort((a, b) => parseInt(a) - parseInt(b));
+    const tests = [...new Set(this.data.filter((r) => this.taskStem(r.Task) === puzzle).map((r) => r.Test))].sort(
+      (a, b) => parseInt(a) - parseInt(b)
+    );
     const testSelect = document.getElementById("human-test-select");
     testSelect.innerHTML = tests.map((t) => `<option value="${t}">${t}</option>`).join("");
 
@@ -817,7 +823,7 @@ class ConceptARCVisualizer {
   updateHumans() {
     const puzzle = document.getElementById("human-puzzle-select").value;
     const test = document.getElementById("human-test-select").value;
-    const humans = this.data.filter((r) => r.Task.includes(puzzle) && r.Test === test);
+    const humans = this.data.filter((r) => this.taskStem(r.Task) === puzzle && r.Test === test);
     const humanSelect = document.getElementById("human-select");
     humanSelect.innerHTML = humans.map((_, i) => `<option value="${i}">${i + 1}</option>`).join("");
 
@@ -914,7 +920,7 @@ class ConceptARCVisualizer {
 
     if (!concept || !puzzle || !test) return;
 
-    const humans = this.data.filter((r) => r.Task.includes(puzzle) && r.Test === test);
+    const humans = this.data.filter((r) => this.taskStem(r.Task) === puzzle && r.Test === test);
     if (humanIdx >= humans.length) return;
 
     const row = humans[humanIdx];
@@ -1281,7 +1287,7 @@ class ConceptARCVisualizer {
     }
     const puzzleSel = document.getElementById("puzzle-select");
     if (puzzleSel) {
-      const puzzles = [...new Set(this.data.map((r) => this.getPuzzleFromRow(r)))].filter(Boolean).sort();
+      const puzzles = this.sortPuzzles([...new Set(this.data.map((r) => this.getPuzzleFromRow(r)))].filter(Boolean));
       const curr = puzzleSel.value;
       const idx = puzzles.indexOf(curr);
       if (idx > 0) {
@@ -1333,7 +1339,7 @@ class ConceptARCVisualizer {
     }
     const puzzleSel = document.getElementById("puzzle-select");
     if (puzzleSel) {
-      const puzzles = [...new Set(this.data.map((r) => this.getPuzzleFromRow(r)))].filter(Boolean).sort();
+      const puzzles = this.sortPuzzles([...new Set(this.data.map((r) => this.getPuzzleFromRow(r)))].filter(Boolean));
       const curr = puzzleSel.value;
       const idx = puzzles.indexOf(curr);
       if (idx !== -1 && idx < puzzles.length - 1) {
