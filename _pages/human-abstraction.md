@@ -4,6 +4,7 @@ title: The Challenge of Human-Like Abstraction in Contemporary AI
 permalink: /human-abstraction/
 description: Interactive dataset viewer for ConceptARC model and human responses.
 nav: false
+oneko: false
 ---
 
 <h1 class="paper-title">The Challenge of Human-Like Abstraction in Contemporary AI</h1>

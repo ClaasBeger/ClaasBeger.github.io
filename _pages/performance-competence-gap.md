@@ -4,6 +4,7 @@ title: Distinguishing Performance From Competence in Evaluations of Humanlike Ab
 permalink: /performance-competence-gap/
 description: Interactive viewer for ConceptARC model outputs and natural-language rules, comparing AI models with humans. Companion to the NeurIPS 2026 paper by Beger et al.
 nav: false
+oneko: false
 ---
 
 <h1 class="paper-title">Distinguishing Performance From Competence in Evaluations of Humanlike Abstract Reasoning</h1>
