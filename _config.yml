@@ -320,6 +320,7 @@ filtered_bibtex_keywords:
     bibtex_show,
     blog,
     code,
+    dataset,
     google_scholar_id,
     html,
     inspirehep_id,
