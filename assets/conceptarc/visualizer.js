@@ -49,7 +49,10 @@ class ConceptARCVisualizer {
     this.bindEvents();
     // Initialize setting options and concept list from current selectors
     this.refreshSettingOptions();
-    this.populateConceptsFromSelectors();
+    // Show the default selection right away instead of an empty viewer
+    this.populateConceptsFromSelectors().then(() => {
+      if (!this.data) this.loadFromSelectors();
+    });
   }
 
   createUI() {

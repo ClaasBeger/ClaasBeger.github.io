@@ -2,39 +2,70 @@
 <html lang="{{ site.lang }}">
   <head>
     {% include head.liquid %}
-    <link rel="stylesheet" href="{{ '/assets/conceptarc/visualizer.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/conceptarc/visualizer.css' | relative_url | bust_file_cache }}">
     <style>
-      .human-abstraction-page {
-        max-width: 1400px;
+      .pcg-page {
+        max-width: 1100px;
         margin: 0 auto;
       }
-      .human-abstraction-page .paper-title {
+      .pcg-page .paper-title {
         text-align: center;
         font-size: 1.75rem;
         font-weight: 600;
         line-height: 1.35;
         margin-bottom: 1.25rem;
       }
-      .human-abstraction-page .paper-authors {
+      .pcg-page .paper-authors {
         text-align: center;
         font-size: 1.05rem;
         line-height: 1.7;
         margin-bottom: 0.5rem;
       }
-      .human-abstraction-page .paper-authors .author-name {
+      .pcg-page .paper-authors .author-name {
         white-space: nowrap;
       }
-      .human-abstraction-page .paper-affiliations {
+      .pcg-page .paper-affiliations {
         text-align: center;
         font-size: 0.9rem;
         color: var(--global-text-color-light, #666);
         line-height: 1.6;
-        margin-bottom: 1.75rem;
+        margin-bottom: 1.25rem;
       }
-      .human-abstraction-page .paper-affiliations sup {
+      .pcg-page .paper-affiliations sup {
         font-weight: 600;
       }
-      .human-abstraction-page .paper-abstract {
+      .pcg-page .paper-venue {
+        text-align: center;
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+      .pcg-page .paper-venue-track {
+        font-weight: 500;
+        color: var(--global-text-color-light, #666);
+      }
+      .pcg-page .paper-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+      }
+      .pcg-page .paper-links a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.45rem 1.1rem;
+        border-radius: 999px;
+        background: var(--global-text-color, #212529);
+        color: var(--global-bg-color, #fff);
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .pcg-page .paper-links a:hover {
+        background: var(--global-theme-color, #2698ba);
+      }
+      .pcg-page .paper-abstract {
         max-width: 900px;
         margin: 0 auto 2.5rem;
         padding: 1.25rem 1.5rem;
@@ -42,30 +73,168 @@
         border-radius: 8px;
         border-left: 4px solid var(--global-theme-color, #2698ba);
       }
-      .human-abstraction-page .paper-abstract h2 {
+      .pcg-page .paper-abstract h2 {
         font-size: 1.1rem;
         font-weight: 600;
         margin-bottom: 0.75rem;
       }
-      .human-abstraction-page .paper-abstract p {
+      .pcg-page .paper-abstract p {
         margin-bottom: 0;
         text-align: justify;
         line-height: 1.65;
       }
-      .human-abstraction-page .visualizer-section h2 {
+      .pcg-page section > h2 {
         font-size: 1.35rem;
         font-weight: 600;
-        margin-bottom: 0.35rem;
+        margin-bottom: 0.75rem;
       }
-      .human-abstraction-page .visualizer-section .section-desc {
+      .pcg-page .findings h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-top: 2.25rem;
+        margin-bottom: 0.4rem;
+      }
+      .pcg-page .section-desc {
         color: var(--global-text-color-light, #666);
         margin-bottom: 1rem;
       }
-      .human-abstraction-page .dataset-download {
+      .pcg-page .stat-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        margin: 1.25rem 0 0.5rem;
+      }
+      .pcg-page .stat-tile {
+        padding: 1rem 1.25rem;
+        background: var(--global-card-bg-color, #f8f9fa);
+        border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.1));
+        border-radius: 8px;
+      }
+      .pcg-page .stat-value {
+        font-size: 1.6rem;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+      .pcg-page .stat-label {
+        font-size: 0.9rem;
+        color: var(--global-text-color-light, #666);
+        margin-top: 0.25rem;
+      }
+      .pcg-page .stat-note {
+        font-size: 0.8rem;
+        color: var(--global-text-color-light, #666);
+      }
+      .pcg-page .paper-figure {
+        margin: 0 auto 1rem;
+      }
+      .pcg-page .paper-figure-narrow {
+        max-width: 720px;
+      }
+      .pcg-page .paper-figure figure {
+        margin: 0;
+      }
+      .pcg-page .paper-figure img {
+        display: block;
+        width: 100%;
+        height: auto;
+        background: #fff;
+        border-radius: 8px;
+      }
+      .pcg-page .paper-figure figcaption {
+        font-size: 0.9rem;
+        color: var(--global-text-color-light, #666);
+        margin-top: 0.5rem;
+        text-align: center;
+      }
+      .pcg-page .rule-example-tabs {
+        display: flex;
+        justify-content: center;
+        margin: 1rem 0 1.25rem;
+      }
+      .pcg-page .rule-example-tabs button {
+        padding: 0.35rem 0.9rem;
+        font-size: 0.9rem;
+        border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.1));
+        background: var(--global-card-bg-color, #fff);
+        color: var(--global-text-color, #212529);
+        cursor: pointer;
+      }
+      .pcg-page .rule-example-tabs button + button {
+        border-left: none;
+      }
+      .pcg-page .rule-example-tabs button:first-child {
+        border-radius: 6px 0 0 6px;
+      }
+      .pcg-page .rule-example-tabs button:last-child {
+        border-radius: 0 6px 6px 0;
+      }
+      .pcg-page .rule-example-tabs button[aria-selected='true'] {
+        background: var(--global-theme-color, #2698ba);
+        border-color: var(--global-theme-color, #2698ba);
+        color: #fff;
+      }
+      .pcg-page .rule-example[hidden] {
+        display: none !important;
+      }
+      .pcg-page .visualizer-section {
+        margin-top: 3rem;
+      }
+      .pcg-page .dataset-download {
         text-align: center;
         color: var(--global-text-color-light, #666);
         margin-top: 1.5rem;
         margin-bottom: 2rem;
+      }
+      .pcg-page .bibtex pre {
+        white-space: pre-wrap;
+        padding: 1rem 1.25rem;
+        border-radius: 8px;
+        background: var(--global-card-bg-color, #f8f9fa);
+        border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.1));
+        font-size: 0.85rem;
+      }
+      .pcg-page .principle-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+      }
+      .pcg-page .principle {
+        padding: 1rem 1.25rem;
+        background: var(--global-card-bg-color, #f8f9fa);
+        border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.1));
+        border-top: 3px solid var(--global-theme-color, #2698ba);
+        border-radius: 8px;
+      }
+      .pcg-page .principle h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0 0 0.4rem;
+      }
+      .pcg-page .principle p {
+        font-size: 0.92rem;
+        color: var(--global-text-color-light, #666);
+        margin: 0;
+      }
+      .pcg-page .results-table {
+        margin: 0.5rem auto 0.25rem;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+      .pcg-page .results-table th,
+      .pcg-page .results-table td {
+        color: var(--global-text-color, #212529);
+        background: transparent;
+        padding: 0.4rem 1.25rem;
+        border-bottom: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.1));
+        text-align: right;
+      }
+      .pcg-page .results-table th:first-child,
+      .pcg-page .results-table td:first-child {
+        text-align: left;
+      }
+      .pcg-page .results-table + .stat-note {
+        text-align: center;
       }
     </style>
   </head>
@@ -73,7 +242,7 @@
   <body class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %}">
     {% include header.liquid %}
 
-    <div class="container mt-5 human-abstraction-page" role="main">
+    <div class="container mt-5 pcg-page" role="main">
       {{ content }}
     </div>
 
@@ -95,7 +264,7 @@
       </footer>
     {% endif %}
     {% include scripts.liquid %}
-    <script src="{{ '/assets/conceptarc/visualizer.js' | relative_url }}"></script>
+    <script src="{{ '/assets/conceptarc/visualizer.js' | relative_url | bust_file_cache }}"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function () {
         try {
