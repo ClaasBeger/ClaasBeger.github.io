@@ -102,7 +102,7 @@ oneko: false
 </div>
 
 <h2>P-ARC</h2>
-<p class="section-desc">P-ARC is a held-out set of 50 hand-crafted ARC-style tasks, which we estimate to lie between ARC-AGI-1 and ARC-AGI-2 in difficulty. Each task comes with a generator and a verifier program, 50 fixed generated examples, three erroneous human attempts used as corruptions, and a reviewed natural-language rule. The dataset is available on <a href="https://huggingface.co/datasets/ClaasBeger/P-ARC" target="_blank" rel="noopener noreferrer">Hugging Face</a> under the MIT license. Four of its tasks:</p>
+<p class="section-desc">P-ARC is a held-out set of 50 hand-crafted ARC-style tasks, which we estimate to lie between ARC-AGI-1 and ARC-AGI-2 in difficulty. Each task comes with a generator and a verifier program, 50 fixed generated examples, three human-made corruptions (erroneous attempts from the feasibility check or errors designed by the task's creator), and a reviewed natural-language rule. The dataset is available on <a href="https://huggingface.co/datasets/ClaasBeger/P-ARC" target="_blank" rel="noopener noreferrer">Hugging Face</a> under the MIT license. Four of its tasks:</p>
 
 {% include potarcin_parc_gallery.html %}
 </section>
