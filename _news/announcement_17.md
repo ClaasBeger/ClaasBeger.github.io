@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-[π-CoT](https://arxiv.org/abs/2506.20642) is accepted at TMLR!
+[π-CoT](https://openreview.net/forum?id=gykgXffnE8) is published in TMLR!
