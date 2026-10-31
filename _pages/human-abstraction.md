@@ -27,7 +27,7 @@ oneko: false
 </div>
 
 <div class="paper-links">
-  <a href="https://huggingface.co/datasets/ClaasBeger/HumanLikeARCAbstraction" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-database"></i> Data</a>
+  <a href="https://huggingface.co/datasets/ClaasBeger/ConceptARC_Rule_Annotations" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-database"></i> Data</a>
 </div>
 
 <div class="paper-abstract">
@@ -122,7 +122,7 @@ oneko: false
   <div id="conceptarc-visualizer"></div>
   <p class="dataset-download">
     Full data can be downloaded from
-    <a href="https://huggingface.co/datasets/ClaasBeger/HumanLikeARCAbstraction" target="_blank" rel="noopener noreferrer">ClaasBeger/HumanLikeARCAbstraction</a>
+    <a href="https://huggingface.co/datasets/ClaasBeger/ConceptARC_Rule_Annotations" target="_blank" rel="noopener noreferrer">ClaasBeger/ConceptARC_Rule_Annotations</a>
     on Hugging Face.
   </p>
 </section>
