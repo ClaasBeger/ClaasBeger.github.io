@@ -100,7 +100,8 @@ oneko: false
   <p class="dataset-download">
     Full data can be downloaded from
     <a href="https://huggingface.co/datasets/ClaasBeger/ConceptARC_Rule_Annotations" target="_blank" rel="noopener noreferrer">ClaasBeger/ConceptARC_Rule_Annotations</a>
-    on Hugging Face.
+    on Hugging Face. The medium-effort runs without tools are in
+    <a href="https://huggingface.co/datasets/ClaasBeger/HumanLikeARCAbstraction" target="_blank" rel="noopener noreferrer">ClaasBeger/HumanLikeARCAbstraction</a>.
   </p>
 </section>
 
